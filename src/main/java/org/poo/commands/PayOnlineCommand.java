@@ -73,17 +73,26 @@ public class PayOnlineCommand implements Command {
             account.accountAddTransaction(t);
             return;
         }
-        if (account.getCurrency().equals(currency) && Utils.comision(user, amount, bank, account.getCurrency()) <= account.getBalance()) {
-            double oldAmount = amount;
-            amount = Utils.comision(user, amount, bank, account.getCurrency());
-            account.withdraw(amount);
-            Utils.addCashback(bank, user, account, oldAmount, bank.getCommerciants().get(commerciant));
-            Transaction t = new Transaction.Builder(timestamp, "Card payment")
-                    .commerciant(commerciant)
-                    .amount(oldAmount)
-                    .build();
-            user.addTransaction(t);
-            account.accountAddTransaction(t);
+        if (account.getCurrency().equals(currency) && Utils.comision(user, amount, bank, account.getCurrency()) <= account.getBalance() && amount !=0) {
+            if (account.isBusiness()) {
+                double oldAmount = amount;
+                amount = Utils.comision(bank.getUserHashMap().get(account.getOwner()), amount, bank, account.getCurrency());
+                bank.getUserHashMap().get(account.getOwner()).addCommercialTransaction(bank, commerciant, oldAmount, account.getCurrency());
+                account.withdraw(amount, email, timestamp, oldAmount);
+                Utils.addCashback(bank, bank.getUserHashMap().get(account.getOwner()), account, oldAmount, bank.getCommerciants().get(commerciant));
+            } else  {
+                double oldAmount = amount;
+                amount = Utils.comision(user, amount, bank, account.getCurrency());
+                user.addCommercialTransaction(bank, commerciant, oldAmount, account.getCurrency());
+                account.withdraw(amount);
+                Utils.addCashback(bank, user, account, oldAmount, bank.getCommerciants().get(commerciant));
+                Transaction t = new Transaction.Builder(timestamp, "Card payment")
+                        .commerciant(commerciant)
+                        .amount(oldAmount)
+                        .build();
+                user.addTransaction(t);
+                account.accountAddTransaction(t);
+            }
             if (card.isOneTime()) {
                 bank.getCardHashMap().remove(cardNumber);
                 Transaction t1 = new Transaction.Builder(timestamp, "The card has been destroyed")
@@ -106,30 +115,33 @@ public class PayOnlineCommand implements Command {
                     }
                 }
             }
-        } else {
+        } else  if (amount != 0){
 
             Map<String, Map<String, Double>> exchangeRates = bank.prepareExchangeRates();
             Double convertedAmount = bank.convertCurrency(amount, currency,
                     account.getCurrency(), exchangeRates);
-//            System.out.println("cand fac conversia " + convertedAmount);
             double oldAmount = convertedAmount;
-            convertedAmount = Utils.comision(user, convertedAmount, bank, account.getCurrency());
-//            System.out.println("cand fac comisionul " + convertedAmount);
+            if (account.isBusiness()) {
+                convertedAmount = Utils.comision(bank.getUserHashMap().get(account.getOwner()), convertedAmount, bank, account.getCurrency());
+            } else {
+                convertedAmount = Utils.comision(user, convertedAmount, bank, account.getCurrency());
+            }
             if (convertedAmount != null && account.getBalance() >= convertedAmount) {
-//                System.out.println("in ocnt sunt " + account.getBalance());
-                account.withdraw(convertedAmount);
-//                System.out.println("timestamp: " + timestamp);
-//                System.out.println("contul are plan :" + user.getPlan());
-//                System.out.println("Contul " + account.getIban() + " are " + account.getBalance() + " dupa ce a cumparat de la " + commerciant);
-//                System.out.println("A cheltuit " + amount + " " + currency + " iar din cont i am luat " + convertedAmount + " " + account.getCurrency());
-                Utils.addCashback(bank, user, account, oldAmount, bank.getCommerciants().get(commerciant));
-//                System.out.println("Contul " + account.getIban() + " are " + account.getBalance() + "dupa cea primit cashbank de 0.1%");
-                Transaction t = new Transaction.Builder(timestamp, "Card payment")
-                        .commerciant(commerciant)
-                        .amount(oldAmount)
-                        .build();
-                user.addTransaction(t);
-                account.accountAddTransaction(t);
+                if (account.isBusiness()) {
+                    bank.getUserHashMap().get(account.getOwner()).addCommercialTransaction(bank, commerciant, oldAmount, account.getCurrency());
+                    account.withdraw(convertedAmount, email, timestamp, oldAmount);
+                    Utils.addCashback(bank, bank.getUserHashMap().get(account.getOwner()), account, oldAmount, bank.getCommerciants().get(commerciant));
+                } else {
+                    user.addCommercialTransaction(bank, commerciant, oldAmount, account.getCurrency());
+                    account.withdraw(convertedAmount);
+                    Utils.addCashback(bank, user, account, oldAmount, bank.getCommerciants().get(commerciant));
+                    Transaction t = new Transaction.Builder(timestamp, "Card payment")
+                            .commerciant(commerciant)
+                            .amount(oldAmount)
+                            .build();
+                    user.addTransaction(t);
+                    account.accountAddTransaction(t);
+                }
                 if (card.isOneTime()) {
                     bank.getCardHashMap().remove(cardNumber);
                     Transaction t1 = new Transaction.Builder(timestamp,

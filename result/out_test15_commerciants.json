@@ -1668,7 +1668,7 @@
     "email" : "Todor_Stanescu@gmail.ro",
     "accounts" : [ {
       "IBAN" : "RO90POOB5450777208072365",
-      "balance" : 2204.033,
+      "balance" : 2204.3305,
       "currency" : "RON",
       "type" : "classic",
       "cards" : [ {
@@ -1780,7 +1780,7 @@
     "email" : "Virginia_Oprea@outlook.ro",
     "accounts" : [ {
       "IBAN" : "RO00POOB5687892910835215",
-      "balance" : 3267.884,
+      "balance" : 3268.661,
       "currency" : "RON",
       "type" : "classic",
       "cards" : [ {
@@ -1882,7 +1882,7 @@
     "email" : "Todor_Stanescu@gmail.ro",
     "accounts" : [ {
       "IBAN" : "RO90POOB5450777208072365",
-      "balance" : 2204.033,
+      "balance" : 2204.3305,
       "currency" : "RON",
       "type" : "classic",
       "cards" : [ {
@@ -1994,7 +1994,7 @@
     "email" : "Virginia_Oprea@outlook.ro",
     "accounts" : [ {
       "IBAN" : "RO00POOB5687892910835215",
-      "balance" : 3267.884,
+      "balance" : 3268.661,
       "currency" : "RON",
       "type" : "classic",
       "cards" : [ {
@@ -2096,7 +2096,7 @@
     "email" : "Todor_Stanescu@gmail.ro",
     "accounts" : [ {
       "IBAN" : "RO90POOB5450777208072365",
-      "balance" : 2037.2265,
+      "balance" : 2037.5240000000001,
       "currency" : "RON",
       "type" : "classic",
       "cards" : [ {
@@ -2208,7 +2208,7 @@
     "email" : "Virginia_Oprea@outlook.ro",
     "accounts" : [ {
       "IBAN" : "RO00POOB5687892910835215",
-      "balance" : 3269.88,
+      "balance" : 3271.156,
       "currency" : "RON",
       "type" : "classic",
       "cards" : [ {
@@ -2478,7 +2478,7 @@
     "email" : "Todor_Stanescu@gmail.ro",
     "accounts" : [ {
       "IBAN" : "RO90POOB5450777208072365",
-      "balance" : 2137.2264999999998,
+      "balance" : 2137.5240000000003,
       "currency" : "RON",
       "type" : "classic",
       "cards" : [ {
@@ -2590,7 +2590,7 @@
     "email" : "Virginia_Oprea@outlook.ro",
     "accounts" : [ {
       "IBAN" : "RO00POOB5687892910835215",
-      "balance" : 3269.88,
+      "balance" : 3271.156,
       "currency" : "RON",
       "type" : "classic",
       "cards" : [ {

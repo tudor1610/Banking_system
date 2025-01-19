@@ -95,12 +95,8 @@ public final class Utils {
 
     public static void addCashback(Bank bank, User user, Account account, double amount, CommerciantInput commerciant) {
        if (commerciant.getCashbackStrategy().equals("spendingThreshold")) {
-           Double converted_amount = amount;
-           if (!account.getCurrency().equals("RON")) {
-               converted_amount = bank.convertCurrency(amount, account.getCurrency(),
-                       "RON", bank.prepareExchangeRates());
-           }
-           if (converted_amount >= 500) {
+           Double spent = user.getCommercialTransactions().get(commerciant.getCommerciant());
+           if (spent >= 500) {
                if (user.getPlan().equals("student")) {
                    account.deposit(0.0025 * amount);
                } else if ( user.getPlan().equals("standard")) {
@@ -110,7 +106,7 @@ public final class Utils {
                } else if (user.getPlan().equals("gold")) {
                    account.deposit(0.007 * amount);
                }
-           } else if (converted_amount >= 300) {
+           } else if (spent >= 300) {
                if (user.getPlan().equals("student")){
                    account.deposit(0.002 * amount);
                } else if ("standard".equals(user.getPlan())) {
@@ -120,7 +116,7 @@ public final class Utils {
                } else if ("gold".equals(user.getPlan())) {
                    account.deposit(0.0055 * amount);
                }
-           } else if (converted_amount >= 100) {
+           } else if (spent >= 100) {
                if (user.getPlan().equals("student")){
                    account.deposit(0.001 * amount);
                } else if ("standard".equals(user.getPlan())) {

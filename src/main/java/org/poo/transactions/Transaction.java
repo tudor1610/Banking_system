@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import lombok.Getter;
 
+import java.util.ArrayList;
 import java.util.List;
 /**
  * Represents a transaction with various types (transfer, split bill, payment, or card transaction).
@@ -20,17 +21,21 @@ public final class Transaction {
     // Optional fields
     private String senderIban;
     private String receiverIban;
-    private double amount;
+    private Double amount;
     private String currency;
     private String transferType;
     private List<String> accountsInvolved;
-    private double totalBill;
+    private List<Double> amountForUsers;
+    private Double totalBill;
     private String error;
     private String commerciant;
     private String accountNumber;
     private String cardNumber;
     private String cardHolder;
     private String newPlanType;
+    private Double withdrawalAmount;
+    private String splitPaymentType;
+
 
     /**
      * Constructs a Transaction object using the Builder.
@@ -53,6 +58,9 @@ public final class Transaction {
         this.cardNumber = builder.cardNumber;
         this.cardHolder = builder.cardHolder;
         this.newPlanType = builder.newPlanType;
+        this.withdrawalAmount = builder.withdrawalAmount;
+        this.amountForUsers = builder.amountForUsers;
+        this.splitPaymentType = builder.splitPaymentType;
     }
 
     /**
@@ -71,6 +79,10 @@ public final class Transaction {
             printUpgradePlan(output);
         } else if (accountNumber != null) {
             printCardTransaction(output);
+        } else if (withdrawalAmount != null) {
+            printWithdrawal(output);
+        } else if (currency != null) {
+            printInterest(output);
         } else {
             output.put("timestamp", timestamp);
             output.put("description", description);
@@ -84,9 +96,13 @@ public final class Transaction {
      */
     private void printSplitBill(final ObjectNode output) {
         output.put("timestamp", timestamp);
-        output.put("description", description + totalBill + "0 " + currency);
+        if (totalBill * 100 % 10 == 0) {
+            output.put("description", description + totalBill + "0 " + currency);
+        } else {
+            output.put("description", description + totalBill + " " + currency);
+        }
+
         output.put("currency", currency);
-        output.put("amount", amount);
         ObjectMapper objectMapper = new ObjectMapper();
         ArrayNode accountsArray = objectMapper.createArrayNode();
         for (String account : accountsInvolved) {
@@ -95,7 +111,32 @@ public final class Transaction {
         if (error != null) {
             output.put("error", error);
         }
+        if (splitPaymentType.equals("equal")) {
+            output.put("amount", amountForUsers.get(0));
+        } else {
+            ArrayNode amountsArray = objectMapper.createArrayNode();
+            if (amountForUsers != null) {
+                for (Double amountForUser : amountForUsers) {
+                    amountsArray.add(amountForUser);
+                }
+                output.set("amountForUsers", amountsArray);
+            }
+        }
         output.set("involvedAccounts", accountsArray);
+        output.put("splitPaymentType", splitPaymentType);
+    }
+
+    private void printInterest(final ObjectNode output) {
+        output.put("timestamp", timestamp);
+        output.put("description", description);
+        output.put("amount", amount);
+        output.put("currency", currency);
+    }
+
+    private void printWithdrawal(final ObjectNode output) {
+        output.put("timestamp", timestamp);
+        output.put("description", description);
+        output.put("amount", withdrawalAmount);
     }
 
     private void printUpgradePlan(final ObjectNode output) {
@@ -155,17 +196,20 @@ public final class Transaction {
         // Optional fields
         private String senderIban;
         private String receiverIban;
-        private double amount;
+        private Double amount;
         private String currency;
         private String transferType;
         private List<String> accountsInvolved;
-        private double totalBill;
+        public List<Double> amountForUsers;
+        private Double totalBill;
         private String error;
         private String commerciant;
         private String accountNumber;
         private String cardNumber;
         private String cardHolder;
         private String newPlanType;
+        private Double withdrawalAmount;
+        private String splitPaymentType;
 
         /**
          * Constructs a Builder with the mandatory fields.
@@ -314,6 +358,20 @@ public final class Transaction {
 
         public Builder newPlanType(final String setNewPlanType) {
             newPlanType = setNewPlanType;
+            return this;
+        }
+
+        public Builder withdrawalAmount(final double setWithdrawalAmount) {
+            withdrawalAmount = setWithdrawalAmount;
+            return this;
+        }
+
+        public Builder amountForUsers(final List<Double> setAmountForUsers) {
+            amountForUsers = setAmountForUsers;
+            return this;
+        }
+        public Builder splitPaymentType(final String setSplitPaymentType) {
+            splitPaymentType = setSplitPaymentType;
             return this;
         }
 

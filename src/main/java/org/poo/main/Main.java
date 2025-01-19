@@ -55,7 +55,7 @@ public final class Main {
             String filepath = CheckerConstants.OUT_PATH + file.getName();
             File out = new File(filepath);
             boolean isCreated = out.createNewFile();
-            if (isCreated && ) {
+            if (isCreated) {
                 action(file.getName(), filepath);
             }
         }

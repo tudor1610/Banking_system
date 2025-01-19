@@ -1,4 +1,76 @@
 [ {
+  "command" : "businessReport",
+  "timestamp" : 262,
+  "output" : {
+    "IBAN" : "RO98POOB8412955460158769",
+    "balance" : 119.0,
+    "currency" : "USD",
+    "spending limit" : 280.0,
+    "deposit limit" : 107.14285714285714,
+    "total spent" : 0.0,
+    "total deposited" : 0.0,
+    "statistics type" : "transaction",
+    "managers" : [ ],
+    "employees" : [ {
+      "username" : "Lee Joe",
+      "spent" : 0.0,
+      "deposited" : 0.0
+    }, {
+      "username" : "Marin Silvia",
+      "spent" : 0.0,
+      "deposited" : 0.0
+    }, {
+      "username" : "Albu Dida",
+      "spent" : 0.0,
+      "deposited" : 0.0
+    } ]
+  }
+}, {
+  "command" : "businessReport",
+  "timestamp" : 263,
+  "output" : {
+    "IBAN" : "RO32POOB0130532963818359",
+    "balance" : 39.0,
+    "currency" : "USD",
+    "spending limit" : 896.0,
+    "deposit limit" : 107.14285714285714,
+    "total spent" : 0.0,
+    "total deposited" : 0.0,
+    "statistics type" : "transaction",
+    "managers" : [ ],
+    "employees" : [ ]
+  }
+}, {
+  "command" : "businessReport",
+  "timestamp" : 264,
+  "output" : {
+    "IBAN" : "RO68POOB1848616931405475",
+    "balance" : 749.0,
+    "currency" : "RON",
+    "spending limit" : 473.0,
+    "deposit limit" : 500.0,
+    "total spent" : 0.0,
+    "total deposited" : 0.0,
+    "statistics type" : "transaction",
+    "managers" : [ ],
+    "employees" : [ ]
+  }
+}, {
+  "command" : "businessReport",
+  "timestamp" : 265,
+  "output" : {
+    "IBAN" : "RO10POOB4354933866366881",
+    "balance" : 741.0,
+    "currency" : "RON",
+    "spending limit" : 500.0,
+    "deposit limit" : 500.0,
+    "total spent" : 0.0,
+    "total deposited" : 0.0,
+    "statistics type" : "transaction",
+    "managers" : [ ],
+    "employees" : [ ]
+  }
+}, {
   "command" : "payOnline",
   "output" : {
     "description" : "Card not found",
@@ -166,4 +238,163 @@
     "timestamp" : 425
   },
   "timestamp" : 425
+}, {
+  "command" : "businessReport",
+  "timestamp" : 429,
+  "output" : {
+    "IBAN" : "RO98POOB8412955460158769",
+    "balance" : 1254.0,
+    "currency" : "USD",
+    "spending limit" : 868.0,
+    "deposit limit" : 107.14285714285714,
+    "total spent" : 0.0,
+    "total deposited" : 1135.0,
+    "statistics type" : "transaction",
+    "managers" : [ {
+      "username" : "Ellis DDS Alexander",
+      "spent" : 0.0,
+      "deposited" : 144.0
+    }, {
+      "username" : "Vallee Genevieve",
+      "spent" : 0.0,
+      "deposited" : 146.0
+    }, {
+      "username" : "Mocanu Mirela",
+      "spent" : 0.0,
+      "deposited" : 145.0
+    } ],
+    "employees" : [ {
+      "username" : "Booker James",
+      "spent" : 0.0,
+      "deposited" : 132.0
+    }, {
+      "username" : "Lee Joe",
+      "spent" : 0.0,
+      "deposited" : 163.0
+    }, {
+      "username" : "Marin Silvia",
+      "spent" : 0.0,
+      "deposited" : 84.0
+    }, {
+      "username" : "Albu Dida",
+      "spent" : 0.0,
+      "deposited" : 40.0
+    }, {
+      "username" : "Poulain Gilbert",
+      "spent" : 0.0,
+      "deposited" : 281.0
+    } ]
+  }
+}, {
+  "command" : "businessReport",
+  "timestamp" : 430,
+  "output" : {
+    "IBAN" : "RO32POOB0130532963818359",
+    "balance" : 1024.0,
+    "currency" : "USD",
+    "spending limit" : 94.0,
+    "deposit limit" : 107.14285714285714,
+    "total spent" : 0.0,
+    "total deposited" : 985.0,
+    "statistics type" : "transaction",
+    "managers" : [ {
+      "username" : "Booker James",
+      "spent" : 0.0,
+      "deposited" : 167.0
+    }, {
+      "username" : "Ellis DDS Alexander",
+      "spent" : 0.0,
+      "deposited" : 152.0
+    }, {
+      "username" : "Poulain Gilbert",
+      "spent" : 0.0,
+      "deposited" : 165.0
+    }, {
+      "username" : "Mocanu Mirela",
+      "spent" : 0.0,
+      "deposited" : 200.0
+    } ],
+    "employees" : [ {
+      "username" : "Vallee Genevieve",
+      "spent" : 0.0,
+      "deposited" : 301.0
+    } ]
+  }
+}, {
+  "command" : "businessReport",
+  "timestamp" : 431,
+  "output" : {
+    "IBAN" : "RO68POOB1848616931405475",
+    "balance" : 859.0,
+    "currency" : "RON",
+    "spending limit" : 473.0,
+    "deposit limit" : 500.0,
+    "total spent" : 0.0,
+    "total deposited" : 110.0,
+    "statistics type" : "transaction",
+    "managers" : [ {
+      "username" : "Mocanu Mirela",
+      "spent" : 0.0,
+      "deposited" : 110.0
+    } ],
+    "employees" : [ {
+      "username" : "Booker James",
+      "spent" : 0.0,
+      "deposited" : 0.0
+    }, {
+      "username" : "Ellis DDS Alexander",
+      "spent" : 0.0,
+      "deposited" : 0.0
+    }, {
+      "username" : "Poulain Gilbert",
+      "spent" : 0.0,
+      "deposited" : 0.0
+    }, {
+      "username" : "Vallee Genevieve",
+      "spent" : 0.0,
+      "deposited" : 0.0
+    } ]
+  }
+}, {
+  "command" : "businessReport",
+  "timestamp" : 432,
+  "output" : {
+    "IBAN" : "RO10POOB4354933866366881",
+    "balance" : 1117.0,
+    "currency" : "RON",
+    "spending limit" : 500.0,
+    "deposit limit" : 500.0,
+    "total spent" : 0.0,
+    "total deposited" : 376.0,
+    "statistics type" : "transaction",
+    "managers" : [ {
+      "username" : "Ellis DDS Alexander",
+      "spent" : 0.0,
+      "deposited" : 136.0
+    }, {
+      "username" : "Poulain Gilbert",
+      "spent" : 0.0,
+      "deposited" : 124.0
+    }, {
+      "username" : "Mocanu Mirela",
+      "spent" : 0.0,
+      "deposited" : 116.0
+    } ],
+    "employees" : [ {
+      "username" : "Booker James",
+      "spent" : 0.0,
+      "deposited" : 0.0
+    }, {
+      "username" : "Vallee Genevieve",
+      "spent" : 0.0,
+      "deposited" : 0.0
+    } ]
+  }
+}, {
+  "command" : "sendMoney",
+  "output" : {
+    "description" : "User not found",
+    "timestamp" : 434
+  },
+  "timestamp" : 434
 } ]

@@ -142,6 +142,13 @@
     "accounts" : [ ]
   } ]
 }, {
+  "command" : "sendMoney",
+  "output" : {
+    "description" : "User not found",
+    "timestamp" : 41
+  },
+  "timestamp" : 41
+}, {
   "command" : "printTransactions",
   "output" : [ {
     "timestamp" : 37,
@@ -152,6 +159,10 @@
     "account" : "RO76POOB4035116042454483",
     "card" : "8207906978464446",
     "cardHolder" : "Dennis_Norris@yahoo.us"
+  }, {
+    "timestamp" : 43,
+    "description" : "Cash withdrawal of 100000.0",
+    "amount" : 100000.0
   } ],
   "timestamp" : 44
 }, {
@@ -314,11 +325,6 @@
     "amount" : 18.0,
     "commerciant" : "Nike"
   }, {
-    "timestamp" : 50,
-    "description" : "Card payment",
-    "amount" : 0.0,
-    "commerciant" : "H&M"
-  }, {
     "timestamp" : 51,
     "description" : "Visit to a local healthcare clinic",
     "senderIBAN" : "RO37POOB7013767509830666",
@@ -327,6 +333,13 @@
     "transferType" : "sent"
   } ],
   "timestamp" : 52
+}, {
+  "command" : "sendMoney",
+  "output" : {
+    "description" : "User not found",
+    "timestamp" : 57
+  },
+  "timestamp" : 57
 }, {
   "command" : "printTransactions",
   "output" : [ {
@@ -344,11 +357,6 @@
     "amount" : 18.0,
     "commerciant" : "Nike"
   }, {
-    "timestamp" : 50,
-    "description" : "Card payment",
-    "amount" : 0.0,
-    "commerciant" : "H&M"
-  }, {
     "timestamp" : 51,
     "description" : "Visit to a local healthcare clinic",
     "senderIBAN" : "RO37POOB7013767509830666",
@@ -365,6 +373,10 @@
     "description" : "Card payment",
     "amount" : 244.0,
     "commerciant" : "Samsung"
+  }, {
+    "timestamp" : 59,
+    "description" : "Cash withdrawal of 600.0",
+    "amount" : 600.0
   } ],
   "timestamp" : 60
 }, {
@@ -520,6 +532,13 @@
     "accounts" : [ ]
   } ]
 }, {
+  "command" : "sendMoney",
+  "output" : {
+    "description" : "User not found",
+    "timestamp" : 65
+  },
+  "timestamp" : 65
+}, {
   "command" : "printTransactions",
   "output" : [ {
     "timestamp" : 1,
@@ -535,6 +554,10 @@
     "description" : "Upgrade plan",
     "newPlanType" : "gold",
     "accountIBAN" : "RO58POOB7344468893732422"
+  }, {
+    "timestamp" : 67,
+    "description" : "Cash withdrawal of 600.0",
+    "amount" : 600.0
   } ],
   "timestamp" : 68
 }, {

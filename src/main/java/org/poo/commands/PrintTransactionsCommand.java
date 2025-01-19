@@ -6,6 +6,10 @@ import org.poo.bank.Bank;
 import org.poo.bank.User;
 import org.poo.transactions.Transaction;
 
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class PrintTransactionsCommand implements Command {
     private Bank bank;
     private String email;
@@ -28,7 +32,11 @@ public class PrintTransactionsCommand implements Command {
         command.put("command", "printTransactions");
         ArrayNode transactionArray = bank.getObjectMapper().createArrayNode();
         User user = bank.getUserHashMap().get(email);
-        for (Transaction t : user.getTransactions()) {
+
+        List<Transaction> sortedTransactions = user.getTransactions().stream()
+                .sorted(Comparator.comparingInt(Transaction::getTimestamp))
+                .toList();
+        for (Transaction t : sortedTransactions) {
             ObjectNode transaction = bank.getObjectMapper().createObjectNode();
             t.print(transaction);
             transactionArray.add(transaction);

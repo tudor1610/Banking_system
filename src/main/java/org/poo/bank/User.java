@@ -10,7 +10,9 @@ import org.poo.fileio.UserInput;
 import org.poo.transactions.Transaction;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Represents a user in the banking system.
@@ -31,6 +33,7 @@ public class User {
     private List<Transaction> transactions;
     private ObjectMapper objectMapper;
     private String plan;
+    private Map<String, Double> commercialTransactions;
 
     /**
      * Constructs a new {@code User} object based on the given {@link UserInput}.
@@ -50,6 +53,16 @@ public class User {
             plan = "student";
         } else {
             plan = "standard";
+        }
+        commercialTransactions = new HashMap<>();
+    }
+
+    public void addCommercialTransaction(Bank bank, String commerciant,  double amount, final String currency) {
+        amount = bank.convertCurrency(amount, currency, "RON", bank.prepareExchangeRates());
+        if (commercialTransactions.containsKey(commerciant)) {
+            commercialTransactions.put(commerciant, commercialTransactions.get(commerciant) + amount);
+        } else {
+            commercialTransactions.put(commerciant, amount);
         }
     }
 

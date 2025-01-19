@@ -3,6 +3,7 @@ package org.poo.commands;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.poo.account.Account;
 import org.poo.bank.Bank;
+import org.poo.transactions.Transaction;
 
 public class AddInterestCommand implements Command {
     private Bank bank;
@@ -23,7 +24,16 @@ public class AddInterestCommand implements Command {
     public void execute() {
         Account account = bank.getAccountHashMap().get(accountNumber);
         if (account.getAccountType().equals("savings")) {
+            double balance = account.getBalance();
             account.addInterest();
+            System.out.println("account balance before interest: " + balance);
+            System.out.println("account balance after interest: " + account.getBalance());
+            System.out.println("interest: " + (account.getBalance() - balance));
+            Transaction t = new Transaction.Builder(timestamp, "Interest rate income")
+                    .currency(account.getCurrency())
+                    .amount(balance * account.getInterestRate())
+                    .build();
+            bank.getUserHashMap().get(account.getEmail()).addTransaction(t);
         } else {
             ObjectNode command = bank.getObjectMapper().createObjectNode();
             command.put("command", "addInterest");
@@ -35,4 +45,5 @@ public class AddInterestCommand implements Command {
             bank.getOutput().add(command);
         }
     }
+
 }

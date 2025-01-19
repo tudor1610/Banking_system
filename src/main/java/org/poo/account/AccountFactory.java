@@ -1,5 +1,6 @@
 package org.poo.account;
 
+import org.poo.bank.Bank;
 import org.poo.utils.Utils;
 
 public final class AccountFactory {
@@ -35,13 +36,13 @@ public final class AccountFactory {
      * @return an instance of {@code SavingsAccount} if the account type is "savings",
      *         otherwise an instance of {@code ClassicAccount}
      */
-    public static Account createAccount(final String email, final String currency,
+    public static Account createAccount(final Bank bank, final String email, final String currency,
                                         final String accountType, final int timestamp,
                                         final Double interestRate) {
         if (accountType.equalsIgnoreCase("savings")) {
             return new SavingsAccount(Utils.generateIBAN(), email, currency, interestRate);
         } else if (accountType.equalsIgnoreCase("business")) {
-            return new BusinessAccount(Utils.generateIBAN(), email, currency);
+            return new BusinessAccount(bank, Utils.generateIBAN(), email, currency);
         } else {
             return new ClassicAccount(Utils.generateIBAN(), email, currency);
         }

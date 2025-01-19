@@ -1,5 +1,6 @@
 package org.poo.commands;
 
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.poo.account.Account;
 import org.poo.bank.Bank;
 import org.poo.bank.User;
@@ -16,17 +17,19 @@ public class SendMoneyCommand implements Command {
     private double amount;
     private ExchangeInput[] exc;
     private String description;
+    private String email;
     private int timestamp;
 
     public SendMoneyCommand(final Bank bank, final String account1, final String account2,
                             final double amount, final ExchangeInput[] exc,
-                            final String description, final int timestamp) {
+                            final String description, final String email, final int timestamp) {
         this.bank = bank;
         this.account1 = account1;
         this.account2 = account2;
         this.amount = amount;
         this.exc = exc;
         this.description = description;
+        this.email = email;
         this.timestamp = timestamp;
     }
 
@@ -70,6 +73,10 @@ public class SendMoneyCommand implements Command {
      */
     @Override
     public void execute() {
+        if (bank.getUserHashMap().get(email) == null) {
+            UserNotFound();
+            return;
+        }
         Account sender = bank.getAccountHashMap().get(account1);
         if (sender == null) {
             return;
@@ -80,13 +87,20 @@ public class SendMoneyCommand implements Command {
         }
         if (receiver != null) {
             double oldAmount = amount;
-            amount = Utils.comision(bank.getUserHashMap().get(sender.getEmail()), amount, bank, sender.getCurrency());
+            if (sender.isBusiness()) {
+                amount = Utils.comision(bank.getUserHashMap().get(sender.getOwner()), amount, bank, sender.getCurrency());
+            } else {
+                amount = Utils.comision(bank.getUserHashMap().get(sender.getEmail()), amount, bank, sender.getCurrency());
+            }
             if (sender.getCurrency().equals(receiver.getCurrency())) {
-//                System.out.println("timestamp " + timestamp + " amount " + amount + " oldAmount " + oldAmount);
-//                System.out.println("Account sending " + sender.getIban() + " " + sender.getBalance() + " " + amount  +" currency " + sender.getCurrency());
-//                System.out.println("Account receiving " + receiver.getIban() + " " + receiver.getBalance() + " " + oldAmount + " currency " + receiver.getCurrency());
+                System.out.println("conturile sunt in aceeasi moneda");
+                System.out.println("sender balance: " + sender.getBalance());
                 if (sender.getBalance() >= amount) {
-                    sender.withdraw(amount);
+                    if (sender.isBusiness()) {
+                        sender.withdraw(amount, sender.getOwner(), timestamp, oldAmount);
+                    } else {
+                        sender.withdraw(amount);
+                    }
                     receiver.deposit(oldAmount);
                     sendMoneyTransaction(sender, receiver, oldAmount, oldAmount);
                 } else {
@@ -100,7 +114,9 @@ public class SendMoneyCommand implements Command {
                 Map<String, Map<String, Double>> exchangeRates = bank.prepareExchangeRates();
                 Double convertedAmount = bank.convertCurrency(oldAmount, sender.getCurrency(),
                         receiver.getCurrency(), exchangeRates);
-//                System.out.println("timestamp " + timestamp + " amount " + amount + " oldAmount " + oldAmount + " convertedAmount " + convertedAmount);
+                System.out.println("sender currency: " + sender.getCurrency() + " receiver currency: " + receiver.getCurrency());
+                System.out.println("sender balance: " + sender.getBalance());
+                System.out.println("converted amount: " + convertedAmount);
                 if (convertedAmount != null && sender.getBalance() >= amount) {
                     sender.withdraw(amount);
                     receiver.deposit(convertedAmount);
@@ -113,6 +129,19 @@ public class SendMoneyCommand implements Command {
                     sender.accountAddTransaction(t);
                 }
             }
+        } else {
+            UserNotFound();
         }
+    }
+
+    private void UserNotFound() {
+        ObjectNode command = bank.getObjectMapper().createObjectNode();
+        command.put("command", "sendMoney");
+        ObjectNode status = bank.getObjectMapper().createObjectNode();
+        status.put("description", "User not found");
+        status.put("timestamp", timestamp);
+        command.set("output", status);
+        command.put("timestamp", timestamp);
+        bank.getOutput().add(command);
     }
 }

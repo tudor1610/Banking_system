@@ -43,6 +43,7 @@ public class WithdrawSavingsCommand implements Command {
         }
 
         if (isOlderThan21(user.getBirthDate())) {
+            boolean hasClassicAccount = false;
             if (!currency.equals(account.getCurrency())) {
                 Map<String, Map<String, Double>> exchangeRates = bank.prepareExchangeRates();
                 amount = bank.convertCurrency(amount, currency,
@@ -51,10 +52,19 @@ public class WithdrawSavingsCommand implements Command {
             for (Account a : user.getAccounts()) {
                 if (a.getAccountType().equals("classic") && a.getCurrency().equals(currency)) {
                     account.withdraw(amount);
-                    a.deposit(amount);
+                    a.deposit(amount, user.getEmail(), timestamp);
+                    hasClassicAccount = true;
                     break;
                 }
             }
+            if (!hasClassicAccount) {
+                //error: "You don't have a classic account in the same currency."
+                Transaction t = new Transaction
+                        .Builder(timestamp, "You do not have a classic account.").build();
+                user.addTransaction(t);
+                return;
+            }
+
         } else {
             //error: "You don't have the minimum age required."
 //            System.out.println("NUUUUUUUUUUUUUUUUUU sefule!!!! timestamp: " + timestamp);

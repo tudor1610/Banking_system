@@ -1,4 +1,34 @@
 [ {
+  "command" : "changeSpendingLimit",
+  "output" : {
+    "description" : "You must be owner in order to change spending limit.",
+    "timestamp" : 30
+  },
+  "timestamp" : 30
+}, {
+  "command" : "businessReport",
+  "timestamp" : 31,
+  "output" : {
+    "IBAN" : "RO65POOB8944016386845896",
+    "balance" : 0.0,
+    "currency" : "USD",
+    "spending limit" : 107.14285714285714,
+    "deposit limit" : 107.14285714285714,
+    "total spent" : 0.0,
+    "total deposited" : 0.0,
+    "statistics type" : "transaction",
+    "managers" : [ {
+      "username" : "Pop Zaharia",
+      "spent" : 0.0,
+      "deposited" : 0.0
+    } ],
+    "employees" : [ {
+      "username" : "Sharp Aaron",
+      "spent" : 0.0,
+      "deposited" : 0.0
+    } ]
+  }
+}, {
   "command" : "payOnline",
   "output" : {
     "description" : "Card not found",
@@ -19,4 +49,27 @@
     "timestamp" : 38
   },
   "timestamp" : 38
+}, {
+  "command" : "businessReport",
+  "timestamp" : 42,
+  "output" : {
+    "IBAN" : "RO65POOB8944016386845896",
+    "balance" : 155.35800000000017,
+    "currency" : "USD",
+    "spending limit" : 564.0,
+    "deposit limit" : 104.0,
+    "total spent" : 0.0,
+    "total deposited" : 3483.0,
+    "statistics type" : "transaction",
+    "managers" : [ {
+      "username" : "Pop Zaharia",
+      "spent" : 0.0,
+      "deposited" : 3483.0
+    } ],
+    "employees" : [ {
+      "username" : "Sharp Aaron",
+      "spent" : 0.0,
+      "deposited" : 0.0
+    } ]
+  }
 } ]

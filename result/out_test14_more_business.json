@@ -1,1 +1,94 @@
-[ ]
+[ {
+  "command" : "businessReport",
+  "timestamp" : 75,
+  "output" : {
+    "IBAN" : "RO69POOB6209498372540635",
+    "balance" : 0.0,
+    "currency" : "RON",
+    "spending limit" : 500.0,
+    "deposit limit" : 135.0,
+    "total spent" : 0.0,
+    "total deposited" : 0.0,
+    "statistics type" : "transaction",
+    "managers" : [ ],
+    "employees" : [ {
+      "username" : "Stanescu Damian",
+      "spent" : 0.0,
+      "deposited" : 0.0
+    }, {
+      "username" : "King Daniel",
+      "spent" : 0.0,
+      "deposited" : 0.0
+    }, {
+      "username" : "Albu Pompilia",
+      "spent" : 0.0,
+      "deposited" : 0.0
+    }, {
+      "username" : "Voinea Valentin",
+      "spent" : 0.0,
+      "deposited" : 0.0
+    } ]
+  }
+}, {
+  "command" : "businessReport",
+  "timestamp" : 84,
+  "output" : {
+    "IBAN" : "RO69POOB6209498372540635",
+    "balance" : 2628.063,
+    "currency" : "RON",
+    "spending limit" : 500.0,
+    "deposit limit" : 135.0,
+    "total spent" : 595.0,
+    "total deposited" : 0.0,
+    "statistics type" : "transaction",
+    "managers" : [ ],
+    "employees" : [ {
+      "username" : "Stanescu Damian",
+      "spent" : 253.0,
+      "deposited" : 0.0
+    }, {
+      "username" : "King Daniel",
+      "spent" : 0.0,
+      "deposited" : 0.0
+    }, {
+      "username" : "Albu Pompilia",
+      "spent" : 0.0,
+      "deposited" : 0.0
+    }, {
+      "username" : "Voinea Valentin",
+      "spent" : 342.0,
+      "deposited" : 0.0
+    } ]
+  }
+}, {
+  "command" : "businessReport",
+  "timestamp" : 161,
+  "output" : {
+    "IBAN" : "RO69POOB6209498372540635",
+    "balance" : 5982.355925,
+    "currency" : "RON",
+    "spending limit" : 500.0,
+    "deposit limit" : 135.0,
+    "total spent" : 1107.05,
+    "total deposited" : 0.0,
+    "statistics type" : "transaction",
+    "managers" : [ ],
+    "employees" : [ {
+      "username" : "Stanescu Damian",
+      "spent" : 253.0,
+      "deposited" : 0.0
+    }, {
+      "username" : "King Daniel",
+      "spent" : 0.0,
+      "deposited" : 0.0
+    }, {
+      "username" : "Albu Pompilia",
+      "spent" : 0.0,
+      "deposited" : 0.0
+    }, {
+      "username" : "Voinea Valentin",
+      "spent" : 854.05,
+      "deposited" : 0.0
+    } ]
+  }
+} ]

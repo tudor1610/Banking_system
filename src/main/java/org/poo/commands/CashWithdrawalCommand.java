@@ -25,7 +25,10 @@ public class CashWithdrawalCommand implements Command{
     }
 
     public void execute() {
-        System.out.println("Executing cash withdrawal command timestamp: " + timestamp);
+        if (bank.getUserHashMap().get(email) == null) {
+            return;
+        }
+        //System.out.println("Executing cash withdrawal command timestamp: " + timestamp);
         if (bank.getCardHashMap().get(cardNumber) == null) {
             ObjectNode command = bank.getObjectMapper().createObjectNode();
             command.put("command", "cashWithdrawal");
@@ -42,8 +45,11 @@ public class CashWithdrawalCommand implements Command{
         convertedAmount = Utils.comision(bank.getUserHashMap().get(email), convertedAmount, bank, account.getCurrency());
         if (account.getBalance() >= convertedAmount) {
             account.withdraw(convertedAmount);
+            System.out.println("amount: " + amount + " convertedAmount: " + convertedAmount);
+            Transaction t = new Transaction.Builder(timestamp, "Cash withdrawal of " + amount)
+                    .withdrawalAmount(amount).build();
+            bank.getUserHashMap().get(email).addTransaction(t);
         } else {
-
             Transaction t = new Transaction.Builder(timestamp, "Insufficient funds").build();
             bank.getUserHashMap().get(email).addTransaction(t);
         }

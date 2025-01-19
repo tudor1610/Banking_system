@@ -423,6 +423,33 @@
   },
   "timestamp" : 389
 }, {
+  "command" : "businessReport",
+  "timestamp" : 398,
+  "output" : {
+    "IBAN" : "RO53POOB7122855990652257",
+    "balance" : 443.0,
+    "currency" : "EUR",
+    "spending limit" : 100.0,
+    "deposit limit" : 100.0,
+    "total spent" : 0.0,
+    "total deposited" : 443.0,
+    "statistics type" : "transaction",
+    "managers" : [ {
+      "username" : "Zavala Donna",
+      "spent" : 0.0,
+      "deposited" : 122.0
+    }, {
+      "username" : "Tapia Vinicio",
+      "spent" : 0.0,
+      "deposited" : 173.0
+    }, {
+      "username" : "Turnbull Ruth",
+      "spent" : 0.0,
+      "deposited" : 148.0
+    } ],
+    "employees" : [ ]
+  }
+}, {
   "command" : "payOnline",
   "output" : {
     "description" : "Card not found",
@@ -556,6 +583,12 @@
         "cardNumber" : "0466992784477761",
         "status" : "active"
       } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 443.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ ]
     } ]
   }, {
     "firstName" : "Alain",
@@ -696,6 +729,12 @@
         "cardNumber" : "8696843716078966",
         "status" : "active"
       } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 443.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ ]
     } ]
   }, {
     "firstName" : "Ruth",
@@ -710,6 +749,12 @@
         "cardNumber" : "6592968050400705",
         "status" : "active"
       } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 443.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ ]
     } ]
   }, {
     "firstName" : "Marcus",
@@ -740,6 +785,13 @@
       } ]
     } ]
   } ]
+}, {
+  "command" : "changeSpendingLimit",
+  "output" : {
+    "description" : "You must be owner in order to change spending limit.",
+    "timestamp" : 436
+  },
+  "timestamp" : 436
 }, {
   "command" : "payOnline",
   "output" : {
@@ -814,7 +866,16 @@
       } ]
     }, {
       "IBAN" : "RO53POOB7122855990652257",
-      "balance" : 1297.0,
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
       "currency" : "EUR",
       "type" : "classic",
       "cards" : [ {
@@ -863,6 +924,15 @@
         "cardNumber" : "0466992784477761",
         "status" : "active"
       } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
     } ]
   }, {
     "firstName" : "Alain",
@@ -877,6 +947,15 @@
         "cardNumber" : "5088727507344799",
         "status" : "active"
       } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
     } ]
   }, {
     "firstName" : "Nick",
@@ -889,6 +968,15 @@
       "type" : "classic",
       "cards" : [ {
         "cardNumber" : "2289183361654620",
+        "status" : "active"
+      } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
         "status" : "active"
       } ]
     } ]
@@ -919,6 +1007,15 @@
         "cardNumber" : "8431794639822740",
         "status" : "active"
       } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
     } ]
   }, {
     "firstName" : "Melanie",
@@ -945,6 +1042,15 @@
       "type" : "classic",
       "cards" : [ {
         "cardNumber" : "8221841196640096",
+        "status" : "active"
+      } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
         "status" : "active"
       } ]
     } ]
@@ -1003,6 +1109,15 @@
         "cardNumber" : "8696843716078966",
         "status" : "active"
       } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
     } ]
   }, {
     "firstName" : "Ruth",
@@ -1015,6 +1130,15 @@
       "type" : "classic",
       "cards" : [ {
         "cardNumber" : "6592968050400705",
+        "status" : "active"
+      } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
         "status" : "active"
       } ]
     } ]
@@ -1114,7 +1238,16 @@
       } ]
     }, {
       "IBAN" : "RO53POOB7122855990652257",
-      "balance" : 1297.0,
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
       "currency" : "EUR",
       "type" : "classic",
       "cards" : [ {
@@ -1163,6 +1296,15 @@
         "cardNumber" : "0466992784477761",
         "status" : "active"
       } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
     } ]
   }, {
     "firstName" : "Alain",
@@ -1177,6 +1319,15 @@
         "cardNumber" : "5088727507344799",
         "status" : "active"
       } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
     } ]
   }, {
     "firstName" : "Nick",
@@ -1189,6 +1340,15 @@
       "type" : "classic",
       "cards" : [ {
         "cardNumber" : "2289183361654620",
+        "status" : "active"
+      } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
         "status" : "active"
       } ]
     } ]
@@ -1219,6 +1379,15 @@
         "cardNumber" : "8431794639822740",
         "status" : "active"
       } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
     } ]
   }, {
     "firstName" : "Melanie",
@@ -1245,6 +1414,15 @@
       "type" : "classic",
       "cards" : [ {
         "cardNumber" : "8221841196640096",
+        "status" : "active"
+      } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
         "status" : "active"
       } ]
     } ]
@@ -1303,6 +1481,15 @@
         "cardNumber" : "3892114815135845",
         "status" : "active"
       } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
     } ]
   }, {
     "firstName" : "Ruth",
@@ -1315,6 +1502,15 @@
       "type" : "classic",
       "cards" : [ {
         "cardNumber" : "6592968050400705",
+        "status" : "active"
+      } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
         "status" : "active"
       } ]
     } ]
@@ -1423,7 +1619,16 @@
       } ]
     }, {
       "IBAN" : "RO53POOB7122855990652257",
-      "balance" : 1297.0,
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
       "currency" : "EUR",
       "type" : "classic",
       "cards" : [ {
@@ -1472,6 +1677,15 @@
         "cardNumber" : "0466992784477761",
         "status" : "active"
       } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
     } ]
   }, {
     "firstName" : "Alain",
@@ -1486,6 +1700,15 @@
         "cardNumber" : "5088727507344799",
         "status" : "active"
       } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
     } ]
   }, {
     "firstName" : "Nick",
@@ -1498,6 +1721,15 @@
       "type" : "classic",
       "cards" : [ {
         "cardNumber" : "2289183361654620",
+        "status" : "active"
+      } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
         "status" : "active"
       } ]
     } ]
@@ -1528,6 +1760,15 @@
         "cardNumber" : "8431794639822740",
         "status" : "active"
       } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
     } ]
   }, {
     "firstName" : "Melanie",
@@ -1554,6 +1795,15 @@
       "type" : "classic",
       "cards" : [ {
         "cardNumber" : "8221841196640096",
+        "status" : "active"
+      } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
         "status" : "active"
       } ]
     } ]
@@ -1612,6 +1862,15 @@
         "cardNumber" : "3892114815135845",
         "status" : "active"
       } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
     } ]
   }, {
     "firstName" : "Ruth",
@@ -1624,6 +1883,15 @@
       "type" : "classic",
       "cards" : [ {
         "cardNumber" : "6592968050400705",
+        "status" : "active"
+      } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
         "status" : "active"
       } ]
     } ]
@@ -1741,7 +2009,16 @@
       } ]
     }, {
       "IBAN" : "RO53POOB7122855990652257",
-      "balance" : 1297.0,
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
       "currency" : "EUR",
       "type" : "classic",
       "cards" : [ {
@@ -1790,6 +2067,15 @@
         "cardNumber" : "0466992784477761",
         "status" : "active"
       } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
     } ]
   }, {
     "firstName" : "Alain",
@@ -1804,6 +2090,15 @@
         "cardNumber" : "5088727507344799",
         "status" : "active"
       } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
     } ]
   }, {
     "firstName" : "Nick",
@@ -1816,6 +2111,15 @@
       "type" : "classic",
       "cards" : [ {
         "cardNumber" : "0755790623339451",
+        "status" : "active"
+      } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
         "status" : "active"
       } ]
     } ]
@@ -1846,6 +2150,15 @@
         "cardNumber" : "8431794639822740",
         "status" : "active"
       } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
     } ]
   }, {
     "firstName" : "Melanie",
@@ -1872,6 +2185,15 @@
       "type" : "classic",
       "cards" : [ {
         "cardNumber" : "8221841196640096",
+        "status" : "active"
+      } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
         "status" : "active"
       } ]
     } ]
@@ -1930,6 +2252,15 @@
         "cardNumber" : "3892114815135845",
         "status" : "active"
       } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
     } ]
   }, {
     "firstName" : "Ruth",
@@ -1942,6 +2273,15 @@
       "type" : "classic",
       "cards" : [ {
         "cardNumber" : "6592968050400705",
+        "status" : "active"
+      } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
         "status" : "active"
       } ]
     } ]
@@ -2068,7 +2408,16 @@
       } ]
     }, {
       "IBAN" : "RO53POOB7122855990652257",
-      "balance" : 1297.0,
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
       "currency" : "EUR",
       "type" : "classic",
       "cards" : [ {
@@ -2117,6 +2466,15 @@
         "cardNumber" : "0466992784477761",
         "status" : "active"
       } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
     } ]
   }, {
     "firstName" : "Alain",
@@ -2131,6 +2489,15 @@
         "cardNumber" : "5088727507344799",
         "status" : "active"
       } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
     } ]
   }, {
     "firstName" : "Nick",
@@ -2143,6 +2510,15 @@
       "type" : "classic",
       "cards" : [ {
         "cardNumber" : "0755790623339451",
+        "status" : "active"
+      } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
         "status" : "active"
       } ]
     } ]
@@ -2173,6 +2549,15 @@
         "cardNumber" : "8431794639822740",
         "status" : "active"
       } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
     } ]
   }, {
     "firstName" : "Melanie",
@@ -2199,6 +2584,15 @@
       "type" : "classic",
       "cards" : [ {
         "cardNumber" : "8221841196640096",
+        "status" : "active"
+      } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
         "status" : "active"
       } ]
     } ]
@@ -2257,6 +2651,15 @@
         "cardNumber" : "3892114815135845",
         "status" : "active"
       } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
     } ]
   }, {
     "firstName" : "Ruth",
@@ -2269,6 +2672,15 @@
       "type" : "classic",
       "cards" : [ {
         "cardNumber" : "6592968050400705",
+        "status" : "active"
+      } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
         "status" : "active"
       } ]
     } ]
@@ -2404,7 +2816,16 @@
       } ]
     }, {
       "IBAN" : "RO53POOB7122855990652257",
-      "balance" : 1297.0,
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
       "currency" : "EUR",
       "type" : "classic",
       "cards" : [ {
@@ -2453,6 +2874,15 @@
         "cardNumber" : "0466992784477761",
         "status" : "active"
       } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
     } ]
   }, {
     "firstName" : "Alain",
@@ -2467,6 +2897,15 @@
         "cardNumber" : "5088727507344799",
         "status" : "active"
       } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
     } ]
   }, {
     "firstName" : "Nick",
@@ -2479,6 +2918,15 @@
       "type" : "classic",
       "cards" : [ {
         "cardNumber" : "0755790623339451",
+        "status" : "active"
+      } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
         "status" : "active"
       } ]
     } ]
@@ -2509,6 +2957,15 @@
         "cardNumber" : "8431794639822740",
         "status" : "active"
       } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
     } ]
   }, {
     "firstName" : "Melanie",
@@ -2535,6 +2992,15 @@
       "type" : "classic",
       "cards" : [ {
         "cardNumber" : "8221841196640096",
+        "status" : "active"
+      } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
         "status" : "active"
       } ]
     } ]
@@ -2593,6 +3059,15 @@
         "cardNumber" : "3892114815135845",
         "status" : "active"
       } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
     } ]
   }, {
     "firstName" : "Ruth",
@@ -2605,6 +3080,15 @@
       "type" : "classic",
       "cards" : [ {
         "cardNumber" : "6592968050400705",
+        "status" : "active"
+      } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
         "status" : "active"
       } ]
     } ]
@@ -2694,15 +3178,13 @@
     "card" : "6592968050400705",
     "cardHolder" : "Ruth_Turnbull@yandex.nz"
   }, {
-    "timestamp" : 399,
-    "description" : "Split payment of 6079.00 EUR",
-    "currency" : "EUR",
-    "amount" : 303.95,
-    "error" : "Account RO10POOB4354933866366881 has insufficient funds for a split payment.",
-    "involvedAccounts" : [ "RO65POOB8944016386845896", "RO68POOB1848616931405475", "RO69POOB9846198978826791", "RO38POOB0964823730995794", "RO30POOB9523423715747796", "RO69POOB6209498372540635", "RO33POOB4049920806186500", "RO79POOB3616857825600958", "RO58POOB7344468893732422", "RO00POOB5687892910835215", "RO90POOB5450777208072365", "RO98POOB8412955460158769", "RO58POOB2721178218599590", "RO76POOB4035116042454483", "RO96POOB6738272785416988", "RO10POOB4354933866366881", "RO19POOB4981055641668812", "RO33POOB9999273999620457", "RO37POOB7013767509830666", "RO32POOB0130532963818359" ]
-  }, {
     "timestamp" : 479,
     "description" : "New account created"
+  }, {
+    "timestamp" : 481,
+    "description" : "Interest rate income",
+    "amount" : 290.16,
+    "currency" : "NZD"
   }, {
     "timestamp" : 482,
     "description" : "You don't have the minimum age required."
@@ -2748,7 +3230,7 @@
     "email" : "April_Johnson@yahoo.au",
     "accounts" : [ {
       "IBAN" : "RO90POOB5450777208072365",
-      "balance" : 2081.075,
+      "balance" : 2012.0749999999998,
       "currency" : "AUD",
       "type" : "classic",
       "cards" : [ {
@@ -2777,7 +3259,16 @@
       } ]
     }, {
       "IBAN" : "RO53POOB7122855990652257",
-      "balance" : 1297.0,
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
       "currency" : "EUR",
       "type" : "classic",
       "cards" : [ {
@@ -2833,6 +3324,15 @@
         "status" : "active"
       } ]
     }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
+    }, {
       "IBAN" : "RO52POOB6271107854467609",
       "balance" : 951.2,
       "currency" : "EUR",
@@ -2852,6 +3352,15 @@
         "cardNumber" : "5088727507344799",
         "status" : "active"
       } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
     } ]
   }, {
     "firstName" : "Nick",
@@ -2864,6 +3373,15 @@
       "type" : "classic",
       "cards" : [ {
         "cardNumber" : "0755790623339451",
+        "status" : "active"
+      } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
         "status" : "active"
       } ]
     }, {
@@ -2900,6 +3418,15 @@
         "cardNumber" : "8431794639822740",
         "status" : "active"
       } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
     } ]
   }, {
     "firstName" : "Melanie",
@@ -2926,6 +3453,15 @@
       "type" : "classic",
       "cards" : [ {
         "cardNumber" : "8221841196640096",
+        "status" : "active"
+      } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
         "status" : "active"
       } ]
     } ]
@@ -2984,6 +3520,15 @@
         "cardNumber" : "3892114815135845",
         "status" : "active"
       } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
     } ]
   }, {
     "firstName" : "Ruth",
@@ -2996,6 +3541,15 @@
       "type" : "classic",
       "cards" : [ {
         "cardNumber" : "6592968050400705",
+        "status" : "active"
+      } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
         "status" : "active"
       } ]
     }, {
@@ -3123,7 +3677,7 @@
     "email" : "April_Johnson@yahoo.au",
     "accounts" : [ {
       "IBAN" : "RO90POOB5450777208072365",
-      "balance" : 2081.075,
+      "balance" : 2012.0749999999998,
       "currency" : "AUD",
       "type" : "classic",
       "cards" : [ {
@@ -3152,7 +3706,16 @@
       } ]
     }, {
       "IBAN" : "RO53POOB7122855990652257",
-      "balance" : 1297.0,
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
       "currency" : "EUR",
       "type" : "classic",
       "cards" : [ {
@@ -3208,6 +3771,15 @@
         "status" : "active"
       } ]
     }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
+    }, {
       "IBAN" : "RO52POOB6271107854467609",
       "balance" : 951.2,
       "currency" : "EUR",
@@ -3227,6 +3799,15 @@
         "cardNumber" : "5088727507344799",
         "status" : "active"
       } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
     } ]
   }, {
     "firstName" : "Nick",
@@ -3239,6 +3820,15 @@
       "type" : "classic",
       "cards" : [ {
         "cardNumber" : "0755790623339451",
+        "status" : "active"
+      } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
         "status" : "active"
       } ]
     }, {
@@ -3275,6 +3865,15 @@
         "cardNumber" : "8431794639822740",
         "status" : "active"
       } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
     } ]
   }, {
     "firstName" : "Melanie",
@@ -3301,6 +3900,15 @@
       "type" : "classic",
       "cards" : [ {
         "cardNumber" : "8221841196640096",
+        "status" : "active"
+      } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
         "status" : "active"
       } ]
     } ]
@@ -3359,6 +3967,15 @@
         "cardNumber" : "3892114815135845",
         "status" : "active"
       } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
     } ]
   }, {
     "firstName" : "Ruth",
@@ -3371,6 +3988,15 @@
       "type" : "classic",
       "cards" : [ {
         "cardNumber" : "6592968050400705",
+        "status" : "active"
+      } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 899.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
         "status" : "active"
       } ]
     }, {
@@ -3470,6 +4096,15 @@
         "cardNumber" : "8207906978464446",
         "status" : "active"
       } ]
+    }, {
+      "IBAN" : "RO75POOB8279679254660818",
+      "balance" : 17247.0,
+      "currency" : "NZD",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "6988686155235949",
+        "status" : "active"
+      } ]
     } ]
   }, {
     "firstName" : "Michael",
@@ -3491,7 +4126,7 @@
     "email" : "April_Johnson@yahoo.au",
     "accounts" : [ {
       "IBAN" : "RO90POOB5450777208072365",
-      "balance" : 2081.075,
+      "balance" : 2012.0749999999998,
       "currency" : "AUD",
       "type" : "classic",
       "cards" : [ {
@@ -3520,7 +4155,16 @@
       } ]
     }, {
       "IBAN" : "RO53POOB7122855990652257",
-      "balance" : 58.83590811688301,
+      "balance" : 116.89458478766232,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 116.89458478766232,
       "currency" : "EUR",
       "type" : "classic",
       "cards" : [ {
@@ -3561,6 +4205,15 @@
       "currency" : "RON",
       "type" : "savings",
       "cards" : [ ]
+    }, {
+      "IBAN" : "RO75POOB8279679254660818",
+      "balance" : 17247.0,
+      "currency" : "NZD",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "6988686155235949",
+        "status" : "active"
+      } ]
     } ]
   }, {
     "firstName" : "Vinicio",
@@ -3576,11 +4229,29 @@
         "status" : "active"
       } ]
     }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 116.89458478766232,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
+    }, {
       "IBAN" : "RO52POOB6271107854467609",
       "balance" : 951.2,
       "currency" : "EUR",
       "type" : "savings",
       "cards" : [ ]
+    }, {
+      "IBAN" : "RO75POOB8279679254660818",
+      "balance" : 17247.0,
+      "currency" : "NZD",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "6988686155235949",
+        "status" : "active"
+      } ]
     } ]
   }, {
     "firstName" : "Alain",
@@ -3595,6 +4266,24 @@
         "cardNumber" : "5088727507344799",
         "status" : "active"
       } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 116.89458478766232,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
+    }, {
+      "IBAN" : "RO75POOB8279679254660818",
+      "balance" : 17247.0,
+      "currency" : "NZD",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "6988686155235949",
+        "status" : "active"
+      } ]
     } ]
   }, {
     "firstName" : "Nick",
@@ -3607,6 +4296,15 @@
       "type" : "classic",
       "cards" : [ {
         "cardNumber" : "0755790623339451",
+        "status" : "active"
+      } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 116.89458478766232,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
         "status" : "active"
       } ]
     }, {
@@ -3643,6 +4341,15 @@
         "cardNumber" : "8431794639822740",
         "status" : "active"
       } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 116.89458478766232,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
     } ]
   }, {
     "firstName" : "Melanie",
@@ -3669,6 +4376,15 @@
       "type" : "classic",
       "cards" : [ {
         "cardNumber" : "8221841196640096",
+        "status" : "active"
+      } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 116.89458478766232,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
         "status" : "active"
       } ]
     } ]
@@ -3727,6 +4443,24 @@
         "cardNumber" : "3892114815135845",
         "status" : "active"
       } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 116.89458478766232,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
+    }, {
+      "IBAN" : "RO75POOB8279679254660818",
+      "balance" : 17247.0,
+      "currency" : "NZD",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "6988686155235949",
+        "status" : "active"
+      } ]
     } ]
   }, {
     "firstName" : "Ruth",
@@ -3739,6 +4473,15 @@
       "type" : "classic",
       "cards" : [ {
         "cardNumber" : "6592968050400705",
+        "status" : "active"
+      } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 116.89458478766232,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
         "status" : "active"
       } ]
     }, {
@@ -3854,6 +4597,15 @@
         "cardNumber" : "8207906978464446",
         "status" : "active"
       } ]
+    }, {
+      "IBAN" : "RO75POOB8279679254660818",
+      "balance" : 17247.0,
+      "currency" : "NZD",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "6988686155235949",
+        "status" : "active"
+      } ]
     } ]
   }, {
     "firstName" : "Michael",
@@ -3875,7 +4627,7 @@
     "email" : "April_Johnson@yahoo.au",
     "accounts" : [ {
       "IBAN" : "RO90POOB5450777208072365",
-      "balance" : 2081.075,
+      "balance" : 2012.0749999999998,
       "currency" : "AUD",
       "type" : "classic",
       "cards" : [ {
@@ -3904,7 +4656,16 @@
       } ]
     }, {
       "IBAN" : "RO53POOB7122855990652257",
-      "balance" : 58.83590811688301,
+      "balance" : 116.89458478766232,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 116.89458478766232,
       "currency" : "EUR",
       "type" : "classic",
       "cards" : [ {
@@ -3954,6 +4715,15 @@
       "currency" : "RON",
       "type" : "savings",
       "cards" : [ ]
+    }, {
+      "IBAN" : "RO75POOB8279679254660818",
+      "balance" : 17247.0,
+      "currency" : "NZD",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "6988686155235949",
+        "status" : "active"
+      } ]
     } ]
   }, {
     "firstName" : "Vinicio",
@@ -3969,11 +4739,29 @@
         "status" : "active"
       } ]
     }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 116.89458478766232,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
+    }, {
       "IBAN" : "RO52POOB6271107854467609",
       "balance" : 951.2,
       "currency" : "EUR",
       "type" : "savings",
       "cards" : [ ]
+    }, {
+      "IBAN" : "RO75POOB8279679254660818",
+      "balance" : 17247.0,
+      "currency" : "NZD",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "6988686155235949",
+        "status" : "active"
+      } ]
     } ]
   }, {
     "firstName" : "Alain",
@@ -3988,6 +4776,24 @@
         "cardNumber" : "5088727507344799",
         "status" : "active"
       } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 116.89458478766232,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
+    }, {
+      "IBAN" : "RO75POOB8279679254660818",
+      "balance" : 17247.0,
+      "currency" : "NZD",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "6988686155235949",
+        "status" : "active"
+      } ]
     } ]
   }, {
     "firstName" : "Nick",
@@ -4000,6 +4806,15 @@
       "type" : "classic",
       "cards" : [ {
         "cardNumber" : "0755790623339451",
+        "status" : "active"
+      } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 116.89458478766232,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
         "status" : "active"
       } ]
     }, {
@@ -4045,6 +4860,15 @@
         "cardNumber" : "8431794639822740",
         "status" : "active"
       } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 116.89458478766232,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
     } ]
   }, {
     "firstName" : "Melanie",
@@ -4071,6 +4895,15 @@
       "type" : "classic",
       "cards" : [ {
         "cardNumber" : "2912280039644439",
+        "status" : "active"
+      } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 116.89458478766232,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
         "status" : "active"
       } ]
     } ]
@@ -4130,6 +4963,24 @@
         "status" : "active"
       } ]
     }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 116.89458478766232,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
+        "status" : "active"
+      } ]
+    }, {
+      "IBAN" : "RO75POOB8279679254660818",
+      "balance" : 17247.0,
+      "currency" : "NZD",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "6988686155235949",
+        "status" : "active"
+      } ]
+    }, {
       "IBAN" : "RO73POOB0363118755441573",
       "balance" : 709.0,
       "currency" : "USD",
@@ -4159,6 +5010,15 @@
       "type" : "classic",
       "cards" : [ {
         "cardNumber" : "6592968050400705",
+        "status" : "active"
+      } ]
+    }, {
+      "IBAN" : "RO53POOB7122855990652257",
+      "balance" : 116.89458478766232,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "9281102140265301",
         "status" : "active"
       } ]
     }, {
@@ -4260,4 +5120,86 @@
       } ]
     } ]
   } ]
+}, {
+  "command" : "businessReport",
+  "timestamp" : 630,
+  "output" : {
+    "IBAN" : "RO53POOB7122855990652257",
+    "balance" : 116.89458478766232,
+    "currency" : "EUR",
+    "spending limit" : 357.0,
+    "deposit limit" : 100.0,
+    "total spent" : 784.2848668831169,
+    "total deposited" : 899.0,
+    "statistics type" : "transaction",
+    "managers" : [ {
+      "username" : "Zavala Donna",
+      "spent" : 0.0,
+      "deposited" : 303.0
+    }, {
+      "username" : "Tapia Vinicio",
+      "spent" : 0.0,
+      "deposited" : 322.0
+    }, {
+      "username" : "Turnbull Ruth",
+      "spent" : 0.0,
+      "deposited" : 274.0
+    } ],
+    "employees" : [ {
+      "username" : "del Andres Lisandro",
+      "spent" : 153.67757142857144,
+      "deposited" : 0.0
+    }, {
+      "username" : "van de Veen-Verhoeven Nick",
+      "spent" : 243.0495,
+      "deposited" : 0.0
+    }, {
+      "username" : "Boyer Bernadette",
+      "spent" : 2.4921,
+      "deposited" : 0.0
+    }, {
+      "username" : "Picard Alain",
+      "spent" : 226.41054545454548,
+      "deposited" : 0.0
+    }, {
+      "username" : "Johnson MD Anthony",
+      "spent" : 158.65515,
+      "deposited" : 0.0
+    } ]
+  }
+}, {
+  "command" : "businessReport",
+  "timestamp" : 631,
+  "output" : {
+    "IBAN" : "RO75POOB8279679254660818",
+    "balance" : 17247.0,
+    "currency" : "NZD",
+    "spending limit" : 177.77777777777777,
+    "deposit limit" : 177.77777777777777,
+    "total spent" : 0.0,
+    "total deposited" : 0.0,
+    "statistics type" : "transaction",
+    "managers" : [ ],
+    "employees" : [ {
+      "username" : "Mazilescu Simion",
+      "spent" : 0.0,
+      "deposited" : 0.0
+    }, {
+      "username" : "Zavala Donna",
+      "spent" : 0.0,
+      "deposited" : 0.0
+    }, {
+      "username" : "Ardelean Eusebiu",
+      "spent" : 0.0,
+      "deposited" : 0.0
+    }, {
+      "username" : "Tapia Vinicio",
+      "spent" : 0.0,
+      "deposited" : 0.0
+    }, {
+      "username" : "Picard Alain",
+      "spent" : 0.0,
+      "deposited" : 0.0
+    } ]
+  }
 } ]

@@ -22,4 +22,8 @@ public class SavingsAccount extends Account {
         double amount = getBalance();
         deposit(amount * interestRate);
     }
+
+    public double getInterestRate() {
+        return interestRate;
+    }
 }

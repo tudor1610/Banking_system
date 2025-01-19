@@ -81,14 +81,15 @@ public abstract class Account {
      *                        if conversion is required.
      */
     public void accountPayment(final User user, final String newCurrency, final double amount,
-                               final int timestamp, final double sum, final List<String> accounts,
-                               final double convertedAmount) {
+                               final int timestamp, final double sum, final List<Double> amountForUsers, final List<String> accounts,
+                               final double convertedAmount, final String splitPaymentType) {
         if (this.currency.equals(newCurrency)) {
                     withdraw(sum);
                     Transaction t = new Transaction.Builder(timestamp, "Split payment of ")
                             .currency(currency)
-                            .amount(sum)
+                            .amountForUsers(amountForUsers)
                             .accountsInvolved(accounts)
+                            .splitPaymentType(splitPaymentType)
                             .totalBill(amount)
                             .error(null)
                             .build();
@@ -98,8 +99,9 @@ public abstract class Account {
                     withdraw(convertedAmount);
                     Transaction t = new Transaction.Builder(timestamp, "Split payment of ")
                             .currency(newCurrency)
-                            .amount(sum)
+                            .amountForUsers(amountForUsers)
                             .accountsInvolved(accounts)
+                            .splitPaymentType(splitPaymentType)
                             .totalBill(amount)
                             .error(null)
                             .build();
@@ -206,27 +208,35 @@ public abstract class Account {
         return command;
     }
 
-    /**
-     * Deposits a specified amount into the account.
-     *
-     * @param amount the amount to deposit
-     */
     public void deposit(final double amount) {
         if (amount > 0) {
             balance += amount;
         }
     }
-
     /**
-     * Withdraws a specified amount from the account if sufficient funds are available.
+     * Deposits a specified amount into the account.
      *
-     * @param amount the amount to withdraw
+     * @param amount the amount to deposit
      */
+    public void deposit(final double amount, final String email, final int timestamp) {
+       return;
+    }
+
     public void withdraw(final double amount) {
         if (amount > 0 && amount <= balance) {
             balance -= amount;
         }
     }
+    /**
+     * Withdraws a specified amount from the account if sufficient funds are available.
+     *
+     * @param amount the amount to withdraw
+     */
+    public void withdraw(final double amount, final String email, final int timestamp, final double amountWithoutComission) {
+        return;
+    }
+
+
 
     /**
      * Sets a new interest rate for the account.
@@ -243,5 +253,52 @@ public abstract class Account {
      */
     public void addInterest() {
         return;
+    }
+
+    public double getInterestRate() {
+        return 0;
+    }
+
+    public void addManager(final User manager) {
+        return;
+    }
+
+    public void addEmployee(final User employee) {
+        return;
+    }
+
+    public String getOwner() {
+        return null;
+    }
+
+    public void setSpendingLimit(final double spendingLimit) {
+        return;
+    }
+
+    public void setDepositLimit(final double depositLimit) {
+        return;
+    }
+    public Double getSpendingLimit() {
+        return 0.0;
+    }
+    public Double getDepositLimit() {
+        return 0.0;
+    }
+    public Map<String, Associate> getManagers() {
+        return null;
+    }
+    public Map<String, Associate> getEmployees() {
+        return null;
+    }
+    public boolean isBusiness() {
+        return false;
+    }
+
+    public Double getTotalSpent() {
+        return 0.0;
+    }
+
+    public Double getTotalDeposited() {
+        return 0.0;
     }
 }

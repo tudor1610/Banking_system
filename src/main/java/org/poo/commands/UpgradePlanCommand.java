@@ -1,5 +1,6 @@
 package org.poo.commands;
 
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import jdk.jshell.execution.Util;
 import org.poo.account.Account;
 import org.poo.bank.Bank;
@@ -40,6 +41,14 @@ public class UpgradePlanCommand implements Command{
     @Override
     public void execute() {
         if (account == null) {
+            ObjectNode command = bank.getObjectMapper().createObjectNode();
+            command.put("command", "upgradePlan");
+            ObjectNode status = bank.getObjectMapper().createObjectNode();
+            status.put("description", "Account not found");
+            status.put("timestamp", timestamp);
+            command.set("output", status);
+            command.put("timestamp", timestamp);
+            bank.getOutput().add(command);
             return;
         }
         User user = bank.getUserHashMap().get(account.getEmail());
@@ -64,6 +73,8 @@ public class UpgradePlanCommand implements Command{
             if (account.getBalance() < amount) {
                 // error
                 System.out.println("NO MONEY SARACULE!     timestamp: " + timestamp);
+                Transaction t = new Transaction.Builder(timestamp, "Insufficient funds").build();
+                user.addTransaction(t);
                 return;
             }
         }
@@ -83,6 +94,8 @@ public class UpgradePlanCommand implements Command{
                 }
                 if (account.getBalance() < amount) {
                     System.out.println("NO MONEY SARACULE! 2  timestamp: " + timestamp);
+                    Transaction t = new Transaction.Builder(timestamp, "Insufficient funds").build();
+                    user.addTransaction(t);
                     return;
                 }
         }
@@ -102,6 +115,8 @@ public class UpgradePlanCommand implements Command{
             }
             if (account.getBalance() < amount) {
                 System.out.println("NO MONEY SARACULE! 3    timestamp: " + timestamp);
+                Transaction t = new Transaction.Builder(timestamp, "Insufficient funds").build();
+                user.addTransaction(t);
                 return;
             }
         }

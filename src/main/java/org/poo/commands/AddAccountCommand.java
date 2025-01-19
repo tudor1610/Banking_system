@@ -34,7 +34,7 @@ public class AddAccountCommand implements Command {
     public void execute() {
         User user = bank.getUserHashMap().get(email);
         AccountFactory accountFactory = AccountFactory.getAccountFactory();
-        Account account = AccountFactory.createAccount(email, currency, accountType,
+        Account account = AccountFactory.createAccount(bank, email, currency, accountType,
                 timestamp, interestRate);
         user.addAccount(account);
         Transaction transaction = new Transaction.Builder(timestamp, "New account created")
