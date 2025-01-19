@@ -36,37 +36,6 @@ public class SplitPaymentCommand implements Command {
 
 
     /**
-     * Determines which account has insufficient funds for the amount to be split,
-     * either in the given currency or converted to the account's currency using
-     * the provided exchange rates.
-     *
-     * @param exchangeRates the map of exchange rates
-     * @return the IBAN of the account with insufficient funds,
-     *          or null if all accounts have sufficient funds
-     */
-//    private String lowBalanceAccount(final Map<String, Map<String, Double>> exchangeRates) {
-//        int accNumber = accounts.size();
-//        double sum = amount / accNumber;
-//        String lowBallanceAccount = null;
-//        for (String name : accounts) {
-//            Account account = bank.getAccountHashMap().get(name);
-//            if (account.getCurrency().equals(currency)) {
-//                if (account.getBalance() < sum) {
-//                    lowBallanceAccount = account.getIban();
-//
-//                }
-//            } else {
-//                Double convertedAmount = bank.convertCurrency(sum, currency,
-//                        account.getCurrency(), exchangeRates);
-//                if (account.getBalance() < convertedAmount) {
-//                    lowBallanceAccount = account.getIban();
-//                }
-//            }
-//        }
-//        return lowBallanceAccount;
-//    }
-
-    /**
      * Splits a bill evenly among a list of accounts.
      * If one account has insufficient funds to cover its share,
      * no split occurs, and an error is logged for all involved accounts.
@@ -93,40 +62,7 @@ public class SplitPaymentCommand implements Command {
             payment = new SplitPayment(bank, accounts, amountForUser, amount, currency, splitPaymentType,timestamp);
         }
         bank.addWaitingPayment(payment);
-//        int accNumber = accounts.size();
-//        double sum = amount / accNumber;
-//        Map<String, Map<String, Double>> exchangeRates = bank.prepareExchangeRates();
-//        String lowBalanceAccount = lowBalanceAccount(exchangeRates);
-//
-//        // split bill
-//        if (lowBalanceAccount == null) {
-//            for (String name : accounts) {
-//                Account account = bank.getAccountHashMap().get(name);
-//                User user = bank.getUserHashMap().get(account.getEmail());
-//                Double convertedAmount = bank.convertCurrency(sum, currency,
-//                        account.getCurrency(), exchangeRates);
-//                account.accountPayment(user, currency, amount, timestamp,
-//                        sum, accounts, convertedAmount);
-//            }
-//        } else {
-//            // don't split bill
-//            for (String name : accounts) {
-//                if (name != null) {
-//                    Account account = bank.getAccountHashMap().get(name);
-//                    User user = bank.getUserHashMap().get(account.getEmail());
-//                    Transaction t = new Transaction.Builder(timestamp, "Split payment of ")
-//                            .currency(currency)
-//                            .amount(sum)
-//                            .accountsInvolved(accounts)
-//                            .totalBill(amount)
-//                            .error("Account " + lowBalanceAccount
-//                                    + " has insufficient funds for a split payment.")
-//                            .build();
-//                    user.addTransaction(t);
-//                    account.accountAddTransaction(t);
-//                }
-//            }
-//        }
+
     }
 
 }

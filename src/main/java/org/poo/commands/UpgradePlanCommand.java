@@ -54,8 +54,31 @@ public class UpgradePlanCommand implements Command{
         User user = bank.getUserHashMap().get(account.getEmail());
         int planType = planType(user.getPlan());
         int newPlanType = planType(newPlan);
-//        System.out.println("timestamp " + timestamp + " planType " + planType + " newPlanType " + newPlanType);
-//        System.out.println("Account :" + account.getIban());
+        System.out.println("Timestamp: " + timestamp + " Plan type: " + planType + " New plan type: " + newPlanType);
+
+        if (planType == newPlanType) {
+            System.out.println("intru aici");
+            Transaction t;
+            switch (planType) {
+                case 1 -> {
+                    t = new Transaction.Builder(timestamp, "The user already has the standard plan.").build();
+                }
+                case 2 -> {
+                    System.out.println("ajunge si aici");
+                    t = new Transaction.Builder(timestamp, "The user already has the silver plan.").build();
+                }
+                case 3 -> {
+                    t = new Transaction.Builder(timestamp, "The user already has the gold plan.").build();
+                }
+                default -> {
+                    t = new Transaction.Builder(timestamp, "Plan not found").build();
+                }
+            }
+            account.accountAddTransaction(t);
+            user.addTransaction(t);
+            return;
+        }
+
         if (planType == 1 && newPlanType == 2) {
             double amount = bank.convertCurrency(100, "RON", account.getCurrency() , bank.prepareExchangeRates());
             //System.out.println("Account currency " +account.getCurrency()  + " Account balance " + account.getBalance() + " converted amount " + amount);
@@ -67,6 +90,7 @@ public class UpgradePlanCommand implements Command{
                         .newPlanType(newPlan)
                         .build();
                 user.addTransaction(t);
+                account.accountAddTransaction(t);
                 return;
             }
 
@@ -90,6 +114,7 @@ public class UpgradePlanCommand implements Command{
                             .newPlanType(newPlan)
                             .build();
                     user.addTransaction(t);
+                    account.accountAddTransaction(t);
                     return;
                 }
                 if (account.getBalance() < amount) {
@@ -111,12 +136,14 @@ public class UpgradePlanCommand implements Command{
                         .newPlanType(newPlan)
                         .build();
                 user.addTransaction(t);
+                account.accountAddTransaction(t);
                 return;
             }
             if (account.getBalance() < amount) {
                 System.out.println("NO MONEY SARACULE! 3    timestamp: " + timestamp);
                 Transaction t = new Transaction.Builder(timestamp, "Insufficient funds").build();
                 user.addTransaction(t);
+
                 return;
             }
         }

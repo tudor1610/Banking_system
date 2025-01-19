@@ -1488,7 +1488,7 @@
     "email" : "Briana_Galloway@outlook.au",
     "accounts" : [ {
       "IBAN" : "RO33POOB4049920806186500",
-      "balance" : 712.3333333333334,
+      "balance" : 928.1533333333334,
       "currency" : "AUD",
       "type" : "classic",
       "cards" : [ {
@@ -1590,7 +1590,7 @@
     "email" : "Iris_Sanders-Kramer@outlook.nl",
     "accounts" : [ {
       "IBAN" : "RO33POOB9999273999620457",
-      "balance" : 1424.8000000000002,
+      "balance" : 2349.8,
       "currency" : "EUR",
       "type" : "classic",
       "cards" : [ {
@@ -1627,7 +1627,7 @@
     "email" : "Lucy_Baker-Clark@mail.com.gb",
     "accounts" : [ {
       "IBAN" : "RO53POOB7122855990652257",
-      "balance" : 0.7777777777777786,
+      "balance" : 908.7777777777778,
       "currency" : "GBP",
       "type" : "classic",
       "cards" : [ {
@@ -2016,18 +2016,6 @@
       "currency" : "EUR",
       "type" : "classic",
       "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 7159.239999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO01POOB3925326637526572",
-      "balance" : 6436.6799999999985,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
     } ]
   }, {
     "firstName" : "Angel",
@@ -2035,7 +2023,7 @@
     "email" : "Angel_Ene@hotmail.ro",
     "accounts" : [ {
       "IBAN" : "RO58POOB2721178218599590",
-      "balance" : 48.18399999999997,
+      "balance" : 1047.624,
       "currency" : "RON",
       "type" : "classic",
       "cards" : [ ]
@@ -2044,18 +2032,6 @@
       "balance" : 1918.1072000000001,
       "currency" : "RON",
       "type" : "savings",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 7159.239999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO01POOB3925326637526572",
-      "balance" : 6436.6799999999985,
-      "currency" : "USD",
-      "type" : "classic",
       "cards" : [ ]
     } ]
   }, {
@@ -2123,18 +2099,6 @@
       "currency" : "EUR",
       "type" : "classic",
       "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 7159.239999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO01POOB3925326637526572",
-      "balance" : 6436.6799999999985,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
     } ]
   }, {
     "firstName" : "Owen",
@@ -2153,7 +2117,7 @@
     "email" : "Briana_Galloway@outlook.au",
     "accounts" : [ {
       "IBAN" : "RO33POOB4049920806186500",
-      "balance" : 703.1619047619048,
+      "balance" : 1344.2619047619048,
       "currency" : "AUD",
       "type" : "classic",
       "cards" : [ ]
@@ -2170,7 +2134,7 @@
     "email" : "Chanakya_Dua@hushmail.in",
     "accounts" : [ {
       "IBAN" : "RO69POOB9846198978826791",
-      "balance" : 712.0,
+      "balance" : 1953.8,
       "currency" : "INR",
       "type" : "classic",
       "cards" : [ ]
@@ -2202,18 +2166,6 @@
       "currency" : "INR",
       "type" : "classic",
       "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 7159.239999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO01POOB3925326637526572",
-      "balance" : 6436.6799999999985,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
     } ]
   }, {
     "firstName" : "Isabel",
@@ -2236,18 +2188,6 @@
       "currency" : "AUD",
       "type" : "classic",
       "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 7159.239999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO01POOB3925326637526572",
-      "balance" : 6436.6799999999985,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
     } ]
   }, {
     "firstName" : "Iris",
@@ -2255,7 +2195,7 @@
     "email" : "Iris_Sanders-Kramer@outlook.nl",
     "accounts" : [ {
       "IBAN" : "RO33POOB9999273999620457",
-      "balance" : 1419.297142857143,
+      "balance" : 3298.557142857143,
       "currency" : "EUR",
       "type" : "classic",
       "cards" : [ ]
@@ -2272,7 +2212,7 @@
       "IBAN" : "RO04POOB3492426980939341",
       "balance" : 940.0,
       "currency" : "EUR",
-      "type" : "classic",
+      "type" : "business",
       "cards" : [ {
         "cardNumber" : "2803408755782048",
         "status" : "active"
@@ -2281,7 +2221,7 @@
       "IBAN" : "RO66POOB1088683052483887",
       "balance" : 619.0,
       "currency" : "EUR",
-      "type" : "classic",
+      "type" : "business",
       "cards" : [ {
         "cardNumber" : "0692077318511511",
         "status" : "active"
@@ -2290,85 +2230,7 @@
       "IBAN" : "RO19POOB5993192794373940",
       "balance" : 275.0,
       "currency" : "EUR",
-      "type" : "classic",
-      "cards" : [ {
-        "cardNumber" : "4435533800578624",
-        "status" : "active"
-      } ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 7159.239999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 7159.239999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO01POOB3925326637526572",
-      "balance" : 6436.6799999999985,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO01POOB3925326637526572",
-      "balance" : 6436.6799999999985,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO04POOB3492426980939341",
-      "balance" : 940.0,
-      "currency" : "EUR",
-      "type" : "classic",
-      "cards" : [ {
-        "cardNumber" : "2803408755782048",
-        "status" : "active"
-      } ]
-    }, {
-      "IBAN" : "RO04POOB3492426980939341",
-      "balance" : 940.0,
-      "currency" : "EUR",
-      "type" : "classic",
-      "cards" : [ {
-        "cardNumber" : "2803408755782048",
-        "status" : "active"
-      } ]
-    }, {
-      "IBAN" : "RO66POOB1088683052483887",
-      "balance" : 619.0,
-      "currency" : "EUR",
-      "type" : "classic",
-      "cards" : [ {
-        "cardNumber" : "0692077318511511",
-        "status" : "active"
-      } ]
-    }, {
-      "IBAN" : "RO66POOB1088683052483887",
-      "balance" : 619.0,
-      "currency" : "EUR",
-      "type" : "classic",
-      "cards" : [ {
-        "cardNumber" : "0692077318511511",
-        "status" : "active"
-      } ]
-    }, {
-      "IBAN" : "RO19POOB5993192794373940",
-      "balance" : 275.0,
-      "currency" : "EUR",
-      "type" : "classic",
-      "cards" : [ {
-        "cardNumber" : "4435533800578624",
-        "status" : "active"
-      } ]
-    }, {
-      "IBAN" : "RO19POOB5993192794373940",
-      "balance" : 275.0,
-      "currency" : "EUR",
-      "type" : "classic",
+      "type" : "business",
       "cards" : [ {
         "cardNumber" : "4435533800578624",
         "status" : "active"
@@ -2384,18 +2246,6 @@
       "currency" : "NZD",
       "type" : "classic",
       "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 7159.239999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO01POOB3925326637526572",
-      "balance" : 6436.6799999999985,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
     } ]
   }, {
     "firstName" : "Lucy",
@@ -2403,7 +2253,7 @@
     "email" : "Lucy_Baker-Clark@mail.com.gb",
     "accounts" : [ {
       "IBAN" : "RO53POOB7122855990652257",
-      "balance" : 0.7777777777777786,
+      "balance" : 2489.777777777778,
       "currency" : "GBP",
       "type" : "classic",
       "cards" : [ ]
@@ -2442,13 +2292,13 @@
       "IBAN" : "RO45POOB6505529013808948",
       "balance" : 7159.239999999998,
       "currency" : "USD",
-      "type" : "classic",
+      "type" : "business",
       "cards" : [ ]
     }, {
       "IBAN" : "RO01POOB3925326637526572",
       "balance" : 6436.6799999999985,
       "currency" : "USD",
-      "type" : "classic",
+      "type" : "business",
       "cards" : [ ]
     } ]
   }, {
@@ -2472,18 +2322,6 @@
       "currency" : "CHF",
       "type" : "classic",
       "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 7159.239999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO01POOB3925326637526572",
-      "balance" : 6436.6799999999985,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
     } ]
   }, {
     "firstName" : "Aurelio",
@@ -2493,18 +2331,6 @@
       "IBAN" : "RO36POOB6500477412147025",
       "balance" : 1540.0,
       "currency" : "MXN",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 7159.239999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO01POOB3925326637526572",
-      "balance" : 6436.6799999999985,
-      "currency" : "USD",
       "type" : "classic",
       "cards" : [ ]
     } ]
@@ -2540,18 +2366,6 @@
       "currency" : "RON",
       "type" : "classic",
       "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 7159.239999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO01POOB3925326637526572",
-      "balance" : 6436.6799999999985,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
     } ]
   }, {
     "firstName" : "Juana",
@@ -2561,18 +2375,6 @@
       "IBAN" : "RO98POOB7190609943699593",
       "balance" : 1417.7142857142858,
       "currency" : "MXN",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 7159.239999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO01POOB3925326637526572",
-      "balance" : 6436.6799999999985,
-      "currency" : "USD",
       "type" : "classic",
       "cards" : [ ]
     } ]
@@ -2606,18 +2408,6 @@
       "IBAN" : "RO37POOB8653914479106806",
       "balance" : 98.0,
       "currency" : "CAD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 7159.239999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO01POOB3925326637526572",
-      "balance" : 6436.6799999999985,
-      "currency" : "USD",
       "type" : "classic",
       "cards" : [ ]
     } ]
@@ -2846,6 +2636,18 @@
       "spent" : 0.0,
       "deposited" : 0.0
     } ]
+  }
+}, {
+  "command" : "businessReport",
+  "timestamp" : 925,
+  "output" : {
+    "IBAN" : "RO19POOB5993192794373940",
+    "balance" : 2292.0,
+    "currency" : "EUR",
+    "spending limit" : 838.0,
+    "deposit limit" : 100.0,
+    "statistics type" : "commerciant",
+    "commerciants" : [ ]
   }
 }, {
   "command" : "payOnline",
@@ -3179,12 +2981,6 @@
       "currency" : "CHF",
       "type" : "classic",
       "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 19306.239999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
     } ]
   }, {
     "firstName" : "Alwin",
@@ -3196,18 +2992,6 @@
       "currency" : "EUR",
       "type" : "classic",
       "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 19306.239999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO01POOB3925326637526572",
-      "balance" : 13194.679999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
     } ]
   }, {
     "firstName" : "Angel",
@@ -3215,7 +2999,7 @@
     "email" : "Angel_Ene@hotmail.ro",
     "accounts" : [ {
       "IBAN" : "RO58POOB2721178218599590",
-      "balance" : 48.18399999999997,
+      "balance" : 1047.624,
       "currency" : "RON",
       "type" : "classic",
       "cards" : [ ]
@@ -3224,18 +3008,6 @@
       "balance" : 1918.1072000000001,
       "currency" : "RON",
       "type" : "savings",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 19306.239999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO01POOB3925326637526572",
-      "balance" : 13194.679999999998,
-      "currency" : "USD",
-      "type" : "classic",
       "cards" : [ ]
     } ]
   }, {
@@ -3268,12 +3040,6 @@
       "IBAN" : "RO19POOB4981055641668812",
       "balance" : 946.0,
       "currency" : "RON",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 19306.239999999998,
-      "currency" : "USD",
       "type" : "classic",
       "cards" : [ ]
     } ]
@@ -3309,18 +3075,6 @@
       "currency" : "EUR",
       "type" : "classic",
       "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 19306.239999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO01POOB3925326637526572",
-      "balance" : 13194.679999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
     } ]
   }, {
     "firstName" : "Owen",
@@ -3332,12 +3086,6 @@
       "currency" : "INR",
       "type" : "classic",
       "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 19306.239999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
     } ]
   }, {
     "firstName" : "Briana",
@@ -3345,7 +3093,7 @@
     "email" : "Briana_Galloway@outlook.au",
     "accounts" : [ {
       "IBAN" : "RO33POOB4049920806186500",
-      "balance" : 703.1619047619048,
+      "balance" : 1344.2619047619048,
       "currency" : "AUD",
       "type" : "classic",
       "cards" : [ ]
@@ -3362,7 +3110,7 @@
     "email" : "Chanakya_Dua@hushmail.in",
     "accounts" : [ {
       "IBAN" : "RO69POOB9846198978826791",
-      "balance" : 712.0,
+      "balance" : 1953.8,
       "currency" : "INR",
       "type" : "classic",
       "cards" : [ ]
@@ -3394,18 +3142,6 @@
       "currency" : "INR",
       "type" : "classic",
       "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 19306.239999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO01POOB3925326637526572",
-      "balance" : 13194.679999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
     } ]
   }, {
     "firstName" : "Isabel",
@@ -3428,18 +3164,6 @@
       "currency" : "AUD",
       "type" : "classic",
       "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 19306.239999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO01POOB3925326637526572",
-      "balance" : 13194.679999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
     } ]
   }, {
     "firstName" : "Iris",
@@ -3447,7 +3171,7 @@
     "email" : "Iris_Sanders-Kramer@outlook.nl",
     "accounts" : [ {
       "IBAN" : "RO33POOB9999273999620457",
-      "balance" : 1419.297142857143,
+      "balance" : 3298.557142857143,
       "currency" : "EUR",
       "type" : "classic",
       "cards" : [ ]
@@ -3464,7 +3188,7 @@
       "IBAN" : "RO04POOB3492426980939341",
       "balance" : 1189.1449714285716,
       "currency" : "EUR",
-      "type" : "classic",
+      "type" : "business",
       "cards" : [ {
         "cardNumber" : "2803408755782048",
         "status" : "active"
@@ -3473,7 +3197,7 @@
       "IBAN" : "RO66POOB1088683052483887",
       "balance" : 1658.0,
       "currency" : "EUR",
-      "type" : "classic",
+      "type" : "business",
       "cards" : [ {
         "cardNumber" : "0692077318511511",
         "status" : "active"
@@ -3482,85 +3206,7 @@
       "IBAN" : "RO19POOB5993192794373940",
       "balance" : 2292.0,
       "currency" : "EUR",
-      "type" : "classic",
-      "cards" : [ {
-        "cardNumber" : "4435533800578624",
-        "status" : "active"
-      } ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 19306.239999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 19306.239999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO01POOB3925326637526572",
-      "balance" : 13194.679999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO01POOB3925326637526572",
-      "balance" : 13194.679999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO04POOB3492426980939341",
-      "balance" : 1189.1449714285716,
-      "currency" : "EUR",
-      "type" : "classic",
-      "cards" : [ {
-        "cardNumber" : "2803408755782048",
-        "status" : "active"
-      } ]
-    }, {
-      "IBAN" : "RO04POOB3492426980939341",
-      "balance" : 1189.1449714285716,
-      "currency" : "EUR",
-      "type" : "classic",
-      "cards" : [ {
-        "cardNumber" : "2803408755782048",
-        "status" : "active"
-      } ]
-    }, {
-      "IBAN" : "RO66POOB1088683052483887",
-      "balance" : 1658.0,
-      "currency" : "EUR",
-      "type" : "classic",
-      "cards" : [ {
-        "cardNumber" : "0692077318511511",
-        "status" : "active"
-      } ]
-    }, {
-      "IBAN" : "RO66POOB1088683052483887",
-      "balance" : 1658.0,
-      "currency" : "EUR",
-      "type" : "classic",
-      "cards" : [ {
-        "cardNumber" : "0692077318511511",
-        "status" : "active"
-      } ]
-    }, {
-      "IBAN" : "RO19POOB5993192794373940",
-      "balance" : 2292.0,
-      "currency" : "EUR",
-      "type" : "classic",
-      "cards" : [ {
-        "cardNumber" : "4435533800578624",
-        "status" : "active"
-      } ]
-    }, {
-      "IBAN" : "RO19POOB5993192794373940",
-      "balance" : 2292.0,
-      "currency" : "EUR",
-      "type" : "classic",
+      "type" : "business",
       "cards" : [ {
         "cardNumber" : "4435533800578624",
         "status" : "active"
@@ -3576,18 +3222,6 @@
       "currency" : "NZD",
       "type" : "classic",
       "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 19306.239999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO01POOB3925326637526572",
-      "balance" : 13194.679999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
     } ]
   }, {
     "firstName" : "Lucy",
@@ -3595,7 +3229,7 @@
     "email" : "Lucy_Baker-Clark@mail.com.gb",
     "accounts" : [ {
       "IBAN" : "RO53POOB7122855990652257",
-      "balance" : 0.7777777777777786,
+      "balance" : 2489.777777777778,
       "currency" : "GBP",
       "type" : "classic",
       "cards" : [ ]
@@ -3634,13 +3268,13 @@
       "IBAN" : "RO45POOB6505529013808948",
       "balance" : 19306.239999999998,
       "currency" : "USD",
-      "type" : "classic",
+      "type" : "business",
       "cards" : [ ]
     }, {
       "IBAN" : "RO01POOB3925326637526572",
       "balance" : 13194.679999999998,
       "currency" : "USD",
-      "type" : "classic",
+      "type" : "business",
       "cards" : [ ]
     } ]
   }, {
@@ -3664,18 +3298,6 @@
       "currency" : "CHF",
       "type" : "classic",
       "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 19306.239999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO01POOB3925326637526572",
-      "balance" : 13194.679999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
     } ]
   }, {
     "firstName" : "Aurelio",
@@ -3685,18 +3307,6 @@
       "IBAN" : "RO36POOB6500477412147025",
       "balance" : 1540.0,
       "currency" : "MXN",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 19306.239999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO01POOB3925326637526572",
-      "balance" : 13194.679999999998,
-      "currency" : "USD",
       "type" : "classic",
       "cards" : [ ]
     } ]
@@ -3732,18 +3342,6 @@
       "currency" : "RON",
       "type" : "classic",
       "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 19306.239999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO01POOB3925326637526572",
-      "balance" : 13194.679999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
     } ]
   }, {
     "firstName" : "Juana",
@@ -3753,24 +3351,6 @@
       "IBAN" : "RO98POOB7190609943699593",
       "balance" : 1417.7142857142858,
       "currency" : "MXN",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 19306.239999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO01POOB3925326637526572",
-      "balance" : 13194.679999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 19306.239999999998,
-      "currency" : "USD",
       "type" : "classic",
       "cards" : [ ]
     } ]
@@ -3806,18 +3386,6 @@
       "currency" : "CAD",
       "type" : "classic",
       "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 19306.239999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO01POOB3925326637526572",
-      "balance" : 13194.679999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
     } ]
   }, {
     "firstName" : "Erdogan",
@@ -3827,12 +3395,6 @@
       "IBAN" : "RO73POOB0363118755441573",
       "balance" : 0.0,
       "currency" : "EUR",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 19306.239999999998,
-      "currency" : "USD",
       "type" : "classic",
       "cards" : [ ]
     } ]
@@ -3883,12 +3445,6 @@
       "currency" : "CHF",
       "type" : "classic",
       "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 19306.239999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
     } ]
   }, {
     "firstName" : "Alwin",
@@ -3900,18 +3456,6 @@
       "currency" : "EUR",
       "type" : "classic",
       "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 19306.239999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO01POOB3925326637526572",
-      "balance" : 13194.679999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
     } ]
   }, {
     "firstName" : "Angel",
@@ -3919,7 +3463,7 @@
     "email" : "Angel_Ene@hotmail.ro",
     "accounts" : [ {
       "IBAN" : "RO58POOB2721178218599590",
-      "balance" : 48.18399999999997,
+      "balance" : 1047.624,
       "currency" : "RON",
       "type" : "classic",
       "cards" : [ ]
@@ -3928,18 +3472,6 @@
       "balance" : 1918.1072000000001,
       "currency" : "RON",
       "type" : "savings",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 19306.239999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO01POOB3925326637526572",
-      "balance" : 13194.679999999998,
-      "currency" : "USD",
-      "type" : "classic",
       "cards" : [ ]
     } ]
   }, {
@@ -3972,12 +3504,6 @@
       "IBAN" : "RO19POOB4981055641668812",
       "balance" : 946.0,
       "currency" : "RON",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 19306.239999999998,
-      "currency" : "USD",
       "type" : "classic",
       "cards" : [ ]
     } ]
@@ -4013,18 +3539,6 @@
       "currency" : "EUR",
       "type" : "classic",
       "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 19306.239999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO01POOB3925326637526572",
-      "balance" : 13194.679999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
     } ]
   }, {
     "firstName" : "Owen",
@@ -4036,12 +3550,6 @@
       "currency" : "INR",
       "type" : "classic",
       "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 19306.239999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
     } ]
   }, {
     "firstName" : "Briana",
@@ -4049,7 +3557,7 @@
     "email" : "Briana_Galloway@outlook.au",
     "accounts" : [ {
       "IBAN" : "RO33POOB4049920806186500",
-      "balance" : 703.1619047619048,
+      "balance" : 1344.2619047619048,
       "currency" : "AUD",
       "type" : "classic",
       "cards" : [ ]
@@ -4066,7 +3574,7 @@
     "email" : "Chanakya_Dua@hushmail.in",
     "accounts" : [ {
       "IBAN" : "RO69POOB9846198978826791",
-      "balance" : 712.0,
+      "balance" : 1953.8,
       "currency" : "INR",
       "type" : "classic",
       "cards" : [ ]
@@ -4098,18 +3606,6 @@
       "currency" : "INR",
       "type" : "classic",
       "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 19306.239999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO01POOB3925326637526572",
-      "balance" : 13194.679999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
     } ]
   }, {
     "firstName" : "Isabel",
@@ -4132,18 +3628,6 @@
       "currency" : "AUD",
       "type" : "classic",
       "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 19306.239999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO01POOB3925326637526572",
-      "balance" : 13194.679999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
     } ]
   }, {
     "firstName" : "Iris",
@@ -4151,7 +3635,7 @@
     "email" : "Iris_Sanders-Kramer@outlook.nl",
     "accounts" : [ {
       "IBAN" : "RO33POOB9999273999620457",
-      "balance" : 1419.297142857143,
+      "balance" : 3298.557142857143,
       "currency" : "EUR",
       "type" : "classic",
       "cards" : [ ]
@@ -4168,7 +3652,7 @@
       "IBAN" : "RO04POOB3492426980939341",
       "balance" : 1189.1449714285716,
       "currency" : "EUR",
-      "type" : "classic",
+      "type" : "business",
       "cards" : [ {
         "cardNumber" : "2803408755782048",
         "status" : "active"
@@ -4177,7 +3661,7 @@
       "IBAN" : "RO66POOB1088683052483887",
       "balance" : 1658.0,
       "currency" : "EUR",
-      "type" : "classic",
+      "type" : "business",
       "cards" : [ {
         "cardNumber" : "0692077318511511",
         "status" : "active"
@@ -4186,85 +3670,7 @@
       "IBAN" : "RO19POOB5993192794373940",
       "balance" : 2292.0,
       "currency" : "EUR",
-      "type" : "classic",
-      "cards" : [ {
-        "cardNumber" : "4435533800578624",
-        "status" : "active"
-      } ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 19306.239999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 19306.239999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO01POOB3925326637526572",
-      "balance" : 13194.679999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO01POOB3925326637526572",
-      "balance" : 13194.679999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO04POOB3492426980939341",
-      "balance" : 1189.1449714285716,
-      "currency" : "EUR",
-      "type" : "classic",
-      "cards" : [ {
-        "cardNumber" : "2803408755782048",
-        "status" : "active"
-      } ]
-    }, {
-      "IBAN" : "RO04POOB3492426980939341",
-      "balance" : 1189.1449714285716,
-      "currency" : "EUR",
-      "type" : "classic",
-      "cards" : [ {
-        "cardNumber" : "2803408755782048",
-        "status" : "active"
-      } ]
-    }, {
-      "IBAN" : "RO66POOB1088683052483887",
-      "balance" : 1658.0,
-      "currency" : "EUR",
-      "type" : "classic",
-      "cards" : [ {
-        "cardNumber" : "0692077318511511",
-        "status" : "active"
-      } ]
-    }, {
-      "IBAN" : "RO66POOB1088683052483887",
-      "balance" : 1658.0,
-      "currency" : "EUR",
-      "type" : "classic",
-      "cards" : [ {
-        "cardNumber" : "0692077318511511",
-        "status" : "active"
-      } ]
-    }, {
-      "IBAN" : "RO19POOB5993192794373940",
-      "balance" : 2292.0,
-      "currency" : "EUR",
-      "type" : "classic",
-      "cards" : [ {
-        "cardNumber" : "4435533800578624",
-        "status" : "active"
-      } ]
-    }, {
-      "IBAN" : "RO19POOB5993192794373940",
-      "balance" : 2292.0,
-      "currency" : "EUR",
-      "type" : "classic",
+      "type" : "business",
       "cards" : [ {
         "cardNumber" : "4435533800578624",
         "status" : "active"
@@ -4280,18 +3686,6 @@
       "currency" : "NZD",
       "type" : "classic",
       "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 19306.239999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO01POOB3925326637526572",
-      "balance" : 13194.679999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
     } ]
   }, {
     "firstName" : "Lucy",
@@ -4299,7 +3693,7 @@
     "email" : "Lucy_Baker-Clark@mail.com.gb",
     "accounts" : [ {
       "IBAN" : "RO53POOB7122855990652257",
-      "balance" : 0.7777777777777786,
+      "balance" : 2489.777777777778,
       "currency" : "GBP",
       "type" : "classic",
       "cards" : [ ]
@@ -4338,13 +3732,13 @@
       "IBAN" : "RO45POOB6505529013808948",
       "balance" : 19306.239999999998,
       "currency" : "USD",
-      "type" : "classic",
+      "type" : "business",
       "cards" : [ ]
     }, {
       "IBAN" : "RO01POOB3925326637526572",
       "balance" : 13194.679999999998,
       "currency" : "USD",
-      "type" : "classic",
+      "type" : "business",
       "cards" : [ ]
     } ]
   }, {
@@ -4368,18 +3762,6 @@
       "currency" : "CHF",
       "type" : "classic",
       "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 19306.239999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO01POOB3925326637526572",
-      "balance" : 13194.679999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
     } ]
   }, {
     "firstName" : "Aurelio",
@@ -4389,18 +3771,6 @@
       "IBAN" : "RO36POOB6500477412147025",
       "balance" : 1540.0,
       "currency" : "MXN",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 19306.239999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO01POOB3925326637526572",
-      "balance" : 13194.679999999998,
-      "currency" : "USD",
       "type" : "classic",
       "cards" : [ ]
     } ]
@@ -4436,18 +3806,6 @@
       "currency" : "RON",
       "type" : "classic",
       "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 19306.239999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO01POOB3925326637526572",
-      "balance" : 13194.679999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
     } ]
   }, {
     "firstName" : "Juana",
@@ -4457,24 +3815,6 @@
       "IBAN" : "RO98POOB7190609943699593",
       "balance" : 1417.7142857142858,
       "currency" : "MXN",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 19306.239999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO01POOB3925326637526572",
-      "balance" : 13194.679999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 19306.239999999998,
-      "currency" : "USD",
       "type" : "classic",
       "cards" : [ ]
     } ]
@@ -4510,18 +3850,6 @@
       "currency" : "CAD",
       "type" : "classic",
       "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 19306.239999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO01POOB3925326637526572",
-      "balance" : 13194.679999999998,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
     } ]
   }, {
     "firstName" : "Erdogan",
@@ -4531,12 +3859,6 @@
       "IBAN" : "RO73POOB0363118755441573",
       "balance" : 0.0,
       "currency" : "EUR",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 19306.239999999998,
-      "currency" : "USD",
       "type" : "classic",
       "cards" : [ ]
     } ]
@@ -4605,7 +3927,7 @@
   "timestamp" : 1031,
   "output" : {
     "IBAN" : "RO58POOB2721178218599590",
-    "balance" : 48.18399999999997,
+    "balance" : 1047.624,
     "currency" : "RON",
     "commerciants" : [ ],
     "transactions" : [ ]
@@ -4693,7 +4015,7 @@
   "timestamp" : 1039,
   "output" : {
     "IBAN" : "RO33POOB4049920806186500",
-    "balance" : 703.1619047619048,
+    "balance" : 1344.2619047619048,
     "currency" : "AUD",
     "commerciants" : [ ],
     "transactions" : [ ]
@@ -4703,7 +4025,7 @@
   "timestamp" : 1040,
   "output" : {
     "IBAN" : "RO69POOB9846198978826791",
-    "balance" : 712.0,
+    "balance" : 1953.8,
     "currency" : "INR",
     "commerciants" : [ ],
     "transactions" : [ ]
@@ -4761,7 +4083,7 @@
   "timestamp" : 1045,
   "output" : {
     "IBAN" : "RO33POOB9999273999620457",
-    "balance" : 1419.297142857143,
+    "balance" : 3298.557142857143,
     "currency" : "EUR",
     "commerciants" : [ ],
     "transactions" : [ ]
@@ -4781,7 +4103,7 @@
   "timestamp" : 1047,
   "output" : {
     "IBAN" : "RO53POOB7122855990652257",
-    "balance" : 0.7777777777777786,
+    "balance" : 2489.777777777778,
     "currency" : "GBP",
     "commerciants" : [ ],
     "transactions" : [ ]

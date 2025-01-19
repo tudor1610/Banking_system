@@ -35,6 +35,8 @@ public final class Transaction {
     private String newPlanType;
     private Double withdrawalAmount;
     private String splitPaymentType;
+    private String classicAccountIBAN;
+    private String savingsAccountIBAN;
 
 
     /**
@@ -61,6 +63,8 @@ public final class Transaction {
         this.withdrawalAmount = builder.withdrawalAmount;
         this.amountForUsers = builder.amountForUsers;
         this.splitPaymentType = builder.splitPaymentType;
+        this.classicAccountIBAN = builder.classicAccountIBAN;
+        this.savingsAccountIBAN = builder.savingsAccountIBAN;
     }
 
     /**
@@ -83,6 +87,8 @@ public final class Transaction {
             printWithdrawal(output);
         } else if (currency != null) {
             printInterest(output);
+        } else if (classicAccountIBAN != null) {
+            printSavingsWithdrawal(output);
         } else {
             output.put("timestamp", timestamp);
             output.put("description", description);
@@ -124,6 +130,14 @@ public final class Transaction {
         }
         output.set("involvedAccounts", accountsArray);
         output.put("splitPaymentType", splitPaymentType);
+    }
+
+    private void printSavingsWithdrawal(final ObjectNode output) {
+        output.put("timestamp", timestamp);
+        output.put("description", description);
+        output.put("amount", amount);
+        output.put("classicAccountIBAN", classicAccountIBAN);
+        output.put("savingsAccountIBAN", savingsAccountIBAN);
     }
 
     private void printInterest(final ObjectNode output) {
@@ -210,6 +224,8 @@ public final class Transaction {
         private String newPlanType;
         private Double withdrawalAmount;
         private String splitPaymentType;
+        private String classicAccountIBAN;
+        private String savingsAccountIBAN;
 
         /**
          * Constructs a Builder with the mandatory fields.
@@ -372,6 +388,16 @@ public final class Transaction {
         }
         public Builder splitPaymentType(final String setSplitPaymentType) {
             splitPaymentType = setSplitPaymentType;
+            return this;
+        }
+
+        public Builder classicAccountIBAN(final String setClassicAccountIBAN) {
+            classicAccountIBAN = setClassicAccountIBAN;
+            return this;
+        }
+
+        public Builder savingsAccountIBAN(final String setSavingsAccountIBAN) {
+            savingsAccountIBAN = setSavingsAccountIBAN;
             return this;
         }
 

@@ -75,7 +75,7 @@ public class SplitPayment {
             User user = bank.getUserHashMap().get(accounts[i].getEmail());
             Transaction t = new Transaction.Builder(timestamp, "Split payment of ")
                     .currency(currency)
-                    .amount(amounts[i])
+                    .amountForUsers(Arrays.stream(amounts).toList())
                     .splitPaymentType(paymentType)
                     .accountsInvolved(Arrays.stream(accounts).map(Account::getIban).toList())
                     .totalBill(totalAmount)
@@ -104,19 +104,14 @@ public class SplitPayment {
             }
         }
 
-        System.out.println("timestamp " + timestamp);
-        System.out.println("AmountforUsers in split payment " + Arrays.stream(amounts).toList());
-        System.out.println("splitPaymentType " + paymentType);
         // Pot aparea erori; fii atent aici
         for (int i = 0; i < accounts.length; i++) {
             double amount = amounts[i];
             double convertedAmount = bank.convertCurrency(amount, currency,
                     accounts[i].getCurrency(), bank.prepareExchangeRates());
-            double amountAfterCommission = Utils.comision(bank.getUserHashMap()
-                    .get(accounts[i].getEmail()), convertedAmount, bank, accounts[i].getCurrency());
             accounts[i].accountPayment(bank.getUserHashMap().get(accounts[i].getEmail()),
                     currency, totalAmount, timestamp, amount, Arrays.stream(amounts).toList(),
-                    Arrays.stream(accounts).map(Account::getIban).toList(), amountAfterCommission, paymentType);
+                    Arrays.stream(accounts).map(Account::getIban).toList(), convertedAmount, paymentType);
         }
         bank.removeWaitingPayment(this);
     }

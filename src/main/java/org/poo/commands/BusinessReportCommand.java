@@ -63,6 +63,24 @@ public class BusinessReportCommand implements Command {
         bank.getOutput().add(command);
     }
 
+    private void CommerciantReport() {
+        Account account = bank.getAccountHashMap().get(IBAN);
+        ObjectNode command = bank.getObjectMapper().createObjectNode();
+        command.put("command", "businessReport");
+        command.put("timestamp", timestamp);
+        ObjectNode status = bank.getObjectMapper().createObjectNode();
+        status.put("IBAN", IBAN);
+        status.put("balance", account.getBalance());
+        status.put("currency", account.getCurrency());
+        status.put("spending limit", account.getSpendingLimit());
+        status.put("deposit limit", account.getDepositLimit());
+        status.put("statistics type", "commerciant");
+        ArrayNode commerciantsArray = bank.getObjectMapper().createArrayNode();
+        status.set("commerciants", commerciantsArray);
+        command.set("output", status);
+        bank.getOutput().add(command);
+    }
+
 
 
 
@@ -73,6 +91,7 @@ public class BusinessReportCommand implements Command {
                 TransactionReport();
                 break;
             case "commerciant":
+                CommerciantReport();
                 break;
         }
     }

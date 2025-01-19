@@ -25,7 +25,7 @@ public class BusinessAccount extends Account {
 
 
     public BusinessAccount(Bank bank, final String iban, final String email, final String currency) {
-        super(iban, email, currency, "classic");
+        super(iban, email, currency, "business");
         owner = email;
         managers = new HashMap<>();
         employees = new HashMap<>();
@@ -36,11 +36,9 @@ public class BusinessAccount extends Account {
     }
     public void addManager(final User manager) {
         managers.put(manager.getEmail(), new Associate(manager));
-        manager.addAccount(this);
     }
     public void addEmployee(final User employee) {
         employees.put(employee.getEmail(), new Associate(employee));
-        employee.addAccount(this);
     }
 
     public void deposit(final double amount, final String email, final int timestamp) {

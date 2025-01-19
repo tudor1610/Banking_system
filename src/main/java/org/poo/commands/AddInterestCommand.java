@@ -34,6 +34,7 @@ public class AddInterestCommand implements Command {
                     .amount(balance * account.getInterestRate())
                     .build();
             bank.getUserHashMap().get(account.getEmail()).addTransaction(t);
+            account.accountAddTransaction(t);
         } else {
             ObjectNode command = bank.getObjectMapper().createObjectNode();
             command.put("command", "addInterest");

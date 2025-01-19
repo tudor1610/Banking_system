@@ -13,4 +13,5 @@ public final class CommerciantInput {
     private String account;
     private String type;
     private String cashbackStrategy;
+
 }

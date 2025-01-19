@@ -52,7 +52,16 @@ public class WithdrawSavingsCommand implements Command {
             for (Account a : user.getAccounts()) {
                 if (a.getAccountType().equals("classic") && a.getCurrency().equals(currency)) {
                     account.withdraw(amount);
-                    a.deposit(amount, user.getEmail(), timestamp);
+                    a.deposit(amount);
+                    Transaction t = new Transaction.Builder(timestamp, "Savings withdrawal")
+                            .classicAccountIBAN(a.getIban())
+                            .savingsAccountIBAN(account.getIban())
+                            .amount(amount)
+                            .build();
+                    user.addTransaction(t);
+                    user.addTransaction(t);
+                    account.accountAddTransaction(t);
+                    a.accountAddTransaction(t);
                     hasClassicAccount = true;
                     break;
                 }
@@ -62,6 +71,7 @@ public class WithdrawSavingsCommand implements Command {
                 Transaction t = new Transaction
                         .Builder(timestamp, "You do not have a classic account.").build();
                 user.addTransaction(t);
+                account.accountAddTransaction(t);
                 return;
             }
 

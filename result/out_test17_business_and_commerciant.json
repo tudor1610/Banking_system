@@ -391,10 +391,51 @@
     } ]
   }
 }, {
-  "command" : "sendMoney",
+  "command" : "businessReport",
+  "timestamp" : 435,
   "output" : {
-    "description" : "User not found",
-    "timestamp" : 434
-  },
-  "timestamp" : 434
+    "IBAN" : "RO98POOB8412955460158769",
+    "balance" : 1282.27,
+    "currency" : "USD",
+    "spending limit" : 868.0,
+    "deposit limit" : 107.14285714285714,
+    "statistics type" : "commerciant",
+    "commerciants" : [ ]
+  }
+}, {
+  "command" : "businessReport",
+  "timestamp" : 436,
+  "output" : {
+    "IBAN" : "RO32POOB0130532963818359",
+    "balance" : 1024.0,
+    "currency" : "USD",
+    "spending limit" : 94.0,
+    "deposit limit" : 107.14285714285714,
+    "statistics type" : "commerciant",
+    "commerciants" : [ ]
+  }
+}, {
+  "command" : "businessReport",
+  "timestamp" : 437,
+  "output" : {
+    "IBAN" : "RO68POOB1848616931405475",
+    "balance" : 859.0,
+    "currency" : "RON",
+    "spending limit" : 473.0,
+    "deposit limit" : 500.0,
+    "statistics type" : "commerciant",
+    "commerciants" : [ ]
+  }
+}, {
+  "command" : "businessReport",
+  "timestamp" : 438,
+  "output" : {
+    "IBAN" : "RO10POOB4354933866366881",
+    "balance" : 1117.0,
+    "currency" : "RON",
+    "spending limit" : 500.0,
+    "deposit limit" : 500.0,
+    "statistics type" : "commerciant",
+    "commerciants" : [ ]
+  }
 } ]
