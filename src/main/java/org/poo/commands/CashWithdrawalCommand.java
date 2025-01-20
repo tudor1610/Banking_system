@@ -26,6 +26,14 @@ public class CashWithdrawalCommand implements Command{
 
     public void execute() {
         if (bank.getUserHashMap().get(email) == null) {
+            ObjectNode command = bank.getObjectMapper().createObjectNode();
+            command.put("command", "cashWithdrawal");
+            ObjectNode status = bank.getObjectMapper().createObjectNode();
+            status.put("description", "User not found");
+            status.put("timestamp", timestamp);
+            command.set("output", status);
+            command.put("timestamp", timestamp);
+            bank.getOutput().add(command);
             return;
         }
         //System.out.println("Executing cash withdrawal command timestamp: " + timestamp);

@@ -28,7 +28,6 @@ public class SplitPayment {
         }
         this.amounts = new Double[amounts.size()];
         for (int i = 0; i < amounts.size(); i++) {
-            //System.out.println("in Split payment la timestamp " + timestamp + " indexOf(a) = " + i);
             this.amounts[i] = amounts.get(i);
         }
         this.currency = currency;
@@ -44,11 +43,9 @@ public class SplitPayment {
     public void paymentCheck() {
         for (int i = 0; i < accounts.length; i++) {
             if (!accepted[i]) {
-                System.out.println("Payment not accepted by all users yet.");
                 return;
             }
         }
-        System.out.println("Payment accepted by all users.");
         processPayment();
     }
 
@@ -89,8 +86,6 @@ public class SplitPayment {
 
     private void processPayment() {
 
-//        System.out.println("Processing payment timestamp " + timestamp);
-//        System.out.println("accounts.length = " + accounts.length);
         for (int i = 0; i < accounts.length; i++) {
             double amount = amounts[i];
             double convertedAmount = bank.convertCurrency(amount, currency,

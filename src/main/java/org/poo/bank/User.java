@@ -34,6 +34,7 @@ public class User {
     private ObjectMapper objectMapper;
     private String plan;
     private Map<String, Double> commercialTransactions;
+    private int bigTransactions;
 
     /**
      * Constructs a new {@code User} object based on the given {@link UserInput}.
@@ -55,9 +56,10 @@ public class User {
             plan = "standard";
         }
         commercialTransactions = new HashMap<>();
+        bigTransactions = 0;
     }
 
-    public void addCommercialTransaction(Bank bank, String commerciant,  double amount, final String currency) {
+    public void addCommercialTransaction(Bank bank, String commerciant,  double amount, final String currency, final int timestamp, final Account account) {
         amount = bank.convertCurrency(amount, currency, "RON", bank.prepareExchangeRates());
         if (commercialTransactions.containsKey(commerciant)) {
             commercialTransactions.put(commerciant, commercialTransactions.get(commerciant) + amount);
@@ -126,4 +128,6 @@ public class User {
         userNode.set("accounts", accountNode);
         output.add(userNode);
     }
+
+
 }

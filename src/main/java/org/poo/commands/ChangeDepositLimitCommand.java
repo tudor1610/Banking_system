@@ -22,9 +22,6 @@ public class ChangeDepositLimitCommand implements Command {
         Account account = bank.getAccountHashMap().get(IBAN);
         if (account.isBusiness()) {
             if (account.getOwner().equals(email)) {
-                System.out.println("timestamp: " + timestamp);
-                System.out.println("old limit: " + account.getDepositLimit());
-                System.out.println("new limit: " + newLimit);
                 account.setDepositLimit(newLimit);
                 // add transaction
             } else {

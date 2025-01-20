@@ -16,11 +16,11 @@
       "spent" : 0.0,
       "deposited" : 0.0
     }, {
-      "username" : "Marin Silvia",
+      "username" : "Albu Dida",
       "spent" : 0.0,
       "deposited" : 0.0
     }, {
-      "username" : "Albu Dida",
+      "username" : "Marin Silvia",
       "spent" : 0.0,
       "deposited" : 0.0
     } ]
@@ -251,6 +251,10 @@
     "total deposited" : 1135.0,
     "statistics type" : "transaction",
     "managers" : [ {
+      "username" : "Mocanu Mirela",
+      "spent" : 0.0,
+      "deposited" : 145.0
+    }, {
       "username" : "Ellis DDS Alexander",
       "spent" : 0.0,
       "deposited" : 144.0
@@ -258,31 +262,27 @@
       "username" : "Vallee Genevieve",
       "spent" : 0.0,
       "deposited" : 146.0
-    }, {
-      "username" : "Mocanu Mirela",
-      "spent" : 0.0,
-      "deposited" : 145.0
     } ],
     "employees" : [ {
-      "username" : "Booker James",
-      "spent" : 0.0,
-      "deposited" : 132.0
-    }, {
       "username" : "Lee Joe",
       "spent" : 0.0,
       "deposited" : 163.0
-    }, {
-      "username" : "Marin Silvia",
-      "spent" : 0.0,
-      "deposited" : 84.0
     }, {
       "username" : "Albu Dida",
       "spent" : 0.0,
       "deposited" : 40.0
     }, {
+      "username" : "Marin Silvia",
+      "spent" : 0.0,
+      "deposited" : 84.0
+    }, {
       "username" : "Poulain Gilbert",
       "spent" : 0.0,
       "deposited" : 281.0
+    }, {
+      "username" : "Booker James",
+      "spent" : 0.0,
+      "deposited" : 132.0
     } ]
   }
 }, {
@@ -298,6 +298,14 @@
     "total deposited" : 985.0,
     "statistics type" : "transaction",
     "managers" : [ {
+      "username" : "Mocanu Mirela",
+      "spent" : 0.0,
+      "deposited" : 200.0
+    }, {
+      "username" : "Poulain Gilbert",
+      "spent" : 0.0,
+      "deposited" : 165.0
+    }, {
       "username" : "Booker James",
       "spent" : 0.0,
       "deposited" : 167.0
@@ -305,14 +313,6 @@
       "username" : "Ellis DDS Alexander",
       "spent" : 0.0,
       "deposited" : 152.0
-    }, {
-      "username" : "Poulain Gilbert",
-      "spent" : 0.0,
-      "deposited" : 165.0
-    }, {
-      "username" : "Mocanu Mirela",
-      "spent" : 0.0,
-      "deposited" : 200.0
     } ],
     "employees" : [ {
       "username" : "Vallee Genevieve",
@@ -338,15 +338,15 @@
       "deposited" : 110.0
     } ],
     "employees" : [ {
+      "username" : "Poulain Gilbert",
+      "spent" : 0.0,
+      "deposited" : 0.0
+    }, {
       "username" : "Booker James",
       "spent" : 0.0,
       "deposited" : 0.0
     }, {
       "username" : "Ellis DDS Alexander",
-      "spent" : 0.0,
-      "deposited" : 0.0
-    }, {
-      "username" : "Poulain Gilbert",
       "spent" : 0.0,
       "deposited" : 0.0
     }, {
@@ -368,17 +368,17 @@
     "total deposited" : 376.0,
     "statistics type" : "transaction",
     "managers" : [ {
-      "username" : "Ellis DDS Alexander",
+      "username" : "Mocanu Mirela",
       "spent" : 0.0,
-      "deposited" : 136.0
+      "deposited" : 116.0
     }, {
       "username" : "Poulain Gilbert",
       "spent" : 0.0,
       "deposited" : 124.0
     }, {
-      "username" : "Mocanu Mirela",
+      "username" : "Ellis DDS Alexander",
       "spent" : 0.0,
-      "deposited" : 116.0
+      "deposited" : 136.0
     } ],
     "employees" : [ {
       "username" : "Booker James",

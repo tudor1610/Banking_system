@@ -6,6 +6,7 @@ import org.poo.bank.User;
 import org.poo.fileio.CommerciantInput;
 
 import javax.sound.midi.Soundbank;
+import java.util.Map;
 import java.util.Random;
 
 public final class Utils {
@@ -94,8 +95,49 @@ public final class Utils {
     }
 
     public static void addCashback(Bank bank, User user, Account account, double amount, CommerciantInput commerciant) {
+
+        switch (commerciant.getType()) {
+            case "Food" -> {
+                if (account.getFood() > 0) {
+                    account.deposit(0.02 * amount);
+                    account.setFood(account.getFood() - 1);
+                }
+            }
+            case "Clothes" -> {
+                if (account.getClothes() > 0) {
+                    account.deposit(0.05 * amount);
+                    account.setClothes(account.getClothes() - 1);
+                }
+            }
+            case "Tech" -> {
+                if (account.getTech() > 0) {
+                    account.deposit(0.1 * amount);
+                    account.setTech(account.getTech() - 1);
+                }
+            }
+        }
+
+        if (commerciant.getCashbackStrategy().equals("nrOfTransactions")) {
+            account.addNrOfTransaction(commerciant.getCommerciant());
+            if (account.getNrOfTransactions().get(commerciant.getCommerciant()) == 2) {
+                account.setFood(account.getFood() + 1);
+            }
+            if (account.getNrOfTransactions().get(commerciant.getCommerciant()) == 5) {
+                account.setClothes(account.getClothes() + 1);
+            }
+            if (account.getNrOfTransactions().get(commerciant.getCommerciant()) == 10) {
+                account.setTech(account.getTech() + 1);
+            }
+        }
+
+
        if (commerciant.getCashbackStrategy().equals("spendingThreshold")) {
-           Double spent = user.getCommercialTransactions().get(commerciant.getCommerciant());
+           System.out.println("Usserul " + user.getEmail() + "ia cashback si are plan " +  user.getPlan() + " balance " + account.getBalance());
+           Double spent = user.getCommercialTransactions().entrySet().stream()
+                   .filter(entry -> "spendingThreshold".equals(bank.getCommerciants().get(entry.getKey()).getCashbackStrategy()))
+                   .mapToDouble(Map.Entry::getValue)
+                   .sum();
+           System.out.println("spent " + spent);
            if (spent >= 500) {
                if (user.getPlan().equals("student")) {
                    account.deposit(0.0025 * amount);
@@ -127,7 +169,7 @@ public final class Utils {
                    account.deposit(0.005 * amount);
                }
            }
+           System.out.println("Usserul " + user.getEmail() + "ia cashback si are plan " +  user.getPlan() + " balance " + account.getBalance());
        }
-
     }
 }

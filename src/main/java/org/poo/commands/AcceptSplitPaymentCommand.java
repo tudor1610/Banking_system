@@ -31,13 +31,11 @@ public class AcceptSplitPaymentCommand implements Command{
             bank.getOutput().add(command);
             return;
         }
-        System.out.println("AcceptSplitPaymentCommand  timestamp = " + timestamp);
         List<SplitPayment> paymentList = bank.getWaitingPayments();
         for (SplitPayment payment : paymentList) {
             for (int i = 0; i < payment.getAccounts().length; i++) {
                 if (payment.getAccounts()[i].getEmail().equals(email) && payment.getAccepted()[i].equals(false)) {
                     payment.getAccepted()[i] = true;
-                    System.out.println("payment : " + payment.getTotalAmount());
                     payment.paymentCheck();
                     return;
                 }

@@ -10,6 +10,7 @@ import java.util.Map;
 public class Associate {
     private String firstName;
     private String lastName;
+    private String email;
     private Map<Integer, Double> spendings;
     private Map<Integer, Double> deposits;
 
@@ -18,6 +19,7 @@ public class Associate {
         this.lastName = user.getLastName();
         this.spendings = new HashMap<>();
         this.deposits = new HashMap<>();
+        this.email =   user.getEmail();
     }
 
     public void addSpendings(int timestamp, double amount) {

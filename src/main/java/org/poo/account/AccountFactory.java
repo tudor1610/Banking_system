@@ -40,11 +40,11 @@ public final class AccountFactory {
                                         final String accountType, final int timestamp,
                                         final Double interestRate) {
         if (accountType.equalsIgnoreCase("savings")) {
-            return new SavingsAccount(Utils.generateIBAN(), email, currency, interestRate);
+            return new SavingsAccount(bank, Utils.generateIBAN(), email, currency, interestRate);
         } else if (accountType.equalsIgnoreCase("business")) {
             return new BusinessAccount(bank, Utils.generateIBAN(), email, currency);
         } else {
-            return new ClassicAccount(Utils.generateIBAN(), email, currency);
+            return new ClassicAccount(bank, Utils.generateIBAN(), email, currency);
         }
     }
 }

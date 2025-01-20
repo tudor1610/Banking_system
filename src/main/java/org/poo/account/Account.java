@@ -5,18 +5,17 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import lombok.Getter;
 import lombok.Setter;
+import org.poo.bank.Bank;
 import org.poo.bank.User;
 import org.poo.card.Card;
 import org.poo.transactions.Transaction;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 @Getter
 @Setter
 public abstract class Account {
+    private Bank bank;
     private String iban;
     private String email;
     private String currency;
@@ -26,8 +25,12 @@ public abstract class Account {
     private ArrayList<Card> cards;
     private List<Transaction> transactionList;
     private ObjectMapper objectMapper;
+    private int Food;
+    private int Clothes;
+    private int Tech;
+    private HashMap<String, Integer> nrOfTransactions;
 
-    public Account(final String iban, final String email,
+    public Account(final Bank bank, final String iban, final String email,
                    final String currency, final String accountType) {
         this.iban = iban;
         this.email = email;
@@ -38,6 +41,11 @@ public abstract class Account {
         cards = new ArrayList<>();
         transactionList = new ArrayList<>();
         objectMapper = new ObjectMapper();
+        Food = 0;
+        Clothes = 0;
+        Tech = 0;
+        nrOfTransactions = new HashMap<>();
+        this.bank = bank;
     }
 
     /**
@@ -85,6 +93,7 @@ public abstract class Account {
                                final double convertedAmount, final String splitPaymentType) {
         if (this.currency.equals(newCurrency)) {
                     withdraw(sum);
+                    countTransactions(sum, timestamp);
                     Transaction t = new Transaction.Builder(timestamp, "Split payment of ")
                             .currency(currency)
                             .amountForUsers(amountForUsers)
@@ -97,6 +106,7 @@ public abstract class Account {
                     accountAddTransaction(t);
                 } else {
                     withdraw(convertedAmount);
+                    countTransactions(convertedAmount, timestamp);
                     Transaction t = new Transaction.Builder(timestamp, "Split payment of ")
                             .currency(newCurrency)
                             .amountForUsers(amountForUsers)
@@ -208,6 +218,16 @@ public abstract class Account {
         return command;
     }
 
+    public void addNrOfTransaction(String commerciant) {
+        if (nrOfTransactions.containsKey(commerciant)) {
+            int value = nrOfTransactions.get(commerciant);
+            value++;
+            nrOfTransactions.replace(commerciant, value);
+        } else {
+            nrOfTransactions.put(commerciant, 1);
+        }
+    }
+
     public void deposit(final double amount) {
         if (amount > 0) {
             balance += amount;
@@ -222,7 +242,7 @@ public abstract class Account {
        return;
     }
 
-    public void withdraw(final double amount) {
+    public void withdraw(double amount) {
         if (amount > 0 && amount <= balance) {
             balance -= amount;
         }
@@ -284,10 +304,10 @@ public abstract class Account {
     public Double getDepositLimit() {
         return 0.0;
     }
-    public Map<String, Associate> getManagers() {
+    public List<Associate> getManagers() {
         return null;
     }
-    public Map<String, Associate> getEmployees() {
+    public List<Associate> getEmployees() {
         return null;
     }
     public boolean isBusiness() {
@@ -300,5 +320,32 @@ public abstract class Account {
 
     public Double getTotalDeposited() {
         return 0.0;
+    }
+
+    public void addCommerciantSpendings(final String commerciant, final double amount, final User user) {
+        return;
+    }
+
+    public List<CommerciantSpendings> getCommerciantSpendings() {
+        return null;
+    }
+    public boolean isOwner(final User user) {
+        return false;
+    }
+    public void countTransactions(double amount, int timestamp) {
+        amount = bank.convertCurrency(amount, currency, "RON", bank.prepareExchangeRates());
+        User user = bank.getUserHashMap().get(email);
+        if (amount >= 300) {
+            user.setBigTransactions(user.getBigTransactions() + 1);
+            if (user.getBigTransactions() == 5 && user.getPlan().equals("silver")) {
+                user.setPlan("gold");
+                Transaction t = new Transaction.Builder(timestamp, "Upgrade plan")
+                        .accountNumber(getIban())
+                        .newPlanType("gold")
+                        .build();
+                user.addTransaction(t);
+                accountAddTransaction(t);
+            }
+        }
     }
 }

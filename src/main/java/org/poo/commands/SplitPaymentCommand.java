@@ -50,15 +50,9 @@ public class SplitPaymentCommand implements Command {
             for (int i = 0; i < accounts.size(); i++) {
                 amountForUser.add(amount / accounts.size());
             }
-            System.out.println("amountForUsers pt equal pay");
-            for (int i = 0; i < accounts.size(); i++) {
-                System.out.println(amountForUser.get(i));
-            }
             payment = new SplitPayment(bank, accounts, amountForUser, amount, currency, splitPaymentType,timestamp);
         } else {
-            System.out.println("amountForUsers pt custom pay timestamp " + timestamp);
-            System.out.println(amountForUser);
-            System.out.println(splitPaymentType);
+
             payment = new SplitPayment(bank, accounts, amountForUser, amount, currency, splitPaymentType,timestamp);
         }
         bank.addWaitingPayment(payment);

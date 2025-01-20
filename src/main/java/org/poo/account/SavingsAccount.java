@@ -2,15 +2,16 @@ package org.poo.account;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.poo.bank.Bank;
 
 @Getter
 @Setter
 public class SavingsAccount extends Account {
     private double interestRate;
 
-    public SavingsAccount(final String iban, final String email,
+    public SavingsAccount(final Bank bank, final String iban, final String email,
                           final String currency, final double interestRate) {
-        super(iban, email, currency, "savings");
+        super(bank, iban, email, currency, "savings");
         this.interestRate = interestRate;
     }
 

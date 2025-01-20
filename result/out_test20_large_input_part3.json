@@ -2253,15 +2253,15 @@
     "total deposited" : 4711.0,
     "statistics type" : "transaction",
     "managers" : [ {
-      "username" : "del Ripoll Nicodemo",
-      "spent" : 0.0,
-      "deposited" : 0.0
-    }, {
       "username" : "Arana Trillo Mamen",
       "spent" : 0.0,
       "deposited" : 3337.0
     }, {
-      "username" : "Charette Gregoire",
+      "username" : "Sheppard Heather",
+      "spent" : 0.0,
+      "deposited" : 923.0
+    }, {
+      "username" : "del Ripoll Nicodemo",
       "spent" : 0.0,
       "deposited" : 0.0
     }, {
@@ -2269,24 +2269,28 @@
       "spent" : 0.0,
       "deposited" : 451.0
     }, {
-      "username" : "Sheppard Heather",
-      "spent" : 0.0,
-      "deposited" : 923.0
-    } ],
-    "employees" : [ {
-      "username" : "Barer-Gehringer Juan",
+      "username" : "Charette Gregoire",
       "spent" : 0.0,
       "deposited" : 0.0
-    }, {
+    } ],
+    "employees" : [ {
       "username" : "Manuel Baez Anaya Victor",
       "spent" : 0.0,
       "deposited" : 0.0
     }, {
-      "username" : "del Ripoll Nicodemo",
+      "username" : "Charette Gregoire",
       "spent" : 0.0,
       "deposited" : 0.0
     }, {
-      "username" : "Carey Frank",
+      "username" : "Barer-Gehringer Juan",
+      "spent" : 0.0,
+      "deposited" : 0.0
+    }, {
+      "username" : "Camiscione-Rugger Emilio",
+      "spent" : 0.0,
+      "deposited" : 0.0
+    }, {
+      "username" : "del Ripoll Nicodemo",
       "spent" : 0.0,
       "deposited" : 0.0
     }, {
@@ -2298,10 +2302,6 @@
       "spent" : 0.0,
       "deposited" : 0.0
     }, {
-      "username" : "Charette Gregoire",
-      "spent" : 0.0,
-      "deposited" : 0.0
-    }, {
       "username" : "Stone Elizabeth",
       "spent" : 0.0,
       "deposited" : 0.0
@@ -2310,7 +2310,7 @@
       "spent" : 0.0,
       "deposited" : 0.0
     }, {
-      "username" : "Camiscione-Rugger Emilio",
+      "username" : "Carey Frank",
       "spent" : 0.0,
       "deposited" : 0.0
     } ]
@@ -2467,7 +2467,7 @@
     "email" : "Jennifer_Gould@mail.com.ca",
     "accounts" : [ {
       "IBAN" : "RO58POOB7344468893732422",
-      "balance" : 3294.282428571428,
+      "balance" : 3294.3814285714284,
       "currency" : "CAD",
       "type" : "classic",
       "cards" : [ {
@@ -3026,7 +3026,7 @@
   "timestamp" : 881,
   "output" : {
     "IBAN" : "RO58POOB7344468893732422",
-    "balance" : 3294.282428571428,
+    "balance" : 3294.3814285714284,
     "currency" : "CAD",
     "commerciants" : [ {
       "commerciant" : "Apple",
