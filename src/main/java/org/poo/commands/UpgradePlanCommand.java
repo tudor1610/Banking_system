@@ -1,20 +1,21 @@
 package org.poo.commands;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import jdk.jshell.execution.Util;
+
 import org.poo.account.Account;
 import org.poo.bank.Bank;
 import org.poo.bank.User;
 import org.poo.transactions.Transaction;
-import org.poo.utils.Utils;
 
-public class UpgradePlanCommand implements Command{
+
+public class UpgradePlanCommand implements Command {
     private Bank bank;
     private String newPlan;
     private Account account;
     private int timestamp;
 
-    public UpgradePlanCommand(final Bank bank, final String newPlan, final String  account, final int timestamp) {
+    public UpgradePlanCommand(final Bank bank, final String newPlan,
+                              final String  account, final int timestamp) {
         this.bank = bank;
         this.newPlan = newPlan;
         this.account = bank.getAccountHashMap().get(account);
@@ -22,6 +23,7 @@ public class UpgradePlanCommand implements Command{
     }
 
     private int planType(final String plan) {
+        final int myBeautifulMagicNumber = 3;
         switch (plan) {
             case "standard", "student" -> {
                 return 1;
@@ -30,7 +32,7 @@ public class UpgradePlanCommand implements Command{
                 return 2;
             }
             case "gold" -> {
-                return 3;
+                return myBeautifulMagicNumber;
             }
             default -> {
                 return 0;
@@ -38,6 +40,9 @@ public class UpgradePlanCommand implements Command{
         }
     }
 
+    /**
+     * Upgrade the plan of a user.
+     */
     @Override
     public void execute() {
         if (account == null) {
@@ -54,21 +59,24 @@ public class UpgradePlanCommand implements Command{
         User user = bank.getUserHashMap().get(account.getEmail());
         int planType = planType(user.getPlan());
         int newPlanType = planType(newPlan);
-        System.out.println("Timestamp: " + timestamp + " Plan type: " + planType + " New plan type: " + newPlanType);
+        final int p1 = 1;
+        final int p2 = 2;
+        final int p3 = 3;
 
         if (planType == newPlanType) {
-            System.out.println("intru aici");
             Transaction t;
             switch (planType) {
-                case 1 -> {
-                    t = new Transaction.Builder(timestamp, "The user already has the standard plan.").build();
+                case p1 -> {
+                    t = new Transaction.Builder(timestamp,
+                            "The user already has the standard plan.").build();
                 }
-                case 2 -> {
-                    System.out.println("ajunge si aici");
-                    t = new Transaction.Builder(timestamp, "The user already has the silver plan.").build();
+                case p2 -> {
+                    t = new Transaction.Builder(timestamp,
+                            "The user already has the silver plan.").build();
                 }
-                case 3 -> {
-                    t = new Transaction.Builder(timestamp, "The user already has the gold plan.").build();
+                case p3 -> {
+                    t = new Transaction.Builder(timestamp,
+                            "The user already has the gold plan.").build();
                 }
                 default -> {
                     t = new Transaction.Builder(timestamp, "Plan not found").build();
@@ -79,9 +87,10 @@ public class UpgradePlanCommand implements Command{
             return;
         }
 
-        if (planType == 1 && newPlanType == 2) {
-            double amount = bank.convertCurrency(100, "RON", account.getCurrency() , bank.prepareExchangeRates());
-            //System.out.println("Account currency " +account.getCurrency()  + " Account balance " + account.getBalance() + " converted amount " + amount);
+        if (planType == p1 && newPlanType == p2) {
+            final int magicNumber = 100;
+            double amount = bank.convertCurrency(magicNumber, "RON",
+                    account.getCurrency(), bank.prepareExchangeRates());
             if (account.getBalance() >= amount) {
                 account.withdraw(amount);
                 user.setPlan(newPlan);
@@ -95,17 +104,16 @@ public class UpgradePlanCommand implements Command{
             }
 
             if (account.getBalance() < amount) {
-                // error
-                System.out.println("NO MONEY SARACULE!     timestamp: " + timestamp);
                 Transaction t = new Transaction.Builder(timestamp, "Insufficient funds").build();
                 user.addTransaction(t);
                 return;
             }
         }
 
-        if (planType == 2 && newPlanType == 3) {
-                double amount = bank.convertCurrency(250, "RON", account.getCurrency(), bank.prepareExchangeRates());
-                //System.out.println("Account currency " +account.getCurrency()  + " Account balance " + account.getBalance() + " converted amount " + amount);
+        if (planType == p2 && newPlanType == p3) {
+            final int magicNumber = 250;
+                double amount = bank.convertCurrency(magicNumber, "RON",
+                        account.getCurrency(), bank.prepareExchangeRates());
                 if (account.getBalance() >= amount) {
                     account.withdraw(amount);
                     user.setPlan(newPlan);
@@ -118,16 +126,17 @@ public class UpgradePlanCommand implements Command{
                     return;
                 }
                 if (account.getBalance() < amount) {
-                    System.out.println("NO MONEY SARACULE! 2  timestamp: " + timestamp);
-                    Transaction t = new Transaction.Builder(timestamp, "Insufficient funds").build();
+                    Transaction t = new Transaction.Builder(timestamp,
+                            "Insufficient funds").build();
                     user.addTransaction(t);
                     return;
                 }
         }
 
-        if (planType == 1 && newPlanType == 3) {
-            double amount = bank.convertCurrency(350, "RON",  account.getCurrency(), bank.prepareExchangeRates());
-            //System.out.println("Account currency " +account.getCurrency()  + " Account balance " + account.getBalance() + " converted amount " + amount);
+        if (planType == p1 && newPlanType == p3) {
+            final int magicNumber = 350;
+            double amount = bank.convertCurrency(magicNumber, "RON",
+                    account.getCurrency(), bank.prepareExchangeRates());
             if (account.getBalance() >= amount) {
                 account.withdraw(amount);
                 user.setPlan(newPlan);
@@ -140,13 +149,9 @@ public class UpgradePlanCommand implements Command{
                 return;
             }
             if (account.getBalance() < amount) {
-                System.out.println("NO MONEY SARACULE! 3    timestamp: " + timestamp);
                 Transaction t = new Transaction.Builder(timestamp, "Insufficient funds").build();
                 user.addTransaction(t);
-
-                return;
             }
         }
-
     }
 }

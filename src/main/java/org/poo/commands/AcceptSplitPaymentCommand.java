@@ -7,7 +7,7 @@ import org.poo.bank.User;
 
 import java.util.List;
 
-public class AcceptSplitPaymentCommand implements Command{
+public class AcceptSplitPaymentCommand implements Command {
     private Bank bank;
     private String email;
     private int timestamp;
@@ -21,6 +21,10 @@ public class AcceptSplitPaymentCommand implements Command{
         this.splitType = splitType;
     }
 
+    /**
+     * Accept a split payment.
+     */
+    @Override
     public void execute() {
         User user = bank.getUserHashMap().get(email);
         if (user == null) {
@@ -38,7 +42,8 @@ public class AcceptSplitPaymentCommand implements Command{
         for (SplitPayment payment : paymentList) {
             if (payment.getPaymentType().equals(splitType)) {
                 for (int i = 0; i < payment.getAccounts().length; i++) {
-                    if (payment.getAccounts()[i].getEmail().equals(email) && payment.getAccepted()[i].equals(false)) {
+                    if (payment.getAccounts()[i].getEmail().equals(email)
+                            && payment.getAccepted()[i].equals(false)) {
                         payment.getAccepted()[i] = true;
                         payment.paymentCheck();
                         return;

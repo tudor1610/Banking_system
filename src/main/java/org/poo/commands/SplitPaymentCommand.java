@@ -1,15 +1,11 @@
 package org.poo.commands;
 
-import org.poo.account.Account;
 import org.poo.bank.Bank;
 import org.poo.bank.SplitPayment;
-import org.poo.bank.User;
-import org.poo.fileio.ExchangeInput;
-import org.poo.transactions.Transaction;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+
 
 public class SplitPaymentCommand implements Command {
     private Bank bank;
@@ -22,8 +18,8 @@ public class SplitPaymentCommand implements Command {
 
 
     public SplitPaymentCommand(final Bank bank, final List<String> accounts, final int timestamp,
-                               final String currency, final double amount, final String splitPaymentType,
-                               final List<Double> amountForUser) {
+                               final String currency, final double amount,
+                               final String splitPaymentType, final List<Double> amountForUser) {
 
         this.bank = bank;
         this.accounts = accounts;
@@ -50,13 +46,12 @@ public class SplitPaymentCommand implements Command {
             for (int i = 0; i < accounts.size(); i++) {
                 amountForUser.add(amount / accounts.size());
             }
-            payment = new SplitPayment(bank, accounts, amountForUser, amount, currency, splitPaymentType,timestamp);
+            payment = new SplitPayment(bank, accounts, amountForUser, amount,
+                    currency, splitPaymentType, timestamp);
         } else {
-
-            payment = new SplitPayment(bank, accounts, amountForUser, amount, currency, splitPaymentType,timestamp);
+            payment = new SplitPayment(bank, accounts, amountForUser, amount,
+                    currency, splitPaymentType, timestamp);
         }
         bank.addWaitingPayment(payment);
-
     }
-
 }

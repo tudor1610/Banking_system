@@ -7,7 +7,36 @@ import lombok.Getter;
 import lombok.Setter;
 import org.poo.account.Account;
 import org.poo.card.Card;
-import org.poo.commands.*;
+import org.poo.commands.Command;
+import org.poo.commands.AcceptSplitPaymentCommand;
+import org.poo.commands.AddAccountCommand;
+import org.poo.commands.AddFundsCommand;
+import org.poo.commands.AddInterestCommand;
+import org.poo.commands.NewBusinessAssociateCommand;
+import org.poo.commands.BusinessReportCommand;
+import org.poo.commands.CashWithdrawalCommand;
+import org.poo.commands.ChangeDepositLimitCommand;
+import org.poo.commands.ChangeInterestCommand;
+import org.poo.commands.ChangeSpendingLimitCommand;
+import org.poo.commands.CheckCardStatusCommand;
+import org.poo.commands.CreateCardCommand;
+import org.poo.commands.CreateSingleCardCommand;
+import org.poo.commands.DeleteAccountCommand;
+import org.poo.commands.DeleteCardCommand;
+import org.poo.commands.PayOnlineCommand;
+import org.poo.commands.PrintTransactionsCommand;
+import org.poo.commands.PrintUsersCommand;
+import org.poo.commands.ReportCommand;
+import org.poo.commands.RejectSplitPaymentCommand;
+import org.poo.commands.SendMoneyCommand;
+import org.poo.commands.SetAliasCommand;
+import org.poo.commands.SetMinBalanceCommand;
+import org.poo.commands.SpendingsReportCommand;
+import org.poo.commands.SplitPaymentCommand;
+import org.poo.commands.UpgradePlanCommand;
+import org.poo.commands.WithdrawSavingsCommand;
+
+
 import org.poo.fileio.ExchangeInput;
 import org.poo.fileio.ObjectInput;
 import org.poo.fileio.CommandInput;
@@ -15,7 +44,10 @@ import org.poo.fileio.UserInput;
 import org.poo.fileio.CommerciantInput;
 import org.poo.transactions.Transaction;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Setter
 @Getter
@@ -139,7 +171,8 @@ public class Bank {
                             exchangeRates, command.getTimestamp()));
                     case SENDMONEY -> executeCommand(new SendMoneyCommand(this,
                             command.getAccount(), command.getReceiver(), command.getAmount(),
-                            exchangeRates, command.getDescription(),command.getEmail(), command.getTimestamp()));
+                            exchangeRates, command.getDescription(), command.getEmail(),
+                            command.getTimestamp()));
                     case SETALIAS -> executeCommand(new SetAliasCommand(this,
                             command.getAlias(), command.getAccount()));
                     case PRINTTRANSACTIONS -> executeCommand(new PrintTransactionsCommand(this,
@@ -148,7 +181,8 @@ public class Bank {
                             command.getCardNumber(), command.getTimestamp()));
                     case SPLITPAYMENT -> executeCommand(new SplitPaymentCommand(this,
                             command.getAccounts(), command.getTimestamp(), command.getCurrency(),
-                            command.getAmount(), command.getSplitPaymentType(), command.getAmountForUsers()));
+                            command.getAmount(), command.getSplitPaymentType(),
+                            command.getAmountForUsers()));
                     case REPORT -> executeCommand(new ReportCommand(this,
                             command.getStartTimestamp(), command.getEndTimestamp(),
                             command.getAccount(), command.getTimestamp()));
@@ -164,22 +198,30 @@ public class Bank {
                             command.getAccount(), command.getAmount(), command.getCurrency(),
                             command.getTimestamp()));
                     case UPGRADEPLAN -> executeCommand(new UpgradePlanCommand(this,
-                            command.getNewPlanType(), command.getAccount(), command.getTimestamp()));
+                            command.getNewPlanType(), command.getAccount(),
+                            command.getTimestamp()));
                     case CASHWITHDRAWAL -> executeCommand(new CashWithdrawalCommand(this,
                             command.getCardNumber(), command.getAmount(), command.getEmail(),
                             command.getLocation(), command.getTimestamp()));
                     case ACCEPTSPLITPAYMENT -> executeCommand(new AcceptSplitPaymentCommand(this,
-                            command.getEmail(), command.getTimestamp(), command.getSplitPaymentType()));
+                            command.getEmail(), command.getTimestamp(),
+                            command.getSplitPaymentType()));
                     case REJECTSPLITPAYMENT -> executeCommand(new RejectSplitPaymentCommand(this,
-                            command.getEmail(), command.getTimestamp(), command.getSplitPaymentType()));
-                    case ADDNEWBUSINESSASSOCIATE -> executeCommand(new NewBusinessAssociateCommand(this,
-                            command.getAccount(), command.getRole(), command.getEmail(), command.getTimestamp()));
-                    case CHANGESPENDLIMIT -> executeCommand(new ChangeSpendingLimitCommand(this, command.getEmail(),
-                            command.getAccount(), command.getAmount(), command.getTimestamp()));
-                    case CHANGEDOPOSITLIMIT -> executeCommand(new ChangeDepositLimitCommand(this, command.getAccount(),
+                            command.getEmail(), command.getTimestamp(),
+                            command.getSplitPaymentType()));
+                    case ADDNEWBUSINESSASSOCIATE -> executeCommand(
+                            new NewBusinessAssociateCommand(this, command.getAccount(),
+                                    command.getRole(), command.getEmail(), command.getTimestamp()));
+                    case CHANGESPENDLIMIT -> executeCommand(new ChangeSpendingLimitCommand(this,
+                            command.getEmail(), command.getAccount(), command.getAmount(),
+                            command.getTimestamp()));
+                    case CHANGEDOPOSITLIMIT -> executeCommand(new ChangeDepositLimitCommand(this,
+                            command.getAccount(),
                             command.getEmail(), command.getAmount(), command.getTimestamp()));
-                    case BUSINESSREPORT -> executeCommand(new BusinessReportCommand(this, command.getType(),
-                            command.getStartTimestamp(), command.getEndTimestamp(), command.getAccount(), command.getTimestamp()));
+                    case BUSINESSREPORT -> executeCommand(new BusinessReportCommand(this,
+                            command.getType(), command.getStartTimestamp(),
+                            command.getEndTimestamp(), command.getAccount(),
+                            command.getTimestamp()));
                     default -> System.out.println("Unrecognized command: " + command);
                 }
             } catch (IllegalArgumentException e) {
@@ -275,10 +317,18 @@ public class Bank {
         return command;
     }
 
+    /**
+     * Adds a payment to the list of waiting payments.
+     */
     public void addWaitingPayment(final SplitPayment payment) {
         waitingPayments.add(payment);
     }
 
+    /**
+     * Removes a payment from the list of waiting payments.
+     *
+     * @param payment the payment to remove
+     */
     public void removeWaitingPayment(final SplitPayment payment) {
         waitingPayments.remove(payment);
     }

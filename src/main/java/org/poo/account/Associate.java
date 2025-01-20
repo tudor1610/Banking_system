@@ -14,7 +14,7 @@ public class Associate {
     private Map<Integer, Double> spendings;
     private Map<Integer, Double> deposits;
 
-    public Associate(User user) {
+    public Associate(final User user) {
         this.firstName = user.getFirstName();
         this.lastName = user.getLastName();
         this.spendings = new HashMap<>();

@@ -5,7 +5,6 @@ import org.poo.bank.Bank;
 import org.poo.bank.User;
 import org.poo.fileio.CommerciantInput;
 
-import javax.sound.midi.Soundbank;
 import java.util.Map;
 import java.util.Random;
 
@@ -20,7 +19,6 @@ public final class Utils {
     private static final int DIGIT_GENERATION = 16;
     private static final String RO_STR = "RO";
     private static final String POO_STR = "POOB";
-
 
     private static Random ibanRandom = new Random(IBAN_SEED);
     private static Random cardRandom = new Random(CARD_SEED);
@@ -66,66 +64,92 @@ public final class Utils {
         cardRandom = new Random(CARD_SEED);
     }
 
-    public static Double comision(User user, double amount, Bank bank, String currency) {
-//        System.out.println("User plan " + user.getPlan());
-//        System.out.println("user ocupation " + user.getOccupation());
-        Double converted_amount = amount;
+    /**
+     * Method used for calculating the commission.
+     *
+     * @param user the user
+     * @param amount the amount
+     * @param bank the bank
+     * @param currency the currency
+     * @return the commission
+     */
+    public static Double comision(final User user, final double amount,
+                                  final Bank bank, final String currency) {
+        Double convertedAmount = amount;
         if (!currency.equals("RON")) {
-            converted_amount = bank.convertCurrency(amount,currency,
+            convertedAmount = bank.convertCurrency(amount, currency,
                     "RON", bank.prepareExchangeRates());
         }
-        if (user == null)
+        if (user == null) {
             return amount;
+        }
+
+        final double commission1 = 0.002;
+        final double commission2 = 0.001;
+        final int limit = 500;
         if ("student".equals(user.getPlan())) {
-           // System.out.println("ii iau comision student");
             return amount;
         } else if ("standard".equals(user.getPlan())) {
-            //System.out.println("ii iau comision standard");
-            return amount + 0.002 * amount;
+            return amount + commission1 * amount;
         } else if ("silver".equals(user.getPlan())) {
-           // System.out.println("ii iau comision silver");
-            if (converted_amount < 500) {
+            if (convertedAmount < limit) {
                 return amount;
             }
-            return amount + 0.001 * amount;
+            return amount + commission2 * amount;
         }
-        //System.out.println("ii iau comision gold");
         return amount;
-
     }
 
-    public static void addCashback(Bank bank, User user, Account account, double amount, CommerciantInput commerciant) {
+    /**
+     * Method used for adding cashback to an account.
+     *
+     * @param bank the bank
+     * @param user the user
+     * @param account the account
+     * @param amount the amount
+     * @param commerciant the commerciant
+     */
+    public static void addCashback(final Bank bank, final User user, final Account account,
+                                   final double amount, final CommerciantInput commerciant) {
 
+        final double cb1 = 0.02;
+        final double cb2 = 0.05;
+        final double cb3 = 0.1;
         switch (commerciant.getType()) {
             case "Food" -> {
                 if (account.isFood()) {
-                    account.deposit(0.02 * amount);
+                    account.deposit(cb1 * amount);
                     account.setFood(false);
                 }
             }
             case "Clothes" -> {
                 if (account.isClothes()) {
-                    account.deposit(0.05 * amount);
+                    account.deposit(cb2 * amount);
                     account.setClothes(false);
                 }
             }
             case "Tech" -> {
                 if (account.isTech()) {
-                    account.deposit(0.1 * amount);
+                    account.deposit(cb3 * amount);
                     account.setTech(false);
                 }
+            }
+            default -> {
             }
         }
 
         if (commerciant.getCashbackStrategy().equals("nrOfTransactions")) {
             account.addNrOfTransaction(commerciant.getCommerciant());
-            if (account.getNrOfTransactions().get(commerciant.getCommerciant()) == 2) {
+            final int limit1 = 2;
+            final int limit2 = 5;
+            final int limit3 = 10;
+            if (account.getNrOfTransactions().get(commerciant.getCommerciant()) == limit1) {
                 account.setFood(true);
             }
-            if (account.getNrOfTransactions().get(commerciant.getCommerciant()) == 5) {
+            if (account.getNrOfTransactions().get(commerciant.getCommerciant()) == limit2) {
                 account.setClothes(true);
             }
-            if (account.getNrOfTransactions().get(commerciant.getCommerciant()) == 10) {
+            if (account.getNrOfTransactions().get(commerciant.getCommerciant()) == limit3) {
                 account.setTech(true);
             }
         }
@@ -133,39 +157,51 @@ public final class Utils {
 
        if (commerciant.getCashbackStrategy().equals("spendingThreshold")) {
            Double spent = user.getCommercialTransactions().entrySet().stream()
-                   .filter(entry -> "spendingThreshold".equals(bank.getCommerciants().get(entry.getKey()).getCashbackStrategy()))
+                   .filter(entry -> "spendingThreshold"
+                           .equals(bank.getCommerciants()
+                                   .get(entry.getKey()).getCashbackStrategy()))
                    .mapToDouble(Map.Entry::getValue)
                    .sum();
-           System.out.println("spent " + spent);
-           if (spent >= 500) {
+            final int limit1 = 100;
+            final int limit2 = 300;
+            final int limit3 = 500;
+           if (spent >= limit3) {
+                final double cashback1 = 0.0025;
+                final double cashback2 = 0.005;
+                final double cashback3 = 0.007;
+               switch (user.getPlan()) {
+                   case "student" -> account.deposit(cashback1 * amount);
+                   case "standard" -> account.deposit(cashback1 * amount);
+                   case "silver" -> account.deposit(cashback2 * amount);
+                   case "gold" -> account.deposit(cashback3 * amount);
+                   default -> {
+                   }
+               }
+           } else if (spent >= limit2) {
+                final double cashback1 = 0.002;
+                final double cashback2 = 0.004;
+                final double cashback3 = 0.0055;
                if (user.getPlan().equals("student")) {
-                   account.deposit(0.0025 * amount);
-               } else if ( user.getPlan().equals("standard")) {
-                   account.deposit(0.0025 * amount);
-               } else if (user.getPlan().equals("silver")) {
-                   account.deposit(0.005 * amount);
-               } else if (user.getPlan().equals("gold")) {
-                   account.deposit(0.007 * amount);
-               }
-           } else if (spent >= 300) {
-               if (user.getPlan().equals("student")){
-                   account.deposit(0.002 * amount);
+                   account.deposit(cashback1 * amount);
                } else if ("standard".equals(user.getPlan())) {
-                   account.deposit(0.002 * amount);
+                   account.deposit(cashback1 * amount);
                } else if ("silver".equals(user.getPlan())) {
-                   account.deposit(0.004 * amount);
+                   account.deposit(cashback2 * amount);
                } else if ("gold".equals(user.getPlan())) {
-                   account.deposit(0.0055 * amount);
+                   account.deposit(cashback3 * amount);
                }
-           } else if (spent >= 100) {
-               if (user.getPlan().equals("student")){
-                   account.deposit(0.001 * amount);
+           } else if (spent >= limit1) {
+                final double cashback1 = 0.001;
+                final double cashback2 = 0.003;
+                final double cashback3 = 0.005;
+               if (user.getPlan().equals("student")) {
+                   account.deposit(cashback1 * amount);
                } else if ("standard".equals(user.getPlan())) {
-                   account.deposit(0.001 * amount);
+                   account.deposit(cashback1 * amount);
                } else if ("silver".equals(user.getPlan())) {
-                   account.deposit(0.003 * amount);
+                   account.deposit(cashback2 * amount);
                } else if ("gold".equals(user.getPlan())) {
-                   account.deposit(0.005 * amount);
+                   account.deposit(cashback3 * amount);
                }
            }
        }

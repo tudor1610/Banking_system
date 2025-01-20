@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import lombok.Getter;
 
-import java.util.ArrayList;
 import java.util.List;
 /**
  * Represents a transaction with various types (transfer, split bill, payment, or card transaction).
@@ -102,7 +101,9 @@ public final class Transaction {
      */
     private void printSplitBill(final ObjectNode output) {
         output.put("timestamp", timestamp);
-        if (totalBill * 100 % 10 == 0) {
+        final int magic1 = 100;
+        final int magic2 = 10;
+        if (totalBill * magic1 % magic2 == 0) {
             output.put("description", description + totalBill + "0 " + currency);
         } else {
             output.put("description", description + totalBill + " " + currency);
@@ -214,7 +215,7 @@ public final class Transaction {
         private String currency;
         private String transferType;
         private List<String> accountsInvolved;
-        public List<Double> amountForUsers;
+        private List<Double> amountForUsers;
         private Double totalBill;
         private String error;
         private String commerciant;
@@ -372,30 +373,67 @@ public final class Transaction {
             return this;
         }
 
+        /**
+         * Sets the new plan type for the transaction.
+         *
+         * @param setNewPlanType the new plan type
+         * @return the current Builder instance for method chaining
+         */
         public Builder newPlanType(final String setNewPlanType) {
             newPlanType = setNewPlanType;
             return this;
         }
 
+        /**
+         * Sets the withdrawal amount for the transaction.
+         *
+         * @param setWithdrawalAmount the withdrawal amount
+         * @return the current Builder instance for method chaining
+         */
         public Builder withdrawalAmount(final double setWithdrawalAmount) {
             withdrawalAmount = setWithdrawalAmount;
             return this;
         }
 
+        /**
+         * Sets the amount for each user involved in a split bill transaction.
+         *
+         * @param setAmountForUsers the list of amounts for each user
+         * @return the current Builder instance for method chaining
+         */
         public Builder amountForUsers(final List<Double> setAmountForUsers) {
             amountForUsers = setAmountForUsers;
             return this;
         }
+
+        /**
+         * Sets the type of split payment for the transaction.
+         *
+         * @param setSplitPaymentType the type of split payment
+         * @return the current Builder instance for method chaining
+         */
         public Builder splitPaymentType(final String setSplitPaymentType) {
             splitPaymentType = setSplitPaymentType;
             return this;
         }
 
+        /**
+         * Sets the IBAN of the classic account involved in the transaction.
+         *
+         * @param setClassicAccountIBAN the IBAN of the classic account
+         * @return the current Builder instance for method chaining
+         */
         public Builder classicAccountIBAN(final String setClassicAccountIBAN) {
             classicAccountIBAN = setClassicAccountIBAN;
             return this;
         }
 
+        /**
+         * Sets the IBAN of the savings account involved in the transaction.
+         *
+         * @param setSavingsAccountIBAN the IBAN of the savings account
+         * @return the current Builder instance for method chaining
+         */
         public Builder savingsAccountIBAN(final String setSavingsAccountIBAN) {
             savingsAccountIBAN = setSavingsAccountIBAN;
             return this;

@@ -4,8 +4,6 @@ import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
 
 @Getter
 public class CommerciantSpendings {
@@ -21,6 +19,12 @@ public class CommerciantSpendings {
         employees = new ArrayList<>();
     }
 
+    /**
+     * Adds an entry to the commerciant spendings
+     * @param username the username of the user
+     * @param amount the amount of the entry
+     * @param isManager true if the user is a manager, false otherwise
+     */
     public void addEntry(final String  username, final double amount, final boolean isManager) {
         totalReceived += amount;
         if (isManager) {

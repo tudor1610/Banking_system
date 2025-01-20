@@ -4,23 +4,28 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.poo.account.Account;
 import org.poo.bank.Bank;
 
-public class ChangeSpendingLimitCommand implements Command{
+public class ChangeSpendingLimitCommand implements Command {
     private Bank bank;
     private String email;
-    private String IBAN;
+    private String iban;
     private double newLimit;
     private int timestamp;
 
-    public ChangeSpendingLimitCommand(final Bank bank, final String email, final String IBAN, final double newLimit, final int timestamp) {
+    public ChangeSpendingLimitCommand(final Bank bank, final String email, final String iban,
+                                      final double newLimit, final int timestamp) {
         this.bank = bank;
         this.email = email;
-        this.IBAN = IBAN;
+        this.iban = iban;
         this.newLimit = newLimit;
         this.timestamp = timestamp;
     }
 
+    /**
+     * Change the spending limit of a business account.
+     */
+    @Override
     public void execute() {
-        Account account = bank.getAccountHashMap().get(IBAN);
+        Account account = bank.getAccountHashMap().get(iban);
         if (account.isBusiness()) {
             if (account.getOwner().equals(email)) {
                 account.setSpendingLimit(newLimit);

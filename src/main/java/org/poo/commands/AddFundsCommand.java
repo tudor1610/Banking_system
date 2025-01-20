@@ -10,7 +10,8 @@ public class AddFundsCommand implements Command {
     private double amount;
     private int timestamp;
 
-    public AddFundsCommand(final Bank bank, final String iban, final double amount, final int timestamp, final String email) {
+    public AddFundsCommand(final Bank bank, final String iban, final double amount,
+                           final int timestamp, final String email) {
         this.bank = bank;
         this.iban = iban;
         this.amount = amount;
@@ -25,15 +26,13 @@ public class AddFundsCommand implements Command {
     @Override
     public void execute() {
         Account account = bank.getAccountHashMap().get(iban);
-        if(!account.getEmail().equals(email) && !account.isBusiness()) {
+        if (!account.getEmail().equals(email) && !account.isBusiness()) {
             return;
         }
-        if (account != null) {
-            if (account.isBusiness()) {
-                account.deposit(amount, email, timestamp);
-                return;
-            }
-            account.deposit(amount);
+        if (account.isBusiness()) {
+            account.deposit(amount, email, timestamp);
+            return;
         }
+        account.deposit(amount);
     }
 }

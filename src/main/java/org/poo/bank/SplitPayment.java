@@ -5,7 +5,6 @@ import org.poo.account.Account;
 import org.poo.transactions.Transaction;
 import org.poo.utils.Utils;
 
-import javax.sound.midi.Soundbank;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,7 +19,9 @@ public class SplitPayment {
     private String paymentType;
     private int timestamp;
 
-    public SplitPayment(Bank bank, List<String> accounts, List<Double> amounts, double totalAmount, String currency, String paymentType, int timestamp) {
+    public SplitPayment(final Bank bank, final List<String> accounts, final List<Double> amounts,
+                        final double totalAmount, final String currency, final String paymentType,
+                        final int timestamp) {
         this.bank = bank;
         this.accounts = new Account[accounts.size()];
         for (String a : accounts) {
@@ -40,6 +41,10 @@ public class SplitPayment {
         }
     }
 
+    /**
+     * Accept the payment.
+     * @param email the email of the user that accepted the payment
+     */
     public void paymentCheck() {
         for (int i = 0; i < accounts.length; i++) {
             if (!accepted[i]) {
@@ -49,6 +54,10 @@ public class SplitPayment {
         processPayment();
     }
 
+    /**
+     * Cancel the payment.
+     * @param lowBalanceAccount the account with insufficient funds
+     */
     private void cancelPayment(final String lowBalanceAccount) {
         for (int i = 0; i < accounts.length; i++) {
             User user = bank.getUserHashMap().get(accounts[i].getEmail());
@@ -67,6 +76,9 @@ public class SplitPayment {
         bank.removeWaitingPayment(this);
     }
 
+    /**
+     * Reject the payment.
+     */
     public void rejectedPayment() {
         for (int i = 0; i < accounts.length; i++) {
             User user = bank.getUserHashMap().get(accounts[i].getEmail());
@@ -84,6 +96,9 @@ public class SplitPayment {
         bank.removeWaitingPayment(this);
     }
 
+    /**
+     * Process the payment.
+     */
     private void processPayment() {
 
         for (int i = 0; i < accounts.length; i++) {
@@ -91,7 +106,8 @@ public class SplitPayment {
             double convertedAmount = bank.convertCurrency(amount, currency,
                     accounts[i].getCurrency(), bank.prepareExchangeRates());
             double amountAfterCommission = Utils.comision(bank.getUserHashMap()
-                    .get(accounts[i].getEmail()), convertedAmount, bank, accounts[i].getCurrency());
+                    .get(accounts[i].getEmail()), convertedAmount, bank,
+                    accounts[i].getCurrency());
             if (accounts[i].getBalance() < amountAfterCommission) {
                 // cannot make payment; cancel all payments
                 cancelPayment(accounts[i].getIban());
@@ -99,14 +115,14 @@ public class SplitPayment {
             }
         }
 
-        // Pot aparea erori; fii atent aici
         for (int i = 0; i < accounts.length; i++) {
             double amount = amounts[i];
             double convertedAmount = bank.convertCurrency(amount, currency,
                     accounts[i].getCurrency(), bank.prepareExchangeRates());
             accounts[i].accountPayment(bank.getUserHashMap().get(accounts[i].getEmail()),
                     currency, totalAmount, timestamp, amount, Arrays.stream(amounts).toList(),
-                    Arrays.stream(accounts).map(Account::getIban).toList(), convertedAmount, paymentType);
+                    Arrays.stream(accounts).map(Account::getIban).toList(),
+                    convertedAmount, paymentType);
         }
         bank.removeWaitingPayment(this);
     }

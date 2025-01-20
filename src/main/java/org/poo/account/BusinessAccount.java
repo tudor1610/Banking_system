@@ -5,7 +5,6 @@ import lombok.Setter;
 import org.poo.bank.Bank;
 import org.poo.bank.User;
 
-import javax.sound.midi.Soundbank;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -82,7 +81,8 @@ public class BusinessAccount extends Account {
      * @param amount the amount to be added
      * @param user the user that adds the spendings
      */
-    public void addCommerciantSpendings(final String commerciant, final double amount, final User user) {
+    public void addCommerciantSpendings(final String commerciant,
+                                        final double amount, final User user) {
         if (isOwner(user)) {
             return;
         }
@@ -130,7 +130,6 @@ public class BusinessAccount extends Account {
                 associate.addDeposits(timestamp, amount);
                 totalDeposited += amount;
                 super.deposit(amount);
-                System.out.println("BALANCE1: " + getBalance());
                 return;
             }
         }
@@ -138,19 +137,14 @@ public class BusinessAccount extends Account {
         for (Associate associate : employees) {
             if (associate.getEmail().equals(email)) {
                 if (amount > depositLimit) {
-                    System.out.println("Error: You are not allowed to deposit more than " + depositLimit + " into this account.");
                     return;
                 }
                 associate.addDeposits(timestamp, amount);
                 totalDeposited += amount;
                 super.deposit(amount);
-                System.out.println("BALANCE: " + getBalance());
                 return;
             }
         }
-
-            System.out.println("Error: You are not allowed to deposit money into this account.");
-
     }
 
     /**
@@ -186,7 +180,6 @@ public class BusinessAccount extends Account {
                 return;
             }
         }
-            System.out.println("Error: You are not allowed to withdraw money from this account.");
     }
 
     /**

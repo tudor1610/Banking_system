@@ -27,12 +27,22 @@ public class WithdrawSavingsCommand implements Command {
         this.timestamp = timestamp;
     }
 
-    public static boolean isOlderThan21(String birthDateString) {
+    /**
+     * Check if a user is older than 21 years old.
+     * @param birthDateString the birth date of the user
+     * @return true if the user is older than 21 years old, false otherwise
+     */
+    public static boolean isOlderThan21(final String birthDateString) {
         LocalDate birthDate = LocalDate.parse(birthDateString, DateTimeFormatter.ISO_DATE);
         LocalDate today = LocalDate.now();
-        return ChronoUnit.YEARS.between(birthDate, today) >= 21;
+        final int legalDrinkingAgeInTheUS = 21;
+        return ChronoUnit.YEARS.between(birthDate, today) >= legalDrinkingAgeInTheUS;
     }
 
+    /**
+     * Withdraw money from a savings account, if an classic account exists.
+     */
+    @Override
     public void execute() {
         Account account = bank.getAccountHashMap().get(iban);
         User user = bank.getUserHashMap().get(account.getEmail());
@@ -71,18 +81,12 @@ public class WithdrawSavingsCommand implements Command {
                 }
             }
             if (!hasClassicAccount) {
-                //error: "You don't have a classic account in the same currency."
                 Transaction t = new Transaction
                         .Builder(timestamp, "You do not have a classic account.").build();
                 user.addTransaction(t);
                 account.accountAddTransaction(t);
-                return;
             }
-
         } else {
-            //error: "You don't have the minimum age required."
-//            System.out.println("NUUUUUUUUUUUUUUUUUU sefule!!!! timestamp: " + timestamp);
-
             Transaction t = new Transaction
                     .Builder(timestamp, "You don't have the minimum age required.").build();
             user.addTransaction(t);

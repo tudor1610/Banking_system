@@ -26,9 +26,6 @@ public class AddInterestCommand implements Command {
         if (account.getAccountType().equals("savings")) {
             double balance = account.getBalance();
             account.addInterest();
-            System.out.println("account balance before interest: " + balance);
-            System.out.println("account balance after interest: " + account.getBalance());
-            System.out.println("interest: " + (account.getBalance() - balance));
             Transaction t = new Transaction.Builder(timestamp, "Interest rate income")
                     .currency(account.getCurrency())
                     .amount(balance * account.getInterestRate())

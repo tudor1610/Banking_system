@@ -9,7 +9,7 @@ import org.poo.card.Card;
 import org.poo.transactions.Transaction;
 import org.poo.utils.Utils;
 
-public class CashWithdrawalCommand implements Command{
+public class CashWithdrawalCommand implements Command {
     private Bank bank;
     private String cardNumber;
     private double amount;
@@ -17,7 +17,8 @@ public class CashWithdrawalCommand implements Command{
     private String location;
     private int timestamp;
 
-    public CashWithdrawalCommand(final Bank bank, final String cardNumber, final double amount, final String email, final String location, final int timestamp) {
+    public CashWithdrawalCommand(final Bank bank, final String cardNumber, final double amount,
+                                 final String email, final String location, final int timestamp) {
         this.bank = bank;
         this.cardNumber = cardNumber;
         this.amount = amount;
@@ -26,6 +27,10 @@ public class CashWithdrawalCommand implements Command{
         this.timestamp = timestamp;
     }
 
+    /**
+     * Withdraws cash from the specified account.
+     */
+    @Override
     public void execute() {
         if (bank.getUserHashMap().get(email) == null) {
             ObjectNode command = bank.getObjectMapper().createObjectNode();
@@ -38,7 +43,6 @@ public class CashWithdrawalCommand implements Command{
             bank.getOutput().add(command);
             return;
         }
-        //System.out.println("Executing cash withdrawal command timestamp: " + timestamp);
         if (bank.getCardHashMap().get(cardNumber) == null) {
             ObjectNode command = bank.getObjectMapper().createObjectNode();
             command.put("command", "cashWithdrawal");
@@ -50,7 +54,8 @@ public class CashWithdrawalCommand implements Command{
             bank.getOutput().add(command);
             return;
         }
-        Account account = bank.getAccountHashMap().get(bank.getCardHashMap().get(cardNumber).getAccountIban());
+        Account account = bank.getAccountHashMap().get(bank.getCardHashMap()
+                .get(cardNumber).getAccountIban());
         User user = null;
         if (account.isBusiness()) {
             if (account.getOwner().equals(email)) {
@@ -93,15 +98,16 @@ public class CashWithdrawalCommand implements Command{
             bank.getOutput().add(command);
             return;
         }
-        double convertedAmount = bank.convertCurrency(amount, "RON", account.getCurrency(), bank.prepareExchangeRates());
+        double convertedAmount = bank.convertCurrency(amount, "RON",
+                account.getCurrency(), bank.prepareExchangeRates());
         double oldAmount = convertedAmount;
-        convertedAmount = Utils.comision(bank.getUserHashMap().get(email), convertedAmount, bank, account.getCurrency());
+        convertedAmount = Utils.comision(bank.getUserHashMap().get(email),
+                convertedAmount, bank, account.getCurrency());
         if (account.getBalance() >= convertedAmount) {
             if (account.isBusiness()) {
-                account.withdraw(convertedAmount, account.getOwner(), timestamp, oldAmount );
+                account.withdraw(convertedAmount, account.getOwner(), timestamp, oldAmount);
             } else {
                 account.withdraw(convertedAmount);
-//            System.out.println("amount: " + amount + " convertedAmount: " + convertedAmount);
                 Transaction t = new Transaction.Builder(timestamp, "Cash withdrawal of " + amount)
                         .withdrawalAmount(amount).build();
                 bank.getUserHashMap().get(email).addTransaction(t);

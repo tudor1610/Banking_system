@@ -4,13 +4,11 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.poo.account.Account;
 import org.poo.bank.Bank;
 import org.poo.bank.User;
-import org.poo.fileio.CommandInput;
 import org.poo.fileio.CommerciantInput;
 import org.poo.fileio.ExchangeInput;
 import org.poo.transactions.Transaction;
 import org.poo.utils.Utils;
 
-import javax.sound.midi.Soundbank;
 import java.util.Map;
 
 public class SendMoneyCommand implements Command {
@@ -91,8 +89,7 @@ public class SendMoneyCommand implements Command {
     @Override
     public void execute() {
         if (bank.getUserHashMap().get(email) == null) {
-            System.out.println("timestamp: " + timestamp + " user not found " + email);
-            UserNotFound();
+            userNotFound();
             return;
         }
         Account sender = bank.getAccountHashMap().get(account1);
@@ -106,13 +103,13 @@ public class SendMoneyCommand implements Command {
         if (receiver != null) {
             double oldAmount = amount;
             if (sender.isBusiness()) {
-                amount = Utils.comision(bank.getUserHashMap().get(sender.getOwner()), amount, bank, sender.getCurrency());
+                amount = Utils.comision(bank.getUserHashMap().get(sender.getOwner()),
+                        amount, bank, sender.getCurrency());
             } else {
-                amount = Utils.comision(bank.getUserHashMap().get(sender.getEmail()), amount, bank, sender.getCurrency());
+                amount = Utils.comision(bank.getUserHashMap().get(sender.getEmail()),
+                        amount, bank, sender.getCurrency());
             }
             if (sender.getCurrency().equals(receiver.getCurrency())) {
-//                System.out.println("conturile sunt in aceeasi moneda");
-//                System.out.println("sender balance: " + sender.getBalance());
                 if (sender.getBalance() >= amount) {
                     if (sender.isBusiness()) {
                         double originalBalance = sender.getBalance();
@@ -142,9 +139,6 @@ public class SendMoneyCommand implements Command {
                 Map<String, Map<String, Double>> exchangeRates = bank.prepareExchangeRates();
                 Double convertedAmount = bank.convertCurrency(oldAmount, sender.getCurrency(),
                         receiver.getCurrency(), exchangeRates);
-//                System.out.println("sender currency: " + sender.getCurrency() + " receiver currency: " + receiver.getCurrency());
-//                System.out.println("sender balance: " + sender.getBalance());
-//                System.out.println("converted amount: " + convertedAmount);
                 if (convertedAmount != null && sender.getBalance() >= amount) {
                     sender.withdraw(amount);
                     receiver.deposit(convertedAmount);
@@ -159,49 +153,54 @@ public class SendMoneyCommand implements Command {
                 }
             }
         } else {
-            System.out.println("Trimite spre comerciant");
             double oldAmount = amount;
             if (sender.isBusiness()) {
-                amount = Utils.comision(bank.getUserHashMap().get(sender.getOwner()), amount, bank, sender.getCurrency());
+                amount = Utils.comision(bank.getUserHashMap().get(sender.getOwner()),
+                        amount, bank, sender.getCurrency());
             } else {
-                amount = Utils.comision(bank.getUserHashMap().get(sender.getEmail()), amount, bank, sender.getCurrency());
+                amount = Utils.comision(bank.getUserHashMap().get(sender.getEmail()),
+                        amount, bank, sender.getCurrency());
             }
             if (sender.getBalance() >= amount) {
                 if (sender.isBusiness()) {
                     String commerciant = null;
-                    for (Map.Entry<String, CommerciantInput> entry : bank.getCommerciants().entrySet()) {
+                    for (Map.Entry<String, CommerciantInput> entry : bank
+                            .getCommerciants().entrySet()) {
                         if (entry.getValue().getAccount().equals(account2)) {
                             commerciant = entry.getValue().getCommerciant();
                         }
                     }
                     if (commerciant == null) {
-                        UserNotFound();
+                        userNotFound();
                         return;
                     }
                     sender.withdraw(amount, sender.getOwner(), timestamp, oldAmount);
-                    sender.addCommerciantSpendings(commerciant, oldAmount, bank.getUserHashMap().get(email));
+                    sender.addCommerciantSpendings(commerciant, oldAmount,
+                            bank.getUserHashMap().get(email));
                     sender.countTransactions(oldAmount, timestamp, email);
                 } else {
                     sender.withdraw(amount);
                 }
-                for (Map.Entry<String, CommerciantInput> entry : bank.getCommerciants().entrySet()) {
+                for (Map.Entry<String, CommerciantInput> entry : bank
+                        .getCommerciants().entrySet()) {
                     if (entry.getValue().getAccount().equals(account2)) {
-                        System.out.println("comerciantul " + entry.getValue().getCommerciant());
-                        bank.getUserHashMap().get(sender.getEmail()).addCommercialTransaction(bank, entry.getValue().getCommerciant(), oldAmount, sender.getCurrency(), timestamp, sender);
-                        Utils.addCashback(bank, bank.getUserHashMap().get(sender.getEmail()), sender, oldAmount, entry.getValue());
+                        bank.getUserHashMap().get(sender.getEmail()).addCommercialTransaction(bank,
+                                entry.getValue().getCommerciant(), oldAmount, sender.getCurrency(),
+                                timestamp, sender);
+                        Utils.addCashback(bank, bank.getUserHashMap().get(sender.getEmail()),
+                                sender, oldAmount, entry.getValue());
                         sendMoneyTransaction2(sender, account2, oldAmount, oldAmount);
                         sender.countTransactions(oldAmount, timestamp, email);
                         return;
                     }
                 }
-                UserNotFound();
+                userNotFound();
                 sender.deposit(amount);
             }
-
         }
     }
 
-    private void UserNotFound() {
+    private void userNotFound() {
         ObjectNode command = bank.getObjectMapper().createObjectNode();
         command.put("command", "sendMoney");
         ObjectNode status = bank.getObjectMapper().createObjectNode();

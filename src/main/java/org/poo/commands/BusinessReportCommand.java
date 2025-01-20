@@ -9,34 +9,32 @@ import org.poo.bank.Bank;
 
 import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-
 
 public class BusinessReportCommand implements Command {
     private Bank bank;
     private String type;
     private int startTimestamp;
     private int endTimestamp;
-    private String IBAN;
+    private String iban;
     private int timestamp;
 
-    public BusinessReportCommand(Bank bank, String type, int startTimestamp, int endTimestamp, String IBAN, int timestamp) {
+    public BusinessReportCommand(final Bank bank, final String type, final int startTimestamp,
+                                 final int endTimestamp, final String iban, final int timestamp) {
         this.bank = bank;
         this.type = type;
         this.startTimestamp = startTimestamp;
         this.endTimestamp = endTimestamp;
-        this.IBAN = IBAN;
+        this.iban = iban;
         this.timestamp = timestamp;
     }
 
-    private void TransactionReport() {
-        Account account = bank.getAccountHashMap().get(IBAN);
+    private void transactionReport() {
+        Account account = bank.getAccountHashMap().get(iban);
         ObjectNode command = bank.getObjectMapper().createObjectNode();
         command.put("command", "businessReport");
         command.put("timestamp", timestamp);
         ObjectNode status = bank.getObjectMapper().createObjectNode();
-        status.put("IBAN", IBAN);
+        status.put("IBAN", iban);
         status.put("balance", account.getBalance());
         status.put("currency", account.getCurrency());
         status.put("spending limit", account.getSpendingLimit());
@@ -49,7 +47,8 @@ public class BusinessReportCommand implements Command {
             ObjectNode manager = bank.getObjectMapper().createObjectNode();
                 manager.put("username", associate.getLastName() + " " + associate.getFirstName());
                 manager.put("spent", associate.calculateTotalSpent(startTimestamp, endTimestamp));
-                manager.put("deposited", associate.calculateTotalDeposit(startTimestamp, endTimestamp));
+                manager.put("deposited",
+                        associate.calculateTotalDeposit(startTimestamp, endTimestamp));
                 managersArray.add(manager);
 
         }
@@ -59,7 +58,8 @@ public class BusinessReportCommand implements Command {
             ObjectNode employee = bank.getObjectMapper().createObjectNode();
                 employee.put("username", associate.getLastName() + " " + associate.getFirstName());
                 employee.put("spent", associate.calculateTotalSpent(startTimestamp, endTimestamp));
-                employee.put("deposited", associate.calculateTotalDeposit(startTimestamp, endTimestamp));
+                employee.put("deposited",
+                        associate.calculateTotalDeposit(startTimestamp, endTimestamp));
                 employeesArray.add(employee);
         }
         status.set("employees", employeesArray);
@@ -67,13 +67,16 @@ public class BusinessReportCommand implements Command {
         bank.getOutput().add(command);
     }
 
-    private void CommerciantReport() {
-        Account account = bank.getAccountHashMap().get(IBAN);
+    /**
+     * Create the commerciant report.
+     */
+    private void commerciantReport() {
+        Account account = bank.getAccountHashMap().get(iban);
         ObjectNode command = bank.getObjectMapper().createObjectNode();
         command.put("command", "businessReport");
         command.put("timestamp", timestamp);
         ObjectNode status = bank.getObjectMapper().createObjectNode();
-        status.put("IBAN", IBAN);
+        status.put("IBAN", iban);
         status.put("balance", account.getBalance());
         status.put("currency", account.getCurrency());
         status.put("spending limit", account.getSpendingLimit());
@@ -90,12 +93,14 @@ public class BusinessReportCommand implements Command {
             commerciant.put("commerciant", com.getCommerciant());
             commerciant.put("total received", com.getTotalReceived());
             ArrayNode managersArray = bank.getObjectMapper().createArrayNode();
-            for (String manager : com.getManagers().stream().sorted(Comparator.comparing(String::toString)).toList()) {
+            for (String manager : com.getManagers().stream()
+                    .sorted(Comparator.comparing(String::toString)).toList()) {
                 managersArray.add(manager);
             }
             commerciant.set("managers", managersArray);
             ArrayNode employeesArray = bank.getObjectMapper().createArrayNode();
-            for (String employee : com.getEmployees().stream().sorted(Comparator.comparing(String::toString)).toList()) {
+            for (String employee : com.getEmployees().stream()
+                    .sorted(Comparator.comparing(String::toString)).toList()) {
                 employeesArray.add(employee);
             }
             commerciant.set("employees", employeesArray);
@@ -108,15 +113,19 @@ public class BusinessReportCommand implements Command {
 
 
 
-
+    /**
+     * Execute the command.
+     */
     @Override
     public void execute() {
         switch (type) {
             case "transaction" :
-                TransactionReport();
+                transactionReport();
                 break;
             case "commerciant":
-                CommerciantReport();
+                commerciantReport();
+                break;
+            default:
                 break;
         }
     }

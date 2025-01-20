@@ -10,7 +10,6 @@ import org.poo.fileio.ExchangeInput;
 import org.poo.transactions.Transaction;
 import org.poo.utils.Utils;
 
-import java.sql.SQLOutput;
 import java.util.Map;
 
 public class PayOnlineCommand implements Command {
@@ -97,7 +96,6 @@ public class PayOnlineCommand implements Command {
             return;
         }
 
-
         if (card.getStatus().equals("frozen")) {
             Transaction t = new Transaction.Builder(timestamp, "The card is frozen").build();
             user.addTransaction(t);
@@ -105,17 +103,15 @@ public class PayOnlineCommand implements Command {
             return;
         }
 
-        if (account.getIban().equals("RO53POOB7122855990652257")) {
-            System.out.println("PAYONLINE timestamp : " + timestamp + "      " + account.getBalance());
-            System.out.println("PLAN  " + user.getPlan());
-        }
-
-        if (account.getCurrency().equals(currency) && Utils.comision(user, amount, bank, account.getCurrency()) <= account.getBalance() && amount !=0) {
+        if (account.getCurrency().equals(currency) && Utils.comision(user, amount, bank,
+                account.getCurrency()) <= account.getBalance() && amount != 0) {
             if (account.isBusiness()) {
                 double oldAmount = amount;
                 double originalBalance = account.getBalance();
-                amount = Utils.comision(bank.getUserHashMap().get(account.getOwner()), amount, bank, account.getCurrency());
-                bank.getUserHashMap().get(account.getOwner()).addCommercialTransaction(bank, commerciant, oldAmount, account.getCurrency(), timestamp, account);
+                amount = Utils.comision(bank.getUserHashMap().get(account.getOwner()), amount,
+                        bank, account.getCurrency());
+                bank.getUserHashMap().get(account.getOwner()).addCommercialTransaction(bank,
+                        commerciant, oldAmount, account.getCurrency(), timestamp, account);
                 double oldBalance = account.getBalance();
                 account.withdraw(amount, email, timestamp, oldAmount);
                 double newBalance = account.getBalance();
@@ -123,9 +119,10 @@ public class PayOnlineCommand implements Command {
                     account.setBalance(originalBalance);
                     return;
                 }
-                account.addCommerciantSpendings(commerciant, oldAmount,user);
+                account.addCommerciantSpendings(commerciant, oldAmount, user);
                 account.countTransactions(oldAmount, timestamp, email);
-                Utils.addCashback(bank, bank.getUserHashMap().get(account.getOwner()), account, oldAmount, bank.getCommerciants().get(commerciant));
+                Utils.addCashback(bank, bank.getUserHashMap().get(account.getOwner()), account,
+                        oldAmount, bank.getCommerciants().get(commerciant));
             } else  {
                 double oldAmount = amount;
                 double originalBalance = account.getBalance();
@@ -137,8 +134,10 @@ public class PayOnlineCommand implements Command {
                     account.setBalance(originalBalance);
                     return;
                 }
-                user.addCommercialTransaction(bank, commerciant, oldAmount, account.getCurrency(), timestamp, account);
-                Utils.addCashback(bank, user, account, oldAmount, bank.getCommerciants().get(commerciant));
+                user.addCommercialTransaction(bank, commerciant, oldAmount,
+                        account.getCurrency(), timestamp, account);
+                Utils.addCashback(bank, user, account, oldAmount, bank.getCommerciants()
+                        .get(commerciant));
                 Transaction t = new Transaction.Builder(timestamp, "Card payment")
                         .commerciant(commerciant)
                         .amount(oldAmount)
@@ -147,42 +146,24 @@ public class PayOnlineCommand implements Command {
                 account.accountAddTransaction(t);
                 account.countTransactions(oldAmount, timestamp, email);
             }
-            if (card.isOneTime()) {
-                bank.getCardHashMap().remove(cardNumber);
-                Transaction t1 = new Transaction.Builder(timestamp, "The card has been destroyed")
-                        .accountNumber(account.getIban())
-                        .cardNumber(cardNumber)
-                        .cardHolder(account.getEmail())
-                        .build();
-                user.addTransaction(t1);
-                for (Card c : account.getCards()) {
-                    if (c.getCardNumber().equals(cardNumber)) {
-                        c.setCardNumber(c.regenerateCardNumber());
-                        bank.getCardHashMap().put(c.getCardNumber(), c);
-                        Transaction t2 = new Transaction.Builder(timestamp, "New card created")
-                                .accountNumber(account.getIban())
-                                .cardNumber(c.getCardNumber())
-                                .cardHolder(account.getEmail())
-                                .build();
-                        user.addTransaction(t2);
-                        break;
-                    }
-                }
-            }
-        } else  if (amount != 0){
+            oneTimeCardUpdate(card, account, user);
+        } else if (amount != 0) {
             Map<String, Map<String, Double>> exchangeRates = bank.prepareExchangeRates();
             Double convertedAmount = bank.convertCurrency(amount, currency,
                     account.getCurrency(), exchangeRates);
             double oldAmount = convertedAmount;
             double originalBalance = account.getBalance();
             if (account.isBusiness()) {
-                convertedAmount = Utils.comision(bank.getUserHashMap().get(account.getOwner()), convertedAmount, bank, account.getCurrency());
+                convertedAmount = Utils.comision(bank.getUserHashMap().get(account.getOwner()),
+                        convertedAmount, bank, account.getCurrency());
             } else {
-                convertedAmount = Utils.comision(user, convertedAmount, bank, account.getCurrency());
+                convertedAmount = Utils.comision(user, convertedAmount,
+                        bank, account.getCurrency());
             }
             if (convertedAmount != null && account.getBalance() >= convertedAmount) {
                 if (account.isBusiness()) {
-                    bank.getUserHashMap().get(account.getOwner()).addCommercialTransaction(bank, commerciant, oldAmount, account.getCurrency(), timestamp, account);
+                    bank.getUserHashMap().get(account.getOwner()).addCommercialTransaction(bank,
+                            commerciant, oldAmount, account.getCurrency(), timestamp, account);
                     double oldBalance = account.getBalance();
                     account.withdraw(convertedAmount, email, timestamp, oldAmount);
                     double newBalance = account.getBalance();
@@ -192,7 +173,8 @@ public class PayOnlineCommand implements Command {
                     }
                     account.addCommerciantSpendings(commerciant, oldAmount, user);
                     account.countTransactions(convertedAmount, timestamp, email);
-                    Utils.addCashback(bank, bank.getUserHashMap().get(account.getOwner()), account, oldAmount, bank.getCommerciants().get(commerciant));
+                    Utils.addCashback(bank, bank.getUserHashMap().get(account.getOwner()), account,
+                            oldAmount, bank.getCommerciants().get(commerciant));
                 } else {
                     double oldBalance = account.getBalance();
                     account.withdraw(convertedAmount);
@@ -201,8 +183,10 @@ public class PayOnlineCommand implements Command {
                         account.setBalance(originalBalance);
                         return;
                     }
-                    user.addCommercialTransaction(bank, commerciant, oldAmount, account.getCurrency(), timestamp, account);
-                    Utils.addCashback(bank, user, account, oldAmount, bank.getCommerciants().get(commerciant));
+                    user.addCommercialTransaction(bank, commerciant, oldAmount,
+                            account.getCurrency(), timestamp, account);
+                    Utils.addCashback(bank, user, account, oldAmount,
+                            bank.getCommerciants().get(commerciant));
                     Transaction t = new Transaction.Builder(timestamp, "Card payment")
                             .commerciant(commerciant)
                             .amount(oldAmount)
@@ -211,37 +195,44 @@ public class PayOnlineCommand implements Command {
                     account.accountAddTransaction(t);
                     account.countTransactions(convertedAmount, timestamp, email);
                 }
-                if (card.isOneTime()) {
-                    bank.getCardHashMap().remove(cardNumber);
-                    Transaction t1 = new Transaction.Builder(timestamp,
-                            "The card has been destroyed")
-                            .accountNumber(account.getIban())
-                            .cardNumber(cardNumber)
-                            .cardHolder(account.getEmail())
-                            .build();
-                    user.addTransaction(t1);
-                    for (Card c : account.getCards()) {
-                        if (c.getCardNumber().equals(cardNumber)) {
-                            c.setCardNumber(c.regenerateCardNumber());
-                            bank.getCardHashMap().put(c.getCardNumber(), c);
-                            Transaction t2 = new Transaction.Builder(timestamp, "New card created")
-                                    .accountNumber(account.getIban())
-                                    .cardNumber(c.getCardNumber())
-                                    .cardHolder(account.getEmail())
-                                    .build();
-                            user.addTransaction(t2);
-                            break;
-                        }
-                    }
-                }
+                oneTimeCardUpdate(card, account, user);
             } else {
-                System.out.println("Insufficient funds timestamp: " + timestamp);
                 Transaction t = new Transaction.Builder(timestamp, "Insufficient funds").build();
                 user.addTransaction(t);
                 account.accountAddTransaction(t);
             }
-            if (account.getIban().equals("RO53POOB7122855990652257")) {
-                System.out.println("PAYONLINE timestamp : " + timestamp + "      " + account.getBalance());
+        }
+    }
+
+    /**
+     * Handles the case where a card is one-time and needs to be updated.
+     *
+     * @param card the card to be updated
+     * @param account the account to be updated
+     * @param user the user to be updated
+     */
+    private void oneTimeCardUpdate(final Card card, final Account account, final User user) {
+        if (card.isOneTime()) {
+            bank.getCardHashMap().remove(cardNumber);
+            Transaction t1 = new Transaction.Builder(timestamp,
+                    "The card has been destroyed")
+                    .accountNumber(account.getIban())
+                    .cardNumber(cardNumber)
+                    .cardHolder(account.getEmail())
+                    .build();
+            user.addTransaction(t1);
+            for (Card c : account.getCards()) {
+                if (c.getCardNumber().equals(cardNumber)) {
+                    c.setCardNumber(c.regenerateCardNumber());
+                    bank.getCardHashMap().put(c.getCardNumber(), c);
+                    Transaction t2 = new Transaction.Builder(timestamp, "New card created")
+                            .accountNumber(account.getIban())
+                            .cardNumber(c.getCardNumber())
+                            .cardHolder(account.getEmail())
+                            .build();
+                    user.addTransaction(t2);
+                    break;
+                }
             }
         }
     }

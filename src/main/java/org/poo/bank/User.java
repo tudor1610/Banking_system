@@ -59,12 +59,26 @@ public class User {
         bigTransactions = 0;
     }
 
-    public void addCommercialTransaction(Bank bank, String commerciant,  double amount, final String currency, final int timestamp, final Account account) {
-        amount = bank.convertCurrency(amount, currency, "RON", bank.prepareExchangeRates());
+    /**
+     * Adds a commercial transaction to the user's list of commercial transactions.
+     *
+     * @param bank the {@link Bank} object
+     * @param commerciant the name of the commerciant
+     * @param amount the amount of the transaction
+     * @param currency the currency of the transaction
+     * @param timestamp the timestamp of the transaction
+     * @param account the {@link Account} object
+     */
+    public void addCommercialTransaction(final Bank bank, final String commerciant,
+                                         final double amount, final String currency,
+                                         final int timestamp, final Account account) {
+        double newAmount = bank.convertCurrency(amount, currency, "RON",
+                bank.prepareExchangeRates());
         if (commercialTransactions.containsKey(commerciant)) {
-            commercialTransactions.put(commerciant, commercialTransactions.get(commerciant) + amount);
+            commercialTransactions.put(commerciant,
+                    commercialTransactions.get(commerciant) + newAmount);
         } else {
-            commercialTransactions.put(commerciant, amount);
+            commercialTransactions.put(commerciant, newAmount);
         }
     }
 

@@ -6,21 +6,25 @@ import org.poo.bank.Bank;
 
 public class ChangeDepositLimitCommand implements Command {
     private Bank bank;
-    private String IBAN;
+    private String iban;
     private String email;
     private double newLimit;
     private int timestamp;
 
-    public ChangeDepositLimitCommand(final Bank bank, final String IBAN, final String email, final double newLimit, final int timestamp) {
+    public ChangeDepositLimitCommand(final Bank bank, final String iban, final String email,
+                                     final double newLimit, final int timestamp) {
         this.bank = bank;
         this.email = email;
         this.newLimit = newLimit;
         this.timestamp = timestamp;
-        this.IBAN = IBAN;
+        this.iban = iban;
     }
 
+    /**
+     * Change the deposit limit of a business account.
+     */
     public void execute() {
-        Account account = bank.getAccountHashMap().get(IBAN);
+        Account account = bank.getAccountHashMap().get(iban);
         if (account.isBusiness()) {
             if (account.getOwner().equals(email)) {
                 account.setDepositLimit(newLimit);
