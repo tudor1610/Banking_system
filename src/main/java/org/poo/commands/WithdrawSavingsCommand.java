@@ -49,8 +49,12 @@ public class WithdrawSavingsCommand implements Command {
                 amount = bank.convertCurrency(amount, currency,
                         account.getCurrency(), exchangeRates);
             }
+
             for (Account a : user.getAccounts()) {
                 if (a.getAccountType().equals("classic") && a.getCurrency().equals(currency)) {
+                    if (account.getBalance() < amount) {
+                        break;
+                    }
                     account.withdraw(amount);
                     a.deposit(amount);
                     Transaction t = new Transaction.Builder(timestamp, "Savings withdrawal")

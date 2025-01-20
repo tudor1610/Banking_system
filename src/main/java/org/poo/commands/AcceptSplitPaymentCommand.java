@@ -11,11 +11,14 @@ public class AcceptSplitPaymentCommand implements Command{
     private Bank bank;
     private String email;
     private int timestamp;
+    private String splitType;
 
-    public AcceptSplitPaymentCommand(final Bank bank, final String email, final int timestamp) {
+    public AcceptSplitPaymentCommand(final Bank bank, final String email, final int timestamp,
+                                     final String splitType) {
         this.bank = bank;
         this.email = email;
         this.timestamp = timestamp;
+        this.splitType = splitType;
     }
 
     public void execute() {
@@ -33,11 +36,13 @@ public class AcceptSplitPaymentCommand implements Command{
         }
         List<SplitPayment> paymentList = bank.getWaitingPayments();
         for (SplitPayment payment : paymentList) {
-            for (int i = 0; i < payment.getAccounts().length; i++) {
-                if (payment.getAccounts()[i].getEmail().equals(email) && payment.getAccepted()[i].equals(false)) {
-                    payment.getAccepted()[i] = true;
-                    payment.paymentCheck();
-                    return;
+            if (payment.getPaymentType().equals(splitType)) {
+                for (int i = 0; i < payment.getAccounts().length; i++) {
+                    if (payment.getAccounts()[i].getEmail().equals(email) && payment.getAccepted()[i].equals(false)) {
+                        payment.getAccepted()[i] = true;
+                        payment.paymentCheck();
+                        return;
+                    }
                 }
             }
         }

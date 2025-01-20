@@ -36,6 +36,15 @@ public class ChangeSpendingLimitCommand implements Command{
                 command.put("timestamp", timestamp);
                 bank.getOutput().add(command);
             }
+        } else {
+            ObjectNode command = bank.getObjectMapper().createObjectNode();
+            command.put("command", "changeSpendingLimit");
+            ObjectNode status = bank.getObjectMapper().createObjectNode();
+            status.put("description", "This is not a business account");
+            status.put("timestamp", timestamp);
+            command.set("output", status);
+            command.put("timestamp", timestamp);
+            bank.getOutput().add(command);
         }
     }
 }

@@ -59,7 +59,6 @@ public final class Main {
                 action(file.getName(), filepath);
             }
         }
-
         Checker.calculateScore();
     }
 

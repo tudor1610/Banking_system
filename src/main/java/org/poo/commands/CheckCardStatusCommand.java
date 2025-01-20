@@ -47,7 +47,7 @@ public class CheckCardStatusCommand implements Command {
                 User user = bank.getUserHashMap().get(account.getEmail());
                 user.addTransaction(t);
             } else if (account.getBalance() - account.getMinBalance() <= warningZone) {
-                card.setStatus("warning");
+//                card.setStatus("warning");
             }
         }
     }

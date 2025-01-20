@@ -130,7 +130,7 @@ public class Bank {
                     case DELETEACCOUNT -> executeCommand(new DeleteAccountCommand(this,
                             command.getTimestamp(), command.getEmail(), command.getAccount()));
                     case DELETECARD -> executeCommand(new DeleteCardCommand(this,
-                            command.getCardNumber(), command.getTimestamp()));
+                            command.getCardNumber(), command.getTimestamp(), command.getEmail()));
                     case SETMINBALANCE -> executeCommand(new SetMinBalanceCommand(this,
                             command.getMinBalance(), command.getAccount()));
                     case PAYONLINE -> executeCommand(new PayOnlineCommand(this,
@@ -169,9 +169,9 @@ public class Bank {
                             command.getCardNumber(), command.getAmount(), command.getEmail(),
                             command.getLocation(), command.getTimestamp()));
                     case ACCEPTSPLITPAYMENT -> executeCommand(new AcceptSplitPaymentCommand(this,
-                            command.getEmail(), command.getTimestamp()));
+                            command.getEmail(), command.getTimestamp(), command.getSplitPaymentType()));
                     case REJECTSPLITPAYMENT -> executeCommand(new RejectSplitPaymentCommand(this,
-                            command.getEmail(), command.getTimestamp()));
+                            command.getEmail(), command.getTimestamp(), command.getSplitPaymentType()));
                     case ADDNEWBUSINESSASSOCIATE -> executeCommand(new NewBusinessAssociateCommand(this,
                             command.getAccount(), command.getRole(), command.getEmail(), command.getTimestamp()));
                     case CHANGESPENDLIMIT -> executeCommand(new ChangeSpendingLimitCommand(this, command.getEmail(),

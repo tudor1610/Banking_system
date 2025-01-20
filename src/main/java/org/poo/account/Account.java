@@ -10,7 +10,11 @@ import org.poo.bank.User;
 import org.poo.card.Card;
 import org.poo.transactions.Transaction;
 
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
 
 @Getter
 @Setter
@@ -25,9 +29,9 @@ public abstract class Account {
     private ArrayList<Card> cards;
     private List<Transaction> transactionList;
     private ObjectMapper objectMapper;
-    private int Food;
-    private int Clothes;
-    private int Tech;
+    private boolean food;
+    private boolean clothes;
+    private boolean tech;
     private HashMap<String, Integer> nrOfTransactions;
 
     public Account(final Bank bank, final String iban, final String email,
@@ -41,9 +45,9 @@ public abstract class Account {
         cards = new ArrayList<>();
         transactionList = new ArrayList<>();
         objectMapper = new ObjectMapper();
-        Food = 0;
-        Clothes = 0;
-        Tech = 0;
+        food = false;
+        clothes = false;
+        tech = false;
         nrOfTransactions = new HashMap<>();
         this.bank = bank;
     }
@@ -89,11 +93,11 @@ public abstract class Account {
      *                        if conversion is required.
      */
     public void accountPayment(final User user, final String newCurrency, final double amount,
-                               final int timestamp, final double sum, final List<Double> amountForUsers, final List<String> accounts,
+                               final int timestamp, final double sum,
+                               final List<Double> amountForUsers, final List<String> accounts,
                                final double convertedAmount, final String splitPaymentType) {
         if (this.currency.equals(newCurrency)) {
                     withdraw(sum);
-                    countTransactions(sum, timestamp);
                     Transaction t = new Transaction.Builder(timestamp, "Split payment of ")
                             .currency(currency)
                             .amountForUsers(amountForUsers)
@@ -106,7 +110,6 @@ public abstract class Account {
                     accountAddTransaction(t);
                 } else {
                     withdraw(convertedAmount);
-                    countTransactions(convertedAmount, timestamp);
                     Transaction t = new Transaction.Builder(timestamp, "Split payment of ")
                             .currency(newCurrency)
                             .amountForUsers(amountForUsers)
@@ -218,7 +221,12 @@ public abstract class Account {
         return command;
     }
 
-    public void addNrOfTransaction(String commerciant) {
+    /**
+     * Adds a transaction to the account's transaction list.
+     *
+     * @param commerciant the commerciant of the transaction
+     */
+    public void addNrOfTransaction(final String commerciant) {
         if (nrOfTransactions.containsKey(commerciant)) {
             int value = nrOfTransactions.get(commerciant);
             value++;
@@ -228,7 +236,13 @@ public abstract class Account {
         }
     }
 
+    /**
+     * Deposits a specified amount into the account.
+     *
+     * @param amount the amount to deposit
+     */
     public void deposit(final double amount) {
+
         if (amount > 0) {
             balance += amount;
         }
@@ -238,11 +252,16 @@ public abstract class Account {
      *
      * @param amount the amount to deposit
      */
-    public void deposit(final double amount, final String email, final int timestamp) {
+    public void deposit(final double amount, final String email1, final int timestamp) {
        return;
     }
 
-    public void withdraw(double amount) {
+    /**
+     * Withdraws a specified amount from the account if sufficient funds are available.
+     *
+     * @param amount the amount to withdraw
+     */
+    public void withdraw(final double amount) {
         if (amount > 0 && amount <= balance) {
             balance -= amount;
         }
@@ -252,7 +271,8 @@ public abstract class Account {
      *
      * @param amount the amount to withdraw
      */
-    public void withdraw(final double amount, final String email, final int timestamp, final double amountWithoutComission) {
+    public void withdraw(final double amount, final String email1,
+                         final int timestamp, final double amountWithoutComission) {
         return;
     }
 
@@ -275,69 +295,168 @@ public abstract class Account {
         return;
     }
 
+    /**
+     * Returns the interest rate of the account.
+     *
+     * @return the interest rate
+     */
     public double getInterestRate() {
         return 0;
     }
 
+    /**
+     * Adds a manager to the account.
+     *
+     * @param manager the manager to add
+     */
     public void addManager(final User manager) {
         return;
     }
 
+    /**
+     * Adds an employee to the account.
+     *
+     * @param employee the employee to add
+     */
     public void addEmployee(final User employee) {
         return;
     }
 
+    /**
+     * Sets the owner of the account.
+     *
+
+     */
     public String getOwner() {
         return null;
     }
 
+    /**
+     * Sets the spending limit of the account.
+     *
+     * @param spendingLimit the spending limit
+     */
     public void setSpendingLimit(final double spendingLimit) {
         return;
     }
 
+    /**
+     * Sets the deposit limit of the account.
+     *
+     * @param depositLimit the deposit limit
+     */
     public void setDepositLimit(final double depositLimit) {
         return;
     }
+
+    /**
+     * Returns the spending limit of the account.
+     *
+     * @return the spending limit
+     */
     public Double getSpendingLimit() {
         return 0.0;
     }
+
+    /**
+     * Returns the deposit limit of the account.
+     *
+     * @return the deposit limit
+     */
     public Double getDepositLimit() {
         return 0.0;
     }
+
+    /**
+     * Returns the list of managers associated with the account.
+     *
+     * @return the list of managers
+     */
     public List<Associate> getManagers() {
         return null;
     }
+
+    /**
+     * Returns the list of employees associated with the account.
+     *
+     * @return the list of employees
+     */
     public List<Associate> getEmployees() {
         return null;
     }
+
+    /**
+     * Checks if the account is a business account.
+     *
+     * @return true if the account is a business account, false otherwise
+     */
     public boolean isBusiness() {
         return false;
     }
 
+    /**
+     * Returns the total amount spent from the account.
+     *
+     * @return the total amount spent
+     */
     public Double getTotalSpent() {
         return 0.0;
     }
 
+    /**
+     * Returns the total amount deposited into the account.
+     *
+     * @return the total amount deposited
+     */
     public Double getTotalDeposited() {
         return 0.0;
     }
 
-    public void addCommerciantSpendings(final String commerciant, final double amount, final User user) {
+    /**
+     * Adds a spending to the account's total.
+     *
+     * @param amount the amount of the spending
+     */
+    public void addCommerciantSpendings(final String commerciant,
+                                        final double amount, final User user) {
         return;
     }
 
+    /**
+     * Returns the list of spendings by commerciant.
+     *
+     * @return the list of spendings by commerciant
+     */
     public List<CommerciantSpendings> getCommerciantSpendings() {
         return null;
     }
+
+    /**
+     * Checks if the user is the owner of the account.
+     *
+     * @param user the user to check
+     * @return true if the user is the owner, false otherwise
+     */
     public boolean isOwner(final User user) {
         return false;
     }
-    public void countTransactions(double amount, int timestamp) {
-        amount = bank.convertCurrency(amount, currency, "RON", bank.prepareExchangeRates());
-        User user = bank.getUserHashMap().get(email);
-        if (amount >= 300) {
+
+    /**
+     * Counts the number of transactions over a certain
+     * threshold and upgrades the user's plan if necessary.
+     *
+     * @param amount the amount of the transaction
+     * @param timestamp the timestamp of the transaction
+     */
+    public void countTransactions(final double amount, final int timestamp, final String mail) {
+        Double newAmount = bank.convertCurrency(amount, currency,
+                "RON", bank.prepareExchangeRates());
+        User user = bank.getUserHashMap().get(mail);
+        final int treshold = 300;
+        final int nroftrans = 5;
+        if (newAmount >= treshold && user.getPlan().equals("silver")) {
             user.setBigTransactions(user.getBigTransactions() + 1);
-            if (user.getBigTransactions() == 5 && user.getPlan().equals("silver")) {
+            if (user.getBigTransactions() == nroftrans && user.getPlan().equals("silver")) {
                 user.setPlan("gold");
                 Transaction t = new Transaction.Builder(timestamp, "Upgrade plan")
                         .accountNumber(getIban())

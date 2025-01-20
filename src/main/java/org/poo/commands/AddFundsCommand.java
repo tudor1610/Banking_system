@@ -25,6 +25,9 @@ public class AddFundsCommand implements Command {
     @Override
     public void execute() {
         Account account = bank.getAccountHashMap().get(iban);
+        if(!account.getEmail().equals(email) && !account.isBusiness()) {
+            return;
+        }
         if (account != null) {
             if (account.isBusiness()) {
                 account.deposit(amount, email, timestamp);

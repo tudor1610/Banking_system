@@ -22,15 +22,31 @@ public class Associate {
         this.email =   user.getEmail();
     }
 
-    public void addSpendings(int timestamp, double amount) {
+    /**
+     * Adds spendings for the associate
+     * @param timestamp the timestamp of the spending
+     * @param amount the amount of the spending
+     */
+    public void addSpendings(final int timestamp, final double amount) {
         spendings.put(timestamp, amount);
     }
 
-    public void addDeposits(int timestamp, double amount) {
+    /**
+     * Adds deposits for the associate
+     * @param timestamp the timestamp of the deposit
+     * @param amount the amount of the deposit
+     */
+    public void addDeposits(final int timestamp, final double amount) {
         deposits.put(timestamp, amount);
     }
 
-    public Double calculateTotalSpent(int start, int end) {
+    /**
+     * Calculates the total spent of the associate
+     * @param start the start timestamp
+     * @param end the end timestamp
+     * @return the total spent
+     */
+    public Double calculateTotalSpent(final int start, final int end) {
         for (Map.Entry<Integer, Double> entry : spendings.entrySet()) {
             if (entry.getKey() >= start && entry.getKey() <= end) {
                 return spendings.values().stream().reduce(0.0, Double::sum);
@@ -39,7 +55,13 @@ public class Associate {
         return 0.0;
     }
 
-    public Double calculateTotalDeposit(int start, int end) {
+    /**
+     * Calculates the total deposit of the associate
+     * @param start the start timestamp
+     * @param end the end timestamp
+     * @return the total deposit
+     */
+    public Double calculateTotalDeposit(final int start, final int end) {
         for (Map.Entry<Integer, Double> entry : deposits.entrySet()) {
             if (entry.getKey() >= start && entry.getKey() <= end) {
                 return deposits.values().stream().reduce(0.0, Double::sum);

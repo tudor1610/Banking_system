@@ -24,6 +24,10 @@ public class SavingsAccount extends Account {
         deposit(amount * interestRate);
     }
 
+    /***
+     * Getter for the interest rate
+     * @return
+     */
     public double getInterestRate() {
         return interestRate;
     }

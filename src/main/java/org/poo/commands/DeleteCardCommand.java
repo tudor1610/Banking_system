@@ -10,8 +10,10 @@ public class DeleteCardCommand implements Command {
     private Bank bank;
     private String cardNumber;
     private int timestamp;
+    private String email;
 
-    public DeleteCardCommand(final Bank bank, final String cardNumber, final int timestamp) {
+    public DeleteCardCommand(final Bank bank, final String cardNumber, final int timestamp,
+                             final String email) {
         this.bank = bank;
         this.cardNumber = cardNumber;
         this.timestamp = timestamp;
@@ -25,6 +27,13 @@ public class DeleteCardCommand implements Command {
     public void execute() {
         Card card = bank.getCardHashMap().get(cardNumber);
         if (card != null) {
+            if (bank.getAccountHashMap().get(card.getAccountIban()).getBalance() > 0.0) {
+                return;
+            }
+            if (!card.getEmail().equals(email)) {
+                return;
+            }
+
             Account account = bank.getAccountHashMap().get(card.getAccountIban());
             account.removeCard(card);
             bank.getCardHashMap().remove(cardNumber);

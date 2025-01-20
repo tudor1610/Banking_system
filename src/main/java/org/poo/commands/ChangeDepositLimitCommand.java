@@ -1,5 +1,6 @@
 package org.poo.commands;
 
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.poo.account.Account;
 import org.poo.bank.Bank;
 
@@ -26,7 +27,14 @@ public class ChangeDepositLimitCommand implements Command {
                 // add transaction
             } else {
                 // error + transaction
-                System.out.println("Error: You are not the owner of this account.");
+                ObjectNode command = bank.getObjectMapper().createObjectNode();
+                command.put("command", "changeDepositLimit");
+                ObjectNode status = bank.getObjectMapper().createObjectNode();
+                status.put("description", "You must be owner in order to change deposit limit.");
+                status.put("timestamp", timestamp);
+                command.set("output", status);
+                command.put("timestamp", timestamp);
+                bank.getOutput().add(command);
             }
         }
     }

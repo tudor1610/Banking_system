@@ -115,11 +115,19 @@ public class SendMoneyCommand implements Command {
 //                System.out.println("sender balance: " + sender.getBalance());
                 if (sender.getBalance() >= amount) {
                     if (sender.isBusiness()) {
+                        double originalBalance = sender.getBalance();
                         sender.withdraw(amount, sender.getOwner(), timestamp, oldAmount);
-                        sender.countTransactions(oldAmount, timestamp);
+                        double newBalance = sender.getBalance();
+                        if (originalBalance != newBalance) {
+                            sender.countTransactions(oldAmount, timestamp, email);
+                        }
                     } else {
+                        double originalBalance = sender.getBalance();
                         sender.withdraw(amount);
-                        sender.countTransactions(oldAmount, timestamp);
+                        double newBalance = sender.getBalance();
+                        if (originalBalance != newBalance) {
+                            sender.countTransactions(oldAmount, timestamp, email);
+                        }
                     }
                     receiver.deposit(oldAmount);
                     sendMoneyTransaction(sender, receiver, oldAmount, oldAmount);
@@ -141,7 +149,7 @@ public class SendMoneyCommand implements Command {
                     sender.withdraw(amount);
                     receiver.deposit(convertedAmount);
                     sendMoneyTransaction(sender, receiver, oldAmount, convertedAmount);
-                    sender.countTransactions(convertedAmount, timestamp);
+                    sender.countTransactions(convertedAmount, timestamp, email);
                 } else {
                     Transaction t = new Transaction.Builder(timestamp, "Insufficient funds")
                             .build();
@@ -172,7 +180,7 @@ public class SendMoneyCommand implements Command {
                     }
                     sender.withdraw(amount, sender.getOwner(), timestamp, oldAmount);
                     sender.addCommerciantSpendings(commerciant, oldAmount, bank.getUserHashMap().get(email));
-                    sender.countTransactions(oldAmount, timestamp);
+                    sender.countTransactions(oldAmount, timestamp, email);
                 } else {
                     sender.withdraw(amount);
                 }
@@ -182,7 +190,7 @@ public class SendMoneyCommand implements Command {
                         bank.getUserHashMap().get(sender.getEmail()).addCommercialTransaction(bank, entry.getValue().getCommerciant(), oldAmount, sender.getCurrency(), timestamp, sender);
                         Utils.addCashback(bank, bank.getUserHashMap().get(sender.getEmail()), sender, oldAmount, entry.getValue());
                         sendMoneyTransaction2(sender, account2, oldAmount, oldAmount);
-                        sender.countTransactions(oldAmount, timestamp);
+                        sender.countTransactions(oldAmount, timestamp, email);
                         return;
                     }
                 }
